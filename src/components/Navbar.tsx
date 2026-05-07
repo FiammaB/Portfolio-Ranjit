@@ -18,7 +18,7 @@ export default function Navbar({ menuOpen, onToggle }: NavbarProps) {
         <header className="fixed inset-x-0 top-0 z-50 border-b border-slate-900/8 bg-[rgba(246,242,234,0.72)] backdrop-blur-xl">
             <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 sm:px-8 lg:px-12">
                 <a href="#hero" className="text-sm font-semibold uppercase tracking-[0.24em] text-slate-950">
-                    Ranjit Bhatia
+                    Umang Agarwal
                 </a>
 
                 <nav className="hidden items-center gap-10 md:flex">

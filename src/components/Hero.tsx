@@ -18,14 +18,17 @@ export default function Hero() {
                         transition={{ duration: 0.9, ease: 'easeOut' }}
                         className="order-2 space-y-6 xl:order-2"
                     >
-                        <p className="text-sm uppercase tracking-[0.38em] text-[var(--accent-orange)]">
-                            Executive Producer / Line Producer
+                        <p className="text-sm uppercase tracking-[0.3em] text-[var(--accent-orange)] sm:tracking-[0.34em]">
+                            International Production Executive
                         </p>
                         <h1 className="max-w-4xl text-5xl text-[var(--surface-strong)] sm:text-6xl lg:text-7xl">
-                            Ranjit Bhatia
+                            Umang Agarwal
                         </h1>
-                        <p className="max-w-2xl text-lg leading-9 text-[var(--text-soft)]">
-                            Production partner for UK and European shoots in India, with a more cinematic and art-directed presentation of the work.
+                        <p className="max-w-4xl text-xl leading-8 text-[var(--surface-strong)] sm:text-2xl">
+                            Executive Producer | Line Producer | Cross-Border Production Specialist for Feature Films, HETV, Commercials & Documentaries
+                        </p>
+                        <p className="max-w-3xl text-lg leading-9 text-[var(--text-soft)]">
+                            21+ years delivering Feature Films, HETV, Commercials, Documentaries and international productions across India, the UK and overseas.
                         </p>
 
                         <div className="flex flex-wrap gap-4 pt-2">

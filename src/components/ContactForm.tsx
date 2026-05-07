@@ -24,7 +24,7 @@ export default function ContactForm() {
                         <input
                             type="text"
                             required
-                            placeholder="Ranjit Bhatia"
+                            placeholder="Umang Agarwal"
                             className="w-full rounded-3xl border border-white/10 bg-slate-900/90 px-4 py-3 text-slate-100 outline-none transition focus:border-amber-400/80 focus:ring-2 focus:ring-amber-400/20"
                         />
                     </div>

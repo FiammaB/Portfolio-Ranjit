@@ -56,22 +56,40 @@ const capabilities = [
 const testimonials = [
     {
         quote:
-            'Under immense pressure, Ranjit kept the Thailand feature on schedule and negotiated customs clearance for 17 crates of camera equipment within hours.',
-        name: 'Alex Hart',
-        role: 'UK Line Producer',
+            'With Umang on the ground, we did not have to worry about our crew getting stuck in customs or our shoot being shut down by local authorities.',
+        name: 'International Production Team',
+        role: 'Customs and Permits Feedback',
     },
     {
         quote:
-            'He delivered a complex India shoot for a European streaming campaign with exceptional budget discipline and zero unnecessary noise.',
-        name: 'Sophie Lane',
-        role: 'Creative Director, London',
+            'Umang does not just manage the budget; he actively finds ways to save us money and leverage international tax incentives, making global shoots far more viable for our company.',
+        name: 'Global Production Partner',
+        role: 'Budget and Incentives Feedback',
     },
     {
         quote:
-            'He is the kind of producer execution teams rely on when timelines tighten and the work still needs elegance.',
-        name: 'Emma Reid',
-        role: 'Executive Producer',
+            'He understands exactly what British crews expect and delivers that standard seamlessly, no matter where in the world we are filming.',
+        name: 'British Production Team',
+        role: 'Cross-Border Operations Feedback',
     },
+]
+
+const partnerLogos = [
+    '/company-logos/Company Logos/Company Logo 1.png',
+    '/company-logos/Company Logos/companylogo.png',
+    '/company-logos/Company Logos/download (2).png',
+    '/company-logos/Company Logos/download (3).jpg',
+    '/company-logos/Company Logos/download (5).png',
+    '/company-logos/Company Logos/download.png',
+    '/company-logos/Company Logos/ec-logo-header.png',
+    '/company-logos/Company Logos/FILMS1-copy-copy-300x45.webp',
+]
+
+const behindTheScenesStills = [
+    '/working-stills/AJP_0204.JPG',
+    '/working-stills/AJP_2948.JPG',
+    '/working-stills/IMG_4293.JPG',
+    '/working-stills/IMG_4294.JPG',
 ]
 
 export default function PortfolioSections() {
@@ -203,6 +221,84 @@ export default function PortfolioSections() {
                         <p className="mt-4 text-base leading-8 text-[var(--text-soft)]">{item.text}</p>
                     </div>
                 ))}
+            </section>
+
+            <section id="customers" className="rounded-[2.5rem] border border-[var(--border-soft)] bg-[linear-gradient(180deg,rgba(255,248,240,0.9),rgba(233,242,255,0.86))] p-8 sm:p-10 lg:p-14">
+                <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+                    <div className="space-y-4">
+                        <div className="inline-flex items-center gap-3 rounded-full border border-[var(--border-soft)] bg-white/70 px-4 py-2 text-[var(--surface-panel)]">
+                            <Orbit size={16} />
+                            <p className="text-sm uppercase tracking-[0.34em] text-[var(--accent-cyan)]">Customers</p>
+                        </div>
+                        <h2 className="text-4xl text-[var(--surface-strong)] sm:text-5xl">
+                            Customers across brands, studios and campaigns.
+                        </h2>
+                    </div>
+                    <p className="max-w-2xl text-base leading-8 text-[var(--text-soft)]">
+                        Selected company marks from the supplied materials, presented as a quick trust layer for incoming production partners.
+                    </p>
+                </div>
+
+                <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                    {partnerLogos.map((logoSrc, index) => (
+                        <div
+                            key={logoSrc}
+                            className="flex min-h-28 items-center justify-center rounded-[1.7rem] border border-[var(--border-soft)] bg-white/76 p-6 shadow-[0_18px_40px_rgba(66,76,119,0.08)]"
+                            style={{
+                                background:
+                                    index % 3 === 0
+                                        ? 'linear-gradient(160deg, rgba(255, 255, 255, 0.88), rgba(237, 244, 255, 0.82))'
+                                        : index % 3 === 1
+                                            ? 'linear-gradient(160deg, rgba(255, 255, 255, 0.88), rgba(246, 236, 255, 0.82))'
+                                            : 'linear-gradient(160deg, rgba(255, 255, 255, 0.88), rgba(255, 241, 229, 0.82))',
+                            }}
+                        >
+                            <img
+                                src={logoSrc}
+                                alt="Company logo"
+                                className="max-h-12 w-full object-contain opacity-85 saturate-[0.92]"
+                                loading="lazy"
+                            />
+                        </div>
+                    ))}
+                </div>
+            </section>
+
+            <section id="behind-the-scenes" className="rounded-[2.5rem] border border-[var(--border-soft)] bg-[linear-gradient(180deg,rgba(235,241,255,0.92),rgba(255,239,229,0.9))] p-8 sm:p-10 lg:p-14">
+                <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+                    <div className="space-y-4">
+                        <div className="inline-flex items-center gap-3 rounded-full border border-[var(--border-soft)] bg-white/70 px-4 py-2 text-[var(--surface-panel)]">
+                            <Camera size={16} />
+                            <p className="text-sm uppercase tracking-[0.34em] text-[var(--accent-orange)]">Behind The Scenes</p>
+                        </div>
+                        <h2 className="text-4xl text-[var(--surface-strong)] sm:text-5xl">
+                            Behind the scenes stills from working sets.
+                        </h2>
+                    </div>
+                    <p className="max-w-2xl text-base leading-8 text-[var(--text-soft)]">
+                        A quick look at the crews, cameras and real production environments behind the delivery work.
+                    </p>
+                </div>
+
+                <div className="mt-10 grid gap-4 md:grid-cols-2">
+                    {behindTheScenesStills.map((stillSrc, index) => (
+                        <figure
+                            key={stillSrc}
+                            className={`group overflow-hidden rounded-[2rem] border border-[var(--border-soft)] bg-white/72 shadow-[0_18px_40px_rgba(66,76,119,0.08)] ${
+                                index === 0 ? 'md:col-span-2' : ''
+                            }`}
+                        >
+                            <img
+                                src={stillSrc}
+                                alt="Behind the scenes production still"
+                                className={`w-full object-cover transition duration-500 group-hover:scale-[1.02] ${
+                                    index === 0 ? 'max-h-[34rem]' : 'h-[22rem]'
+                                }`}
+                                loading="lazy"
+                            />
+                        </figure>
+                    ))}
+                </div>
             </section>
 
             <section id="testimonials" className="rounded-[2.5rem] border border-[var(--border-soft)] bg-[linear-gradient(180deg,rgba(232,241,255,0.88),rgba(246,231,255,0.86))] p-8 sm:p-10 lg:p-14">
