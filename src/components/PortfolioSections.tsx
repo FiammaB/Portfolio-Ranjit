@@ -75,22 +75,108 @@ const testimonials = [
 ]
 
 const partnerLogos = [
-    '/company-logos/Company Logos/Company Logo 1.png',
-    '/company-logos/Company Logos/companylogo.png',
-    '/company-logos/Company Logos/download (2).png',
-    '/company-logos/Company Logos/download (3).jpg',
-    '/company-logos/Company Logos/download (5).png',
-    '/company-logos/Company Logos/download.png',
-    '/company-logos/Company Logos/ec-logo-header.png',
-    '/company-logos/Company Logos/FILMS1-copy-copy-300x45.webp',
-]
+    'Company Logo 2.png',
+    'companylogo.png',
+    'download (1).jpg',
+    'download (1).png',
+    'download (1).webp',
+    'download (2).jpg',
+    'download (2).png',
+    'download (3).jpg',
+    'download (3).png',
+    'download (4).jpg',
+    'download (4).png',
+    'download (5).jpg',
+    'download (5).png',
+    'download (6).jpg',
+    'download (6).png',
+    'download (7).jpg',
+    'download (7).png',
+    'download.jpg',
+    'download.png',
+    'download.webp',
+    'FILMS1-copy-copy-300x45.webp',
+    'logo-y.png',
+    'logo.png',
+    'lX5vswczZoFSUq3H8dX6Db3zqjM.avif',
+].map((fileName) => `/company-logos/Company Logos/${fileName}`)
+
+const darkLogoBackgrounds = new Set([
+    '/company-logos/Company Logos/logo.png',
+    
+    
+    
+    
+    '/company-logos/Company Logos/lX5vswczZoFSUq3H8dX6Db3zqjM.avif',
+])
 
 const behindTheScenesStills = [
-    '/working-stills/AJP_0204.JPG',
-    '/working-stills/AJP_2948.JPG',
-    '/working-stills/IMG_4293.JPG',
-    '/working-stills/IMG_4294.JPG',
-]
+    '1622632106900.jpg',
+    '1622632106920.jpg',
+    '1622632106938.jpg',
+    '1622632106956.jpg',
+    '1622632106975.jpg',
+    '1622632106994.jpg',
+    '29933.jpg',
+    '29934.jpg',
+    '34368.jpg',
+    '34371.jpg',
+    '34372.jpg',
+    '34373.jpg',
+    '34378.jpg',
+    'AJP_0002.JPG',
+    'AJP_0029.JPG',
+    'AJP_0200.JPG',
+    'AJP_0204.JPG',
+    'AJP_1691.JPG',
+    'AJP_1796.JPG',
+    'AJP_1799.JPG',
+    'AJP_1922.JPG',
+    'AJP_1924.JPG',
+    'AJP_1930.JPG',
+    'AJP_2944.JPG',
+    'AJP_2948.JPG',
+    'AJP_2975.JPG',
+    'AJP_9708.JPG',
+    'DSC_0351_1.jpg',
+    'IMG-20231030-WA0010.jpg',
+    'IMG-20231030-WA0011.jpg',
+    'IMG-20231030-WA0013.jpg',
+    'IMG-20231030-WA0014.jpg',
+    'IMG-20231030-WA0016.jpg',
+    'IMG-20231030-WA0019.jpg',
+    'IMG-20231030-WA0020.jpg',
+    'IMG-20231030-WA0021.jpg',
+    'IMG-20231030-WA0025.jpg',
+    'IMG-20231210-WA0065.jpg',
+    'IMG-20250617-WA0142.jpg',
+    'IMG-20250617-WA0143.jpg',
+    'IMG-20250617-WA0144.jpg',
+    'IMG-20250617-WA0145.jpg',
+    'IMG-20250617-WA0146.jpg',
+    'IMG_2473.JPG',
+    'IMG_2646.JPG',
+    'IMG_2648.JPG',
+    'IMG_2921.JPG',
+    'IMG_2922.JPG',
+    'IMG_4293.JPG',
+    'IMG_4294.JPG',
+    'IMG_4295.JPG',
+    'IMG_4296.JPG',
+    'IMG_4297.JPG',
+    'WhatsApp Image 2023-10-30 at 21.36.05_0be0ba86.jpg',
+    'WhatsApp Image 2023-10-30 at 21.36.05_5f25e707.jpg',
+    'WhatsApp Image 2023-12-15 at 22.34.24_9cb2052d.jpg',
+    'WhatsApp Image 2023-12-22 at 11.22.48_b3fc4b0f.jpg',
+    'WhatsApp Image 2026-03-13 at 11.45.07 PM.jpeg',
+    'WhatsApp Image 2026-03-13 at 11.45.14 PM.jpeg',
+    'WhatsApp Image 2026-03-13 at 11.45.15 PM.jpeg',
+    'WhatsApp Image 2026-03-13 at 11.45.16 PM.jpeg',
+    'WhatsApp Image 2026-03-13 at 11.45.17 PM (1).jpeg',
+    'WhatsApp Image 2026-03-13 at 11.45.17 PM.jpeg',
+    'WhatsApp Image 2026-03-13 at 11.45.18 PM (1).jpeg',
+    'WhatsApp Image 2026-03-13 at 11.45.18 PM (2).jpeg',
+].map((fileName) => `/working-stills/${fileName}`)
 
 export default function PortfolioSections() {
     return (
@@ -235,32 +321,42 @@ export default function PortfolioSections() {
                         </h2>
                     </div>
                     <p className="max-w-2xl text-base leading-8 text-[var(--text-soft)]">
-                        Selected company marks from the supplied materials, presented as a quick trust layer for incoming production partners.
+                        Every supplied logo is included here, but reduced into a softer brand wall so the section feels complete without overpowering the page.
                     </p>
                 </div>
 
-                <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                <div className="mt-10 rounded-[2rem] border border-[var(--border-soft)] bg-white/52 p-4 shadow-[0_18px_40px_rgba(66,76,119,0.06)] sm:p-5">
+                    <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6">
                     {partnerLogos.map((logoSrc, index) => (
                         <div
                             key={logoSrc}
-                            className="flex min-h-28 items-center justify-center rounded-[1.7rem] border border-[var(--border-soft)] bg-white/76 p-6 shadow-[0_18px_40px_rgba(66,76,119,0.08)]"
+                            className="group relative flex min-h-20 items-center justify-center rounded-[1.2rem] border border-[var(--border-soft)] bg-white/62 p-3 transition duration-300 hover:z-10 hover:scale-[1.16] hover:bg-white/92 hover:shadow-[0_24px_54px_rgba(66,76,119,0.18)]"
                             style={{
                                 background:
                                     index % 3 === 0
-                                        ? 'linear-gradient(160deg, rgba(255, 255, 255, 0.88), rgba(237, 244, 255, 0.82))'
+                                        ? 'linear-gradient(160deg, rgba(255, 255, 255, 0.78), rgba(237, 244, 255, 0.72))'
                                         : index % 3 === 1
-                                            ? 'linear-gradient(160deg, rgba(255, 255, 255, 0.88), rgba(246, 236, 255, 0.82))'
-                                            : 'linear-gradient(160deg, rgba(255, 255, 255, 0.88), rgba(255, 241, 229, 0.82))',
+                                            ? 'linear-gradient(160deg, rgba(255, 255, 255, 0.78), rgba(246, 236, 255, 0.72))'
+                                            : 'linear-gradient(160deg, rgba(255, 255, 255, 0.78), rgba(255, 241, 229, 0.72))',
                             }}
                         >
-                            <img
-                                src={logoSrc}
-                                alt="Company logo"
-                                className="max-h-12 w-full object-contain opacity-85 saturate-[0.92]"
-                                loading="lazy"
-                            />
+                            <div
+                                className={`flex w-full items-center justify-center rounded-[0.95rem] px-2 py-2 transition duration-300 ${
+                                    darkLogoBackgrounds.has(logoSrc)
+                                        ? 'bg-[linear-gradient(160deg,rgba(17,24,39,0.96),rgba(51,65,85,0.88))]'
+                                        : 'bg-transparent'
+                                }`}
+                            >
+                                <img
+                                    src={logoSrc}
+                                    alt="Company logo"
+                                    className="max-h-9 w-full object-contain opacity-95 transition duration-300 group-hover:scale-[1.24]"
+                                    loading="lazy"
+                                />
+                            </div>
                         </div>
                     ))}
+                    </div>
                 </div>
             </section>
 
@@ -276,28 +372,29 @@ export default function PortfolioSections() {
                         </h2>
                     </div>
                     <p className="max-w-2xl text-base leading-8 text-[var(--text-soft)]">
-                        A quick look at the crews, cameras and real production environments behind the delivery work.
+                        All supplied stills are included here as a compact contact sheet, so the volume of work is visible without making the page feel too heavy.
                     </p>
                 </div>
 
-                <div className="mt-10 grid gap-4 md:grid-cols-2">
-                    {behindTheScenesStills.map((stillSrc, index) => (
+                <div className="mt-10 rounded-[2rem] border border-[var(--border-soft)] bg-white/52 p-4 shadow-[0_18px_40px_rgba(66,76,119,0.06)] sm:p-5">
+                    <div className="max-h-[42rem] overflow-y-auto pr-1">
+                        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+                    {behindTheScenesStills.map((stillSrc) => (
                         <figure
                             key={stillSrc}
-                            className={`group overflow-hidden rounded-[2rem] border border-[var(--border-soft)] bg-white/72 shadow-[0_18px_40px_rgba(66,76,119,0.08)] ${
-                                index === 0 ? 'md:col-span-2' : ''
-                            }`}
+                            className="group relative overflow-hidden rounded-[1.3rem] border border-[var(--border-soft)] bg-white/72 shadow-[0_12px_28px_rgba(66,76,119,0.06)] transition duration-300 hover:z-10 hover:scale-[1.42] hover:shadow-[0_36px_80px_rgba(66,76,119,0.22)]"
                         >
                             <img
                                 src={stillSrc}
                                 alt="Behind the scenes production still"
-                                className={`w-full object-cover transition duration-500 group-hover:scale-[1.02] ${
-                                    index === 0 ? 'max-h-[34rem]' : 'h-[22rem]'
-                                }`}
+                                className="h-28 w-full object-cover transition duration-500 group-hover:scale-[1.12] sm:h-32"
                                 loading="lazy"
                             />
+                            <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),transparent_30%,rgba(0,0,0,0.12))] opacity-0 transition duration-300 group-hover:opacity-100" />
                         </figure>
                     ))}
+                        </div>
+                    </div>
                 </div>
             </section>
 
