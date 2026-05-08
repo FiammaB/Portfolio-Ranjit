@@ -36,7 +36,7 @@ export default function Hero() {
                                 <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[rgba(94,197,255,0.2)] text-[var(--surface-panel)]">
                                     <Clapperboard size={16} />
                                 </span>
-                                <span className="font-semibold uppercase tracking-[0.2em]">Film Systems</span>
+                                <span className="font-semibold uppercase tracking-[0.2em]">Production Systems</span>
                             </div>
                             <div className="inline-flex items-center gap-3 rounded-full border border-[var(--border-soft)] bg-white/70 px-5 py-3 text-sm text-[var(--surface-strong)] shadow-[0_12px_30px_rgba(58,67,106,0.08)]">
                                 <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[rgba(245,154,84,0.22)] text-[var(--surface-panel)]">

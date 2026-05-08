@@ -41,16 +41,16 @@ const works = [
 
 const capabilities = [
     {
-        title: 'Film and Commercial Systems',
-        text: 'Production built for directors, agencies and streamers that want a partner who can protect the image as carefully as the logistics.',
+        title: 'Production Systems for Film and Advertising',
+        text: 'Built for directors, agencies and platforms that need a production partner who protects the image as carefully as the logistics.',
     },
     {
-        title: 'Permissions without Friction',
-        text: 'Government approvals, customs clearance, carnet management and practical scheduling aligned to the real pace of a shoot.',
+        title: 'Permits Without Friction',
+        text: 'Government approvals, customs, carnet handling and practical schedules aligned to the real pace of a shoot.',
     },
     {
         title: 'India as a Production Base',
-        text: 'A local operating structure that feels legible to UK and European teams, from prep to final delivery.',
+        text: 'A clear local operating structure for UK and European teams, from prep through final delivery.',
     },
 ]
 
@@ -59,19 +59,19 @@ const testimonials = [
         quote:
             'With Umang on the ground, we did not have to worry about our crew getting stuck in customs or our shoot being shut down by local authorities.',
         name: 'International Production Team',
-        role: 'Customs and Permits Feedback',
+        role: 'Comment on Customs and Permits',
     },
     {
         quote:
             'Umang does not just manage the budget; he actively finds ways to save us money and leverage international tax incentives, making global shoots far more viable for our company.',
         name: 'Global Production Partner',
-        role: 'Budget and Incentives Feedback',
+        role: 'Comment on Budget and Incentives',
     },
     {
         quote:
             'He understands exactly what British crews expect and delivers that standard seamlessly, no matter where in the world we are filming.',
         name: 'British Production Team',
-        role: 'Cross-Border Operations Feedback',
+        role: 'Comment on International Operations',
     },
 ]
 
@@ -104,6 +104,8 @@ const partnerLogos = [
 
 const darkLogoBackgrounds = new Set([
     '/company-logos/Company Logos/logo.png',
+
+    
     '/company-logos/Company Logos/lX5vswczZoFSUq3H8dX6Db3zqjM.avif',
 ])
 
@@ -176,15 +178,16 @@ const behindTheScenesStills = [
 ].map((fileName) => `/working-stills/${fileName}`)
 
 export default function PortfolioSections() {
-    const logosCarouselRef = useRef<HTMLDivElement | null>(null)
-    const stillsCarouselRef = useRef<HTMLDivElement | null>(null)
-    const scrollCarousel = (ref: React.RefObject<HTMLDivElement | null>, direction: 'left' | 'right') => {
-        const node = ref.current
-        if (!node) return
+    const customersCarouselRef = useRef<HTMLDivElement | null>(null)
+    const btsCarouselRef = useRef<HTMLDivElement | null>(null)
 
-        const amount = Math.max(node.clientWidth * 0.72, 220)
-        node.scrollBy({
-            left: direction === 'left' ? -amount : amount,
+    const scrollCarousel = (ref: { current: HTMLDivElement | null }, direction: 'left' | 'right') => {
+        const container = ref.current
+        if (!container) return
+
+        const amount = Math.max(container.clientWidth * 0.72, 220)
+        container.scrollBy({
+            left: direction === 'right' ? amount : -amount,
             behavior: 'smooth',
         })
     }
@@ -199,10 +202,10 @@ export default function PortfolioSections() {
                             <p className="text-sm uppercase tracking-[0.34em] text-[var(--accent-cyan)]">Positioning</p>
                         </div>
                         <h2 className="max-w-4xl text-4xl text-[var(--surface-strong)] sm:text-5xl">
-                            A production portfolio that feels built, not templated.
+                            A production portfolio that feels designed, not templated.
                         </h2>
                         <p className="max-w-3xl text-lg leading-9 text-[var(--text-soft)]">
-                            My role is to translate complex shooting conditions into something dependable, elegant and visually coherent for UK and European collaborators working in India.
+                            My role is translating complex shooting conditions into a reliable, elegant and visually coherent operation for UK and European collaborators working in India.
                         </p>
                     </div>
 
@@ -211,7 +214,7 @@ export default function PortfolioSections() {
                         <div className="mt-5 space-y-5 text-[var(--surface-strong)]">
                             <div>
                                 <p className="text-sm text-[var(--text-dim)]">Visual sensitivity</p>
-                                <p className="mt-2 text-lg font-semibold">Creative-first production structure</p>
+                                <p className="mt-2 text-lg font-semibold">Production structure with creative priority</p>
                             </div>
                             <div>
                                 <p className="text-sm text-[var(--text-dim)]">Operational discipline</p>
@@ -232,7 +235,7 @@ export default function PortfolioSections() {
                         The production layer behind the image.
                     </h2>
                     <p className="mt-5 text-lg leading-8 text-[var(--text-soft)]">
-                        Executive and line production shaped for international shoots that need both creative trust and practical control.
+                        Executive production and line production for international shoots that need creative trust and practical control.
                     </p>
                 </div>
 
@@ -331,62 +334,61 @@ export default function PortfolioSections() {
                         </h2>
                     </div>
                     <p className="max-w-2xl text-base leading-8 text-[var(--text-soft)]">
-                        Every supplied logo is included here, but reduced into a softer brand wall so the section feels complete without overpowering the page.
+                        Every logo provided is included here, but in a more contained format so the section feels complete without dominating the page.
                     </p>
                 </div>
 
-                <div className="mt-8 rounded-[2rem] border border-[var(--border-soft)] bg-white/52 p-3 shadow-[0_18px_40px_rgba(66,76,119,0.06)] sm:mt-10 sm:p-5">
-                    <div className="mb-4 flex items-center justify-end gap-2">
+                <div className="mt-10 rounded-[2rem] border border-[var(--border-soft)] bg-white/52 p-4 shadow-[0_18px_40px_rgba(66,76,119,0.06)] sm:p-5">
+                    <div className="mb-4 flex items-center justify-end gap-3">
                         <button
                             type="button"
-                            onClick={() => scrollCarousel(logosCarouselRef, 'left')}
-                            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border-soft)] bg-white/72 text-[var(--surface-strong)] transition hover:bg-white"
-                            aria-label="Scroll logos left"
+                            onClick={() => scrollCarousel(customersCarouselRef, 'left')}
+                            className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[var(--border-soft)] bg-white/80 text-[var(--surface-strong)] shadow-[0_14px_30px_rgba(66,76,119,0.12)] transition hover:scale-105 hover:bg-white sm:h-11 sm:w-11"
                         >
                             <ChevronLeft size={18} />
                         </button>
                         <button
                             type="button"
-                            onClick={() => scrollCarousel(logosCarouselRef, 'right')}
-                            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border-soft)] bg-white/72 text-[var(--surface-strong)] transition hover:bg-white"
-                            aria-label="Scroll logos right"
+                            onClick={() => scrollCarousel(customersCarouselRef, 'right')}
+                            className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[var(--border-soft)] bg-white/80 text-[var(--surface-strong)] shadow-[0_14px_30px_rgba(66,76,119,0.12)] transition hover:scale-105 hover:bg-white sm:h-11 sm:w-11"
                         >
                             <ChevronRight size={18} />
                         </button>
                     </div>
+
                     <div
-                        ref={logosCarouselRef}
-                        className="flex snap-x snap-mandatory gap-3 overflow-x-auto pb-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+                        ref={customersCarouselRef}
+                        className="flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-smooth pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
                     >
-                    {partnerLogos.map((logoSrc, index) => (
-                        <div
-                            key={logoSrc}
-                            className="group relative flex min-h-16 min-w-[9.5rem] snap-start items-center justify-center rounded-[1rem] border border-[var(--border-soft)] bg-white/62 p-2.5 transition duration-300 sm:min-h-20 sm:min-w-[11rem] sm:rounded-[1.2rem] sm:p-3 md:min-w-[12rem] md:hover:z-10 md:hover:scale-[1.16] md:hover:bg-white/92 md:hover:shadow-[0_24px_54px_rgba(66,76,119,0.18)]"
-                            style={{
-                                background:
-                                    index % 3 === 0
-                                        ? 'linear-gradient(160deg, rgba(255, 255, 255, 0.78), rgba(237, 244, 255, 0.72))'
-                                        : index % 3 === 1
-                                            ? 'linear-gradient(160deg, rgba(255, 255, 255, 0.78), rgba(246, 236, 255, 0.72))'
-                                            : 'linear-gradient(160deg, rgba(255, 255, 255, 0.78), rgba(255, 241, 229, 0.72))',
-                            }}
-                        >
+                        {partnerLogos.map((logoSrc, index) => (
                             <div
-                                className={`flex w-full items-center justify-center rounded-[0.8rem] px-1.5 py-1.5 transition duration-300 sm:rounded-[0.95rem] sm:px-2 sm:py-2 ${
-                                    darkLogoBackgrounds.has(logoSrc)
-                                        ? 'bg-[linear-gradient(160deg,rgba(17,24,39,0.96),rgba(51,65,85,0.88))]'
-                                        : 'bg-transparent'
-                                }`}
+                                key={logoSrc}
+                                className="group relative flex min-h-20 min-w-[9.5rem] shrink-0 snap-start items-center justify-center rounded-[1.2rem] border border-[var(--border-soft)] bg-white/62 p-3 transition duration-300 hover:z-10 hover:scale-[1.24] hover:bg-white/92 hover:shadow-[0_24px_54px_rgba(66,76,119,0.18)] sm:min-w-[10.5rem]"
+                                style={{
+                                    background:
+                                        index % 3 === 0
+                                            ? 'linear-gradient(160deg, rgba(255, 255, 255, 0.78), rgba(237, 244, 255, 0.72))'
+                                            : index % 3 === 1
+                                                ? 'linear-gradient(160deg, rgba(255, 255, 255, 0.78), rgba(246, 236, 255, 0.72))'
+                                                : 'linear-gradient(160deg, rgba(255, 255, 255, 0.78), rgba(255, 241, 229, 0.72))',
+                                }}
                             >
-                                <img
-                                    src={logoSrc}
-                                    alt="Company logo"
-                                    className="max-h-8 w-full object-contain opacity-95 transition duration-300 sm:max-h-9 md:group-hover:scale-[1.24]"
-                                    loading="lazy"
-                                />
+                                <div
+                                    className={`flex w-full items-center justify-center rounded-[0.95rem] px-2 py-2 transition duration-300 ${
+                                        darkLogoBackgrounds.has(logoSrc)
+                                            ? 'bg-[linear-gradient(160deg,rgba(17,24,39,0.96),rgba(51,65,85,0.88))]'
+                                            : 'bg-transparent'
+                                    }`}
+                                >
+                                    <img
+                                        src={logoSrc}
+                                        alt="Company logo"
+                                        className="max-h-9 w-full object-contain opacity-95 transition duration-300 group-hover:scale-[1.3]"
+                                        loading="lazy"
+                                    />
+                                </div>
                             </div>
-                        </div>
-                    ))}
+                        ))}
                     </div>
                 </div>
             </section>
@@ -396,54 +398,52 @@ export default function PortfolioSections() {
                     <div className="space-y-4">
                         <div className="inline-flex items-center gap-3 rounded-full border border-[var(--border-soft)] bg-white/70 px-4 py-2 text-[var(--surface-panel)]">
                             <Camera size={16} />
-                            <p className="text-sm uppercase tracking-[0.34em] text-[var(--accent-orange)]">Behind The Scenes</p>
+                            <p className="text-sm uppercase tracking-[0.34em] text-[var(--accent-orange)]">Behind the Scenes</p>
                         </div>
                         <h2 className="text-4xl text-[var(--surface-strong)] sm:text-5xl">
-                            Behind the scenes stills from working sets.
+                            Behind-the-scenes stills from real sets.
                         </h2>
                     </div>
                     <p className="max-w-2xl text-base leading-8 text-[var(--text-soft)]">
-                        All supplied stills are included here as a compact contact sheet, so the volume of work is visible without making the page feel too heavy.
+                        Every still provided is included here in a compact format, so the scale of the work is visible without making the page feel heavy.
                     </p>
                 </div>
 
-                <div className="mt-8 rounded-[2rem] border border-[var(--border-soft)] bg-white/52 p-3 shadow-[0_18px_40px_rgba(66,76,119,0.06)] sm:mt-10 sm:p-5">
-                    <div className="mb-4 flex items-center justify-end gap-2">
+                <div className="mt-10 rounded-[2rem] border border-[var(--border-soft)] bg-white/52 p-4 shadow-[0_18px_40px_rgba(66,76,119,0.06)] sm:p-5">
+                    <div className="mb-4 flex items-center justify-end gap-3">
                         <button
                             type="button"
-                            onClick={() => scrollCarousel(stillsCarouselRef, 'left')}
-                            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border-soft)] bg-white/72 text-[var(--surface-strong)] transition hover:bg-white"
-                            aria-label="Scroll behind the scenes left"
+                            onClick={() => scrollCarousel(btsCarouselRef, 'left')}
+                            className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[var(--border-soft)] bg-white/80 text-[var(--surface-strong)] shadow-[0_14px_30px_rgba(66,76,119,0.12)] transition hover:scale-105 hover:bg-white sm:h-11 sm:w-11"
                         >
                             <ChevronLeft size={18} />
                         </button>
                         <button
                             type="button"
-                            onClick={() => scrollCarousel(stillsCarouselRef, 'right')}
-                            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border-soft)] bg-white/72 text-[var(--surface-strong)] transition hover:bg-white"
-                            aria-label="Scroll behind the scenes right"
+                            onClick={() => scrollCarousel(btsCarouselRef, 'right')}
+                            className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[var(--border-soft)] bg-white/80 text-[var(--surface-strong)] shadow-[0_14px_30px_rgba(66,76,119,0.12)] transition hover:scale-105 hover:bg-white sm:h-11 sm:w-11"
                         >
                             <ChevronRight size={18} />
                         </button>
                     </div>
+
                     <div
-                        ref={stillsCarouselRef}
-                        className="flex snap-x snap-mandatory items-end gap-3 overflow-x-auto pb-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+                        ref={btsCarouselRef}
+                        className="flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-smooth pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
                     >
-                    {behindTheScenesStills.map((stillSrc) => (
-                        <figure
-                            key={stillSrc}
-                            className="group relative min-w-[11rem] snap-start overflow-hidden rounded-[1rem] border border-[var(--border-soft)] bg-white/72 text-left shadow-[0_12px_28px_rgba(66,76,119,0.06)] transition duration-300 sm:min-w-[13rem] sm:rounded-[1.3rem] md:min-w-[15rem] lg:min-w-[16rem] lg:hover:z-10 lg:hover:scale-[1.12] lg:hover:shadow-[0_24px_50px_rgba(66,76,119,0.18)]"
-                        >
-                            <img
-                                src={stillSrc}
-                                alt="Behind the scenes production still"
-                                className="h-32 w-full object-cover transition duration-500 sm:h-40 lg:group-hover:scale-[1.08]"
-                                loading="lazy"
-                            />
-                            <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),transparent_30%,rgba(0,0,0,0.12))] opacity-0 transition duration-300 lg:group-hover:opacity-100" />
-                        </figure>
-                    ))}
+                        {behindTheScenesStills.map((stillSrc) => (
+                            <figure
+                                key={stillSrc}
+                                className="group min-w-[9.75rem] shrink-0 snap-start overflow-hidden rounded-[1.3rem] border border-[var(--border-soft)] bg-white/72 shadow-[0_12px_28px_rgba(66,76,119,0.06)] transition duration-300 hover:z-10 hover:scale-[1.18] hover:shadow-[0_26px_54px_rgba(66,76,119,0.18)] sm:min-w-[11rem] lg:min-w-[12rem]"
+                            >
+                                <img
+                                    src={stillSrc}
+                                    alt="Behind-the-scenes production still"
+                                    className="h-28 w-full object-cover transition duration-300 group-hover:scale-[1.08] sm:h-32 lg:h-36"
+                                    loading="lazy"
+                                />
+                            </figure>
+                        ))}
                     </div>
                 </div>
             </section>
@@ -452,10 +452,10 @@ export default function PortfolioSections() {
                 <div className="space-y-4">
                     <div className="inline-flex items-center gap-3 rounded-full border border-[var(--border-soft)] bg-white/70 px-4 py-2 text-[var(--surface-panel)]">
                         <Camera size={16} />
-                        <p className="text-sm uppercase tracking-[0.34em] text-[var(--accent-orange)]">Mentions</p>
+                        <p className="text-sm uppercase tracking-[0.34em] text-[var(--accent-orange)]">Testimonials</p>
                     </div>
                     <h2 className="text-4xl text-[var(--surface-strong)] sm:text-5xl">
-                        Trusted when the shoot is beautiful and difficult.
+                        Trust when the shoot is beautiful and complex.
                     </h2>
                 </div>
 
@@ -483,17 +483,17 @@ export default function PortfolioSections() {
                             <p className="text-sm uppercase tracking-[0.34em] text-[var(--accent-cyan)]">Contact</p>
                         </div>
                         <h2 className="text-4xl text-[var(--surface-strong)] sm:text-5xl">
-                            Talk through the next UK-India production.
+                            Let's talk about the next UK-India production.
                         </h2>
                         <p className="max-w-2xl text-lg leading-8 text-[var(--text-soft)]">
-                            Reach out for a CV, showreel conversation or a practical discussion around India shoot delivery, incentives, permits and remote production support.
+                            Reach out to discuss CV, showreel or a practical conversation about shooting in India, incentives, permits and remote production support.
                         </p>
                     </div>
 
                     <div className="grid gap-4">
                         <div className="rounded-[1.8rem] border border-[var(--border-soft)] bg-white/72 p-6">
                             <p className="text-sm uppercase tracking-[0.24em] text-[var(--text-dim)]">Email</p>
-                            <p className="mt-3 text-xl font-semibold text-[var(--surface-strong)]">umang@umangagarwal.com</p>
+                            <p className="mt-3 text-xl font-semibold text-[var(--surface-strong)]">swarpfilms@gmail.com</p>
                         </div>
                         <div className="rounded-[1.8rem] border border-[var(--border-soft)] bg-white/72 p-6">
                             <p className="text-sm uppercase tracking-[0.24em] text-[var(--text-dim)]">WhatsApp</p>

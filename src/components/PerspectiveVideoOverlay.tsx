@@ -14,14 +14,14 @@ const screenVideos: ScreenVideo[] = [
         id: 'screen-center-main',
         src: 'https://video.wixstatic.com/video/250c22_5ae40d7abc0a44d69583cb45e9c06367/360p/mp4/file.mp4',
         poster: 'https://static.wixstatic.com/media/250c22_5ae40d7abc0a44d69583cb45e9c06367f000.jpg/v1/fill/w_189,h_172,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/250c22_5ae40d7abc0a44d69583cb45e9c06367f000.jpg',
-        title: 'Hero production reel',
+        title: 'Main reel',
         accent: 'International Work',
     },
     {
         id: 'screen-left-top',
         src: 'https://video.wixstatic.com/video/250c22_c184ffb1e0ab438c9706d52c73876d5f/144p/mp4/file.mp4',
         poster: 'https://static.wixstatic.com/media/250c22_c184ffb1e0ab438c9706d52c73876d5ff000.jpg/v1/fill/w_168,h_157,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/250c22_c184ffb1e0ab438c9706d52c73876d5ff000.jpg',
-        title: 'Feature film systems',
+        title: 'Feature systems',
         accent: 'Feature Films',
     },
     {
@@ -35,28 +35,28 @@ const screenVideos: ScreenVideo[] = [
         id: 'screen-right-top',
         src: 'https://video.wixstatic.com/video/250c22_57fe5ebdf1a345209b6fc48e50cde970/360p/mp4/file.mp4',
         poster: 'https://static.wixstatic.com/media/250c22_57fe5ebdf1a345209b6fc48e50cde970f000.jpg/v1/fill/w_180,h_178,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/250c22_57fe5ebdf1a345209b6fc48e50cde970f000.jpg',
-        title: 'Documentary field work',
+        title: 'Documentary work',
         accent: 'Documentaries',
     },
     {
         id: 'screen-left-middle',
         src: 'https://video.wixstatic.com/video/250c22_117dd5234b9f4b0196c29b65c3c64512/360p/mp4/file.mp4',
         poster: 'https://static.wixstatic.com/media/250c22_117dd5234b9f4b0196c29b65c3c64512f000.jpg/v1/fill/w_120,h_178,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/250c22_117dd5234b9f4b0196c29b65c3c64512f000.jpg',
-        title: 'Cross-border prep',
+        title: 'International prep',
         accent: 'Prep + Logistics',
     },
     {
         id: 'screen-right-middle',
         src: 'https://video.wixstatic.com/video/250c22_a8a04252bb8445ae936837eefac62b38/360p/mp4/file.mp4',
         poster: 'https://static.wixstatic.com/media/250c22_a8a04252bb8445ae936837eefac62b38f000.jpg/v1/fill/w_172,h_172,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/250c22_a8a04252bb8445ae936837eefac62b38f000.jpg',
-        title: 'High-end execution',
+        title: 'Premium execution',
         accent: 'HETV',
     },
     {
         id: 'screen-bottom-left',
         src: 'https://video.wixstatic.com/video/250c22_a3948b7d97d041b59c9dbfaeafe18776/360p/mp4/file.mp4',
         poster: 'https://static.wixstatic.com/media/250c22_a3948b7d97d041b59c9dbfaeafe18776f000.jpg/v1/fill/w_120,h_178,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/250c22_a3948b7d97d041b59c9dbfaeafe18776f000.jpg',
-        title: 'Set energy',
+        title: 'On-set energy',
         accent: 'On Set',
     },
     {
@@ -82,11 +82,11 @@ export default function PerspectiveVideoOverlay() {
             <div className="relative z-10">
                 <div className="mb-6 flex items-center justify-between gap-4">
                     <div>
-                        <p className="text-[11px] uppercase tracking-[0.42em] text-cyan-100/70">Moving Portfolio</p>
-                        <p className="mt-2 text-sm text-slate-300/80">Select any reel to bring it forward and watch it as the main stage.</p>
+                        <p className="text-[11px] uppercase tracking-[0.42em] text-cyan-100/70">Portfolio in Motion</p>
+                        <p className="mt-2 text-sm text-slate-300/80">Select any reel to bring it forward and view it as the hero piece.</p>
                     </div>
                     <div className="hidden rounded-full border border-white/10 bg-white/[0.06] px-4 py-2 text-[11px] uppercase tracking-[0.3em] text-slate-200/75 shadow-[0_10px_30px_rgba(0,0,0,0.25)] sm:block">
-                        Tap A Reel To Focus
+                        Tap a Reel to Focus
                     </div>
                 </div>
 
@@ -145,7 +145,7 @@ export default function PerspectiveVideoOverlay() {
                                     <div className="absolute inset-x-4 top-3 z-20 flex items-center justify-between text-[10px] uppercase tracking-[0.28em] text-white/74">
                                         <span>{video.accent}</span>
                                         <span className="rounded-full border border-white/10 bg-black/20 px-2 py-1 text-[9px] tracking-[0.22em] text-white/64">
-                                            Live
+                                            Active
                                         </span>
                                     </div>
 

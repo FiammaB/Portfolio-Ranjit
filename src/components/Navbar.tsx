@@ -36,7 +36,7 @@ export default function Navbar({ menuOpen, onToggle }: NavbarProps) {
                 <button
                     type="button"
                     onClick={onToggle}
-                    aria-label="Toggle navigation"
+                    aria-label="Open or close navigation"
                     className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-900/10 bg-white/60 text-slate-950 transition hover:border-slate-900/20 hover:bg-white md:hidden"
                 >
                     {menuOpen ? <X size={20} /> : <Menu size={20} />}
