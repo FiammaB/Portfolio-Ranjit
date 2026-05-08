@@ -3,63 +3,66 @@ import { useState } from 'react'
 
 type ScreenVideo = {
     id: string
-    videoId: string
+    src: string
+    poster: string
     title: string
     accent: string
 }
 
-const getPreviewSrc = (videoId: string) =>
-    `https://player.vimeo.com/video/${videoId}?background=1&autoplay=1&loop=1&muted=1`
-
-const getActiveSrc = (videoId: string) =>
-    `https://player.vimeo.com/video/${videoId}?autoplay=1&loop=1&muted=0&controls=1&title=0&byline=0&portrait=0`
-
 const screenVideos: ScreenVideo[] = [
     {
         id: 'screen-center-main',
-        videoId: '956701021',
+        src: 'https://video.wixstatic.com/video/250c22_5ae40d7abc0a44d69583cb45e9c06367/360p/mp4/file.mp4',
+        poster: 'https://static.wixstatic.com/media/250c22_5ae40d7abc0a44d69583cb45e9c06367f000.jpg/v1/fill/w_189,h_172,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/250c22_5ae40d7abc0a44d69583cb45e9c06367f000.jpg',
         title: 'Hero production reel',
         accent: 'International Work',
     },
     {
         id: 'screen-left-top',
-        videoId: '922797060',
+        src: 'https://video.wixstatic.com/video/250c22_c184ffb1e0ab438c9706d52c73876d5f/144p/mp4/file.mp4',
+        poster: 'https://static.wixstatic.com/media/250c22_c184ffb1e0ab438c9706d52c73876d5ff000.jpg/v1/fill/w_168,h_157,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/250c22_c184ffb1e0ab438c9706d52c73876d5ff000.jpg',
         title: 'Feature film systems',
         accent: 'Feature Films',
     },
     {
         id: 'screen-top-center',
-        videoId: '891367685',
+        src: 'https://video.wixstatic.com/video/250c22_b62db6da9e2e435db7f0777486717636/360p/mp4/file.mp4',
+        poster: 'https://static.wixstatic.com/media/250c22_b62db6da9e2e435db7f0777486717636f000.jpg/v1/fill/w_144,h_145,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/250c22_b62db6da9e2e435db7f0777486717636f000.jpg',
         title: 'Commercial momentum',
         accent: 'Commercials',
     },
     {
         id: 'screen-right-top',
-        videoId: '932360535',
+        src: 'https://video.wixstatic.com/video/250c22_57fe5ebdf1a345209b6fc48e50cde970/360p/mp4/file.mp4',
+        poster: 'https://static.wixstatic.com/media/250c22_57fe5ebdf1a345209b6fc48e50cde970f000.jpg/v1/fill/w_180,h_178,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/250c22_57fe5ebdf1a345209b6fc48e50cde970f000.jpg',
         title: 'Documentary field work',
         accent: 'Documentaries',
     },
     {
         id: 'screen-left-middle',
-        videoId: '915668812',
+        src: 'https://video.wixstatic.com/video/250c22_117dd5234b9f4b0196c29b65c3c64512/360p/mp4/file.mp4',
+        poster: 'https://static.wixstatic.com/media/250c22_117dd5234b9f4b0196c29b65c3c64512f000.jpg/v1/fill/w_120,h_178,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/250c22_117dd5234b9f4b0196c29b65c3c64512f000.jpg',
         title: 'Cross-border prep',
         accent: 'Prep + Logistics',
     },
     {
         id: 'screen-right-middle',
-        videoId: '946888130',
+        src: 'https://video.wixstatic.com/video/250c22_a8a04252bb8445ae936837eefac62b38/360p/mp4/file.mp4',
+        poster: 'https://static.wixstatic.com/media/250c22_a8a04252bb8445ae936837eefac62b38f000.jpg/v1/fill/w_172,h_172,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/250c22_a8a04252bb8445ae936837eefac62b38f000.jpg',
         title: 'High-end execution',
         accent: 'HETV',
     },
     {
         id: 'screen-bottom-left',
-        videoId: '922797412',
+        src: 'https://video.wixstatic.com/video/250c22_a3948b7d97d041b59c9dbfaeafe18776/360p/mp4/file.mp4',
+        poster: 'https://static.wixstatic.com/media/250c22_a3948b7d97d041b59c9dbfaeafe18776f000.jpg/v1/fill/w_120,h_178,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/250c22_a3948b7d97d041b59c9dbfaeafe18776f000.jpg',
         title: 'Set energy',
         accent: 'On Set',
     },
     {
         id: 'screen-bottom-right',
-        videoId: '932362750',
+        src: 'https://video.wixstatic.com/video/250c22_3f641bc4c9c5440ca6540de528260d11/360p/mp4/file.mp4',
+        poster: 'https://static.wixstatic.com/media/250c22_3f641bc4c9c5440ca6540de528260d11f000.jpg/v1/fill/w_231,h_219,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/250c22_3f641bc4c9c5440ca6540de528260d11f000.jpg',
         title: 'International crews',
         accent: 'Crews',
     },
@@ -109,15 +112,17 @@ export default function PerspectiveVideoOverlay() {
                             transition={{ duration: 0.55, ease: 'easeOut' }}
                             className="relative overflow-hidden rounded-[1.65rem] bg-black aspect-[16/10]"
                         >
-                            <iframe
+                            <video
                                 key={activeVideo.id}
                                 className="h-full w-full"
-                                src={getActiveSrc(activeVideo.videoId)}
-                                title={activeVideo.title}
-                                frameBorder="0"
-                                allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
-                                allowFullScreen
-                                loading="lazy"
+                                src={activeVideo.src}
+                                poster={activeVideo.poster}
+                                controls
+                                autoPlay
+                                muted
+                                loop
+                                playsInline
+                                preload="metadata"
                             />
                             <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.16),rgba(255,255,255,0.03)_18%,rgba(0,0,0,0.14)_52%,rgba(0,0,0,0.42))]" />
                             <div className="pointer-events-none absolute inset-0 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.06),inset_0_14px_24px_rgba(255,255,255,0.05),inset_0_-28px_36px_rgba(0,0,0,0.34)]" />
@@ -145,14 +150,15 @@ export default function PerspectiveVideoOverlay() {
                                     </div>
 
                                     <div className="relative overflow-hidden rounded-[1.15rem] bg-black aspect-[16/9]">
-                                        <iframe
+                                        <video
                                             className="pointer-events-none h-full w-full transition duration-300 group-hover:scale-[1.03]"
-                                            src={getPreviewSrc(video.videoId)}
-                                            title={video.title}
-                                            frameBorder="0"
-                                            allow="autoplay; fullscreen; picture-in-picture"
-                                            allowFullScreen
-                                            loading="lazy"
+                                            src={video.src}
+                                            poster={video.poster}
+                                            autoPlay
+                                            muted
+                                            loop
+                                            playsInline
+                                            preload="metadata"
                                         />
                                         <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.15),rgba(255,255,255,0.02)_18%,rgba(0,0,0,0.16)_54%,rgba(0,0,0,0.38))]" />
                                     </div>

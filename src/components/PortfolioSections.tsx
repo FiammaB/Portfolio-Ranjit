@@ -1,4 +1,5 @@
-import { Camera, Compass, Orbit, Sparkles } from 'lucide-react'
+import { useRef } from 'react'
+import { Camera, ChevronLeft, ChevronRight, Compass, Orbit, Sparkles } from 'lucide-react'
 
 const services = [
     'Executive Production',
@@ -103,10 +104,6 @@ const partnerLogos = [
 
 const darkLogoBackgrounds = new Set([
     '/company-logos/Company Logos/logo.png',
-    
-    
-    
-    
     '/company-logos/Company Logos/lX5vswczZoFSUq3H8dX6Db3zqjM.avif',
 ])
 
@@ -179,6 +176,19 @@ const behindTheScenesStills = [
 ].map((fileName) => `/working-stills/${fileName}`)
 
 export default function PortfolioSections() {
+    const logosCarouselRef = useRef<HTMLDivElement | null>(null)
+    const stillsCarouselRef = useRef<HTMLDivElement | null>(null)
+    const scrollCarousel = (ref: React.RefObject<HTMLDivElement | null>, direction: 'left' | 'right') => {
+        const node = ref.current
+        if (!node) return
+
+        const amount = Math.max(node.clientWidth * 0.72, 220)
+        node.scrollBy({
+            left: direction === 'left' ? -amount : amount,
+            behavior: 'smooth',
+        })
+    }
+
     return (
         <div className="space-y-10">
             <section id="about" className="rounded-[2.5rem] border border-[var(--border-soft)] bg-[linear-gradient(145deg,rgba(197,226,255,0.82),rgba(231,219,255,0.92))] p-8 shadow-[0_30px_80px_rgba(77,94,145,0.12)] sm:p-10 lg:p-14">
@@ -325,12 +335,33 @@ export default function PortfolioSections() {
                     </p>
                 </div>
 
-                <div className="mt-10 rounded-[2rem] border border-[var(--border-soft)] bg-white/52 p-4 shadow-[0_18px_40px_rgba(66,76,119,0.06)] sm:p-5">
-                    <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6">
+                <div className="mt-8 rounded-[2rem] border border-[var(--border-soft)] bg-white/52 p-3 shadow-[0_18px_40px_rgba(66,76,119,0.06)] sm:mt-10 sm:p-5">
+                    <div className="mb-4 flex items-center justify-end gap-2">
+                        <button
+                            type="button"
+                            onClick={() => scrollCarousel(logosCarouselRef, 'left')}
+                            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border-soft)] bg-white/72 text-[var(--surface-strong)] transition hover:bg-white"
+                            aria-label="Scroll logos left"
+                        >
+                            <ChevronLeft size={18} />
+                        </button>
+                        <button
+                            type="button"
+                            onClick={() => scrollCarousel(logosCarouselRef, 'right')}
+                            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border-soft)] bg-white/72 text-[var(--surface-strong)] transition hover:bg-white"
+                            aria-label="Scroll logos right"
+                        >
+                            <ChevronRight size={18} />
+                        </button>
+                    </div>
+                    <div
+                        ref={logosCarouselRef}
+                        className="flex snap-x snap-mandatory gap-3 overflow-x-auto pb-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+                    >
                     {partnerLogos.map((logoSrc, index) => (
                         <div
                             key={logoSrc}
-                            className="group relative flex min-h-20 items-center justify-center rounded-[1.2rem] border border-[var(--border-soft)] bg-white/62 p-3 transition duration-300 hover:z-10 hover:scale-[1.16] hover:bg-white/92 hover:shadow-[0_24px_54px_rgba(66,76,119,0.18)]"
+                            className="group relative flex min-h-16 min-w-[9.5rem] snap-start items-center justify-center rounded-[1rem] border border-[var(--border-soft)] bg-white/62 p-2.5 transition duration-300 sm:min-h-20 sm:min-w-[11rem] sm:rounded-[1.2rem] sm:p-3 md:min-w-[12rem] md:hover:z-10 md:hover:scale-[1.16] md:hover:bg-white/92 md:hover:shadow-[0_24px_54px_rgba(66,76,119,0.18)]"
                             style={{
                                 background:
                                     index % 3 === 0
@@ -341,7 +372,7 @@ export default function PortfolioSections() {
                             }}
                         >
                             <div
-                                className={`flex w-full items-center justify-center rounded-[0.95rem] px-2 py-2 transition duration-300 ${
+                                className={`flex w-full items-center justify-center rounded-[0.8rem] px-1.5 py-1.5 transition duration-300 sm:rounded-[0.95rem] sm:px-2 sm:py-2 ${
                                     darkLogoBackgrounds.has(logoSrc)
                                         ? 'bg-[linear-gradient(160deg,rgba(17,24,39,0.96),rgba(51,65,85,0.88))]'
                                         : 'bg-transparent'
@@ -350,7 +381,7 @@ export default function PortfolioSections() {
                                 <img
                                     src={logoSrc}
                                     alt="Company logo"
-                                    className="max-h-9 w-full object-contain opacity-95 transition duration-300 group-hover:scale-[1.24]"
+                                    className="max-h-8 w-full object-contain opacity-95 transition duration-300 sm:max-h-9 md:group-hover:scale-[1.24]"
                                     loading="lazy"
                                 />
                             </div>
@@ -376,24 +407,43 @@ export default function PortfolioSections() {
                     </p>
                 </div>
 
-                <div className="mt-10 rounded-[2rem] border border-[var(--border-soft)] bg-white/52 p-4 shadow-[0_18px_40px_rgba(66,76,119,0.06)] sm:p-5">
-                    <div className="max-h-[42rem] overflow-y-auto pr-1">
-                        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+                <div className="mt-8 rounded-[2rem] border border-[var(--border-soft)] bg-white/52 p-3 shadow-[0_18px_40px_rgba(66,76,119,0.06)] sm:mt-10 sm:p-5">
+                    <div className="mb-4 flex items-center justify-end gap-2">
+                        <button
+                            type="button"
+                            onClick={() => scrollCarousel(stillsCarouselRef, 'left')}
+                            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border-soft)] bg-white/72 text-[var(--surface-strong)] transition hover:bg-white"
+                            aria-label="Scroll behind the scenes left"
+                        >
+                            <ChevronLeft size={18} />
+                        </button>
+                        <button
+                            type="button"
+                            onClick={() => scrollCarousel(stillsCarouselRef, 'right')}
+                            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border-soft)] bg-white/72 text-[var(--surface-strong)] transition hover:bg-white"
+                            aria-label="Scroll behind the scenes right"
+                        >
+                            <ChevronRight size={18} />
+                        </button>
+                    </div>
+                    <div
+                        ref={stillsCarouselRef}
+                        className="flex snap-x snap-mandatory items-end gap-3 overflow-x-auto pb-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+                    >
                     {behindTheScenesStills.map((stillSrc) => (
                         <figure
                             key={stillSrc}
-                            className="group relative overflow-hidden rounded-[1.3rem] border border-[var(--border-soft)] bg-white/72 shadow-[0_12px_28px_rgba(66,76,119,0.06)] transition duration-300 hover:z-10 hover:scale-[1.42] hover:shadow-[0_36px_80px_rgba(66,76,119,0.22)]"
+                            className="group relative min-w-[11rem] snap-start overflow-hidden rounded-[1rem] border border-[var(--border-soft)] bg-white/72 text-left shadow-[0_12px_28px_rgba(66,76,119,0.06)] transition duration-300 sm:min-w-[13rem] sm:rounded-[1.3rem] md:min-w-[15rem] lg:min-w-[16rem] lg:hover:z-10 lg:hover:scale-[1.12] lg:hover:shadow-[0_24px_50px_rgba(66,76,119,0.18)]"
                         >
                             <img
                                 src={stillSrc}
                                 alt="Behind the scenes production still"
-                                className="h-28 w-full object-cover transition duration-500 group-hover:scale-[1.12] sm:h-32"
+                                className="h-32 w-full object-cover transition duration-500 sm:h-40 lg:group-hover:scale-[1.08]"
                                 loading="lazy"
                             />
-                            <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),transparent_30%,rgba(0,0,0,0.12))] opacity-0 transition duration-300 group-hover:opacity-100" />
+                            <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),transparent_30%,rgba(0,0,0,0.12))] opacity-0 transition duration-300 lg:group-hover:opacity-100" />
                         </figure>
                     ))}
-                        </div>
                     </div>
                 </div>
             </section>
@@ -447,7 +497,7 @@ export default function PortfolioSections() {
                         </div>
                         <div className="rounded-[1.8rem] border border-[var(--border-soft)] bg-white/72 p-6">
                             <p className="text-sm uppercase tracking-[0.24em] text-[var(--text-dim)]">WhatsApp</p>
-                            <p className="mt-3 text-xl font-semibold text-[var(--surface-strong)]">+91 98765 43210</p>
+                            <p className="mt-3 text-xl font-semibold text-[var(--surface-strong)]">+91 91047 43013</p>
                         </div>
                     </div>
                 </div>
