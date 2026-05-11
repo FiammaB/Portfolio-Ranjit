@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { Clapperboard, ScanSearch } from 'lucide-react'
 import PerspectiveVideoOverlay from './PerspectiveVideoOverlay'
+import { heroContent } from '../content/siteContent'
 
 export default function Hero() {
     return (
@@ -19,16 +20,16 @@ export default function Hero() {
                         className="order-2 space-y-6 xl:order-2"
                     >
                         <p className="text-sm uppercase tracking-[0.3em] text-[var(--accent-orange)] sm:tracking-[0.34em]">
-                            International Production Executive
+                            {heroContent.eyebrow}
                         </p>
                         <h1 className="max-w-4xl text-5xl text-[var(--surface-strong)] sm:text-6xl lg:text-7xl">
-                            Umang Agarwal
+                            {heroContent.name}
                         </h1>
                         <p className="max-w-4xl text-xl leading-8 text-[var(--surface-strong)] sm:text-2xl">
-                            Executive Producer | Line Producer | Cross-Border Production Specialist for Feature Films, HETV, Commercials & Documentaries
+                            {heroContent.title}
                         </p>
                         <p className="max-w-3xl text-lg leading-9 text-[var(--text-soft)]">
-                            21+ years delivering Feature Films, HETV, Commercials, Documentaries and international productions across India, the UK and overseas.
+                            {heroContent.summary}
                         </p>
 
                         <div className="flex flex-wrap gap-4 pt-2">
@@ -36,13 +37,13 @@ export default function Hero() {
                                 <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[rgba(94,197,255,0.2)] text-[var(--surface-panel)]">
                                     <Clapperboard size={16} />
                                 </span>
-                                <span className="font-semibold uppercase tracking-[0.2em]">Production Systems</span>
+                                <span className="font-semibold uppercase tracking-[0.2em]">{heroContent.badges[0]}</span>
                             </div>
                             <div className="inline-flex items-center gap-3 rounded-full border border-[var(--border-soft)] bg-white/70 px-5 py-3 text-sm text-[var(--surface-strong)] shadow-[0_12px_30px_rgba(58,67,106,0.08)]">
                                 <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[rgba(245,154,84,0.22)] text-[var(--surface-panel)]">
                                     <ScanSearch size={16} />
                                 </span>
-                                <span className="font-semibold uppercase tracking-[0.2em]">Permits + Logistics</span>
+                                <span className="font-semibold uppercase tracking-[0.2em]">{heroContent.badges[1]}</span>
                             </div>
                         </div>
                     </motion.div>

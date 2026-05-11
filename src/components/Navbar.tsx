@@ -9,7 +9,12 @@ interface NavbarProps {
 const navLinks = [
     { href: '#hero', label: 'HOME' },
     { href: '#about', label: 'ABOUT' },
+    { href: '#services', label: 'SERVICES' },
     { href: '#portfolio', label: 'PORTFOLIO' },
+    { href: '#work', label: 'WORK' },
+    { href: '#case-studies', label: 'CASE STUDIES' },
+    { href: '#testimonials', label: 'TESTIMONIALS' },
+    { href: '#network-collaborations', label: 'NETWORK COLLABORATIONS' },
     { href: '#contact', label: 'CONTACT' },
 ]
 

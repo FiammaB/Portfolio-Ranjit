@@ -1,5 +1,6 @@
 import { useRef } from 'react'
 import { Camera, ChevronLeft, ChevronRight, Compass, Orbit, Sparkles } from 'lucide-react'
+import { screenVideos, testimonials, workCategoryGroups } from '../content/siteContent'
 
 const services = [
     'Executive Production',
@@ -36,42 +37,6 @@ const works = [
         role: 'Production Management',
         detail:
             'Delivered high-touch production design, equipment flow and premium-location execution for brand storytelling.',
-    },
-]
-
-const capabilities = [
-    {
-        title: 'Production Systems for Film and Advertising',
-        text: 'Built for directors, agencies and platforms that need a production partner who protects the image as carefully as the logistics.',
-    },
-    {
-        title: 'Permits Without Friction',
-        text: 'Government approvals, customs, carnet handling and practical schedules aligned to the real pace of a shoot.',
-    },
-    {
-        title: 'India as a Production Base',
-        text: 'A clear local operating structure for UK and European teams, from prep through final delivery.',
-    },
-]
-
-const testimonials = [
-    {
-        quote:
-            'With Umang on the ground, we did not have to worry about our crew getting stuck in customs or our shoot being shut down by local authorities.',
-        name: 'International Production Team',
-        role: 'Comment on Customs and Permits',
-    },
-    {
-        quote:
-            'Umang does not just manage the budget; he actively finds ways to save us money and leverage international tax incentives, making global shoots far more viable for our company.',
-        name: 'Global Production Partner',
-        role: 'Comment on Budget and Incentives',
-    },
-    {
-        quote:
-            'He understands exactly what British crews expect and delivers that standard seamlessly, no matter where in the world we are filming.',
-        name: 'British Production Team',
-        role: 'Comment on International Operations',
     },
 ]
 
@@ -269,6 +234,176 @@ export default function PortfolioSections() {
                         <p className="text-sm uppercase tracking-[0.34em] text-[var(--accent-cyan)]">Portfolio</p>
                     </div>
                     <h2 className="text-4xl text-[var(--surface-strong)] sm:text-5xl">
+                        The operating portfolio behind cross-border production.
+                    </h2>
+                    <p className="max-w-3xl text-lg leading-8 text-[var(--text-soft)]">
+                        A concise view of the production strengths, systems and local execution experience that support international shoots.
+                    </p>
+                </div>
+
+                <div className="mt-12 grid gap-6 lg:grid-cols-2">
+                    {workCategoryGroups.map((group, index) => (
+                        <div
+                            key={group.title}
+                            className="rounded-[2rem] border p-7 sm:p-8"
+                            style={{
+                                borderColor: 'rgba(21, 28, 52, 0.12)',
+                                background:
+                                    index === 0
+                                        ? 'linear-gradient(160deg, rgba(189, 225, 255, 0.94), rgba(227, 241, 255, 0.94))'
+                                        : 'linear-gradient(160deg, rgba(225, 205, 255, 0.94), rgba(243, 234, 255, 0.94))',
+                            }}
+                        >
+                            <p className="text-sm uppercase tracking-[0.28em] text-[var(--text-dim)]">Portfolio</p>
+                            <h3 className="mt-4 text-2xl font-semibold text-[var(--surface-strong)]">{group.title}</h3>
+                            <div className="mt-6 grid gap-3">
+                                {group.items.map((item, itemIndex) => (
+                                    <div
+                                        key={item}
+                                        className="rounded-[1.2rem] border border-white/50 bg-white/55 px-4 py-3 text-[var(--surface-strong)]"
+                                    >
+                                        <p className="text-xs uppercase tracking-[0.24em] text-[var(--text-dim)]">
+                                            0{itemIndex + 1}
+                                        </p>
+                                        <p className="mt-2 text-lg font-semibold">{item}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </section>
+
+            <section id="work" className="rounded-[2.5rem] border border-[var(--border-soft)] bg-[linear-gradient(180deg,rgba(235,241,255,0.92),rgba(255,239,229,0.9))] p-8 sm:p-10 lg:p-14">
+                <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+                    <div className="space-y-4">
+                        <div className="inline-flex items-center gap-3 rounded-full border border-[var(--border-soft)] bg-white/70 px-4 py-2 text-[var(--surface-panel)]">
+                            <Camera size={16} />
+                            <p className="text-sm uppercase tracking-[0.34em] text-[var(--accent-orange)]">Work</p>
+                        </div>
+                        <h2 className="text-4xl text-[var(--surface-strong)] sm:text-5xl">
+                            Work from real sets, crews and production days.
+                        </h2>
+                    </div>
+                    <p className="max-w-2xl text-base leading-8 text-[var(--text-soft)]">
+                        A simple work structure where reels are visible, grouped and ready for small content updates.
+                    </p>
+                </div>
+
+                <div className="mt-10 grid gap-6 lg:grid-cols-2">
+                    {workCategoryGroups.map((group, groupIndex) => {
+                        const matchingVideos = screenVideos.filter((video) => video.region === group.title)
+
+                        return (
+                            <article
+                                key={group.title}
+                                className="rounded-[2rem] border border-[var(--border-soft)] bg-white/68 p-6 shadow-[0_16px_36px_rgba(66,76,119,0.08)] sm:p-7"
+                                style={{
+                                    background:
+                                        groupIndex === 0
+                                            ? 'linear-gradient(165deg, rgba(228, 240, 255, 0.92), rgba(255, 255, 255, 0.82))'
+                                            : 'linear-gradient(165deg, rgba(244, 234, 255, 0.92), rgba(255, 255, 255, 0.82))',
+                                }}
+                            >
+                                <div className="flex items-start justify-between gap-4">
+                                    <div>
+                                        <p className="text-sm uppercase tracking-[0.28em] text-[var(--text-dim)]">Work Group</p>
+                                        <h3 className="mt-3 text-2xl font-semibold text-[var(--surface-strong)]">{group.title}</h3>
+                                    </div>
+                                    <div className="rounded-full border border-[var(--border-soft)] bg-white/75 px-4 py-2 text-xs uppercase tracking-[0.24em] text-[var(--text-dim)]">
+                                        {matchingVideos.length} reels
+                                    </div>
+                                </div>
+
+                                <div className="mt-6 grid gap-3">
+                                    {group.items.map((item, itemIndex) => (
+                                        <div
+                                            key={item}
+                                            className="rounded-[1.1rem] border border-white/60 bg-white/72 px-4 py-3"
+                                        >
+                                            <p className="text-xs uppercase tracking-[0.24em] text-[var(--text-dim)]">
+                                                0{itemIndex + 1}
+                                            </p>
+                                            <p className="mt-2 text-lg font-semibold text-[var(--surface-strong)]">{item}</p>
+                                        </div>
+                                    ))}
+                                </div>
+
+                                <div className="mt-6 grid gap-4 sm:grid-cols-2">
+                                    {matchingVideos.map((video) => (
+                                        <div
+                                            key={video.id}
+                                            className="overflow-hidden rounded-[1.4rem] border border-[var(--border-soft)] bg-slate-950 shadow-[0_14px_30px_rgba(15,23,42,0.18)]"
+                                        >
+                                            <div className="aspect-[16/10]">
+                                                <video
+                                                    className="h-full w-full object-cover"
+                                                    src={video.src}
+                                                    poster={video.poster}
+                                                    controls
+                                                    muted
+                                                    playsInline
+                                                    preload="metadata"
+                                                />
+                                            </div>
+                                            <div className="bg-white/92 px-4 py-4">
+                                                <p className="text-xs uppercase tracking-[0.24em] text-[var(--text-dim)]">{video.accent}</p>
+                                                <p className="mt-2 text-base font-semibold text-[var(--surface-strong)]">{video.title}</p>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </article>
+                        )
+                    })}
+                </div>
+
+                <div className="mt-10 rounded-[2rem] border border-[var(--border-soft)] bg-white/52 p-4 shadow-[0_18px_40px_rgba(66,76,119,0.06)] sm:p-5">
+                    <div className="mb-4 flex items-center justify-end gap-3">
+                        <button
+                            type="button"
+                            onClick={() => scrollCarousel(btsCarouselRef, 'left')}
+                            className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[var(--border-soft)] bg-white/80 text-[var(--surface-strong)] shadow-[0_14px_30px_rgba(66,76,119,0.12)] transition hover:scale-105 hover:bg-white sm:h-11 sm:w-11"
+                        >
+                            <ChevronLeft size={18} />
+                        </button>
+                        <button
+                            type="button"
+                            onClick={() => scrollCarousel(btsCarouselRef, 'right')}
+                            className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[var(--border-soft)] bg-white/80 text-[var(--surface-strong)] shadow-[0_14px_30px_rgba(66,76,119,0.12)] transition hover:scale-105 hover:bg-white sm:h-11 sm:w-11"
+                        >
+                            <ChevronRight size={18} />
+                        </button>
+                    </div>
+
+                    <div
+                        ref={btsCarouselRef}
+                        className="flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-smooth pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+                    >
+                        {behindTheScenesStills.map((stillSrc) => (
+                            <figure
+                                key={stillSrc}
+                                className="group min-w-[9.75rem] shrink-0 snap-start overflow-hidden rounded-[1.3rem] border border-[var(--border-soft)] bg-white/72 shadow-[0_12px_28px_rgba(66,76,119,0.06)] transition duration-300 hover:z-10 hover:scale-[1.18] hover:shadow-[0_26px_54px_rgba(66,76,119,0.18)] sm:min-w-[11rem] lg:min-w-[12rem]"
+                            >
+                                <img
+                                    src={stillSrc}
+                                    alt="Behind-the-scenes production still"
+                                    className="h-28 w-full object-cover transition duration-300 group-hover:scale-[1.08] sm:h-32 lg:h-36"
+                                    loading="lazy"
+                                />
+                            </figure>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            <section id="case-studies" className="rounded-[2.5rem] border border-[var(--border-soft)] bg-[linear-gradient(180deg,rgba(255,255,255,0.88),rgba(239,235,255,0.82))] p-8 sm:p-10 lg:p-14">
+                <div className="flex flex-col gap-4">
+                    <div className="inline-flex w-fit items-center gap-3 rounded-full border border-[var(--border-soft)] bg-white/70 px-4 py-2 text-[var(--surface-panel)]">
+                        <Orbit size={16} />
+                        <p className="text-sm uppercase tracking-[0.34em] text-[var(--accent-cyan)]">Case studies</p>
+                    </div>
+                    <h2 className="text-4xl text-[var(--surface-strong)] sm:text-5xl">
                         Selected projects with real operational weight.
                     </h2>
                 </div>
@@ -300,41 +435,46 @@ export default function PortfolioSections() {
                 </div>
             </section>
 
-            <section id="capabilities" className="grid gap-6 lg:grid-cols-3">
-                {capabilities.map((item, index) => (
-                    <div
-                        key={item.title}
-                        className="rounded-[2rem] border p-7 sm:p-8"
-                        style={{
-                            borderColor: 'rgba(21, 28, 52, 0.12)',
-                            background:
-                                index === 0
-                                    ? 'linear-gradient(160deg, rgba(189, 225, 255, 0.94), rgba(227, 241, 255, 0.94))'
-                                    : index === 1
-                                        ? 'linear-gradient(160deg, rgba(225, 205, 255, 0.94), rgba(243, 234, 255, 0.94))'
-                                        : 'linear-gradient(160deg, rgba(255, 214, 182, 0.94), rgba(255, 237, 224, 0.94))',
-                        }}
-                    >
-                        <p className="text-sm uppercase tracking-[0.28em] text-[var(--text-dim)]">Capability</p>
-                        <h3 className="mt-4 text-2xl font-semibold text-[var(--surface-strong)]">{item.title}</h3>
-                        <p className="mt-4 text-base leading-8 text-[var(--text-soft)]">{item.text}</p>
+            <section id="testimonials" className="rounded-[2.5rem] border border-[var(--border-soft)] bg-[linear-gradient(180deg,rgba(232,241,255,0.88),rgba(246,231,255,0.86))] p-8 sm:p-10 lg:p-14">
+                <div className="space-y-4">
+                    <div className="inline-flex items-center gap-3 rounded-full border border-[var(--border-soft)] bg-white/70 px-4 py-2 text-[var(--surface-panel)]">
+                        <Camera size={16} />
+                        <p className="text-sm uppercase tracking-[0.34em] text-[var(--accent-orange)]">Testimonials</p>
                     </div>
-                ))}
+                    <h2 className="text-4xl text-[var(--surface-strong)] sm:text-5xl">
+                        Trust when the shoot is beautiful and complex.
+                    </h2>
+                </div>
+
+                <div className="mt-12 grid gap-6 lg:grid-cols-3">
+                    {testimonials.map((testimonial) => (
+                        <blockquote
+                            key={testimonial.name}
+                            className="rounded-[1.9rem] border border-[var(--border-soft)] bg-white/72 p-7"
+                        >
+                            <p className="text-lg leading-8 text-[var(--text-soft)]">“{testimonial.quote}”</p>
+                            <footer className="mt-6 text-sm">
+                                <p className="font-semibold text-[var(--surface-strong)]">{testimonial.name}</p>
+                                <p className="mt-1 text-[var(--text-dim)]">{testimonial.role}</p>
+                            </footer>
+                        </blockquote>
+                    ))}
+                </div>
             </section>
 
-            <section id="customers" className="rounded-[2.5rem] border border-[var(--border-soft)] bg-[linear-gradient(180deg,rgba(255,248,240,0.9),rgba(233,242,255,0.86))] p-8 sm:p-10 lg:p-14">
+            <section id="network-collaborations" className="rounded-[2.5rem] border border-[var(--border-soft)] bg-[linear-gradient(180deg,rgba(255,248,240,0.9),rgba(233,242,255,0.86))] p-8 sm:p-10 lg:p-14">
                 <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
                     <div className="space-y-4">
                         <div className="inline-flex items-center gap-3 rounded-full border border-[var(--border-soft)] bg-white/70 px-4 py-2 text-[var(--surface-panel)]">
                             <Orbit size={16} />
-                            <p className="text-sm uppercase tracking-[0.34em] text-[var(--accent-cyan)]">Customers</p>
+                            <p className="text-sm uppercase tracking-[0.34em] text-[var(--accent-cyan)]">Network Collaborations</p>
                         </div>
                         <h2 className="text-4xl text-[var(--surface-strong)] sm:text-5xl">
-                            Customers across brands, studios and campaigns.
+                            Collaborations across brands, studios and campaigns.
                         </h2>
                     </div>
                     <p className="max-w-2xl text-base leading-8 text-[var(--text-soft)]">
-                        Every logo provided is included here, but in a more contained format so the section feels complete without dominating the page.
+                        A compact logo wall showing the network of production collaborations without overwhelming the page.
                     </p>
                 </div>
 
@@ -390,88 +530,6 @@ export default function PortfolioSections() {
                             </div>
                         ))}
                     </div>
-                </div>
-            </section>
-
-            <section id="behind-the-scenes" className="rounded-[2.5rem] border border-[var(--border-soft)] bg-[linear-gradient(180deg,rgba(235,241,255,0.92),rgba(255,239,229,0.9))] p-8 sm:p-10 lg:p-14">
-                <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-                    <div className="space-y-4">
-                        <div className="inline-flex items-center gap-3 rounded-full border border-[var(--border-soft)] bg-white/70 px-4 py-2 text-[var(--surface-panel)]">
-                            <Camera size={16} />
-                            <p className="text-sm uppercase tracking-[0.34em] text-[var(--accent-orange)]">Behind the Scenes</p>
-                        </div>
-                        <h2 className="text-4xl text-[var(--surface-strong)] sm:text-5xl">
-                            Behind-the-scenes stills from real sets.
-                        </h2>
-                    </div>
-                    <p className="max-w-2xl text-base leading-8 text-[var(--text-soft)]">
-                        Every still provided is included here in a compact format, so the scale of the work is visible without making the page feel heavy.
-                    </p>
-                </div>
-
-                <div className="mt-10 rounded-[2rem] border border-[var(--border-soft)] bg-white/52 p-4 shadow-[0_18px_40px_rgba(66,76,119,0.06)] sm:p-5">
-                    <div className="mb-4 flex items-center justify-end gap-3">
-                        <button
-                            type="button"
-                            onClick={() => scrollCarousel(btsCarouselRef, 'left')}
-                            className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[var(--border-soft)] bg-white/80 text-[var(--surface-strong)] shadow-[0_14px_30px_rgba(66,76,119,0.12)] transition hover:scale-105 hover:bg-white sm:h-11 sm:w-11"
-                        >
-                            <ChevronLeft size={18} />
-                        </button>
-                        <button
-                            type="button"
-                            onClick={() => scrollCarousel(btsCarouselRef, 'right')}
-                            className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[var(--border-soft)] bg-white/80 text-[var(--surface-strong)] shadow-[0_14px_30px_rgba(66,76,119,0.12)] transition hover:scale-105 hover:bg-white sm:h-11 sm:w-11"
-                        >
-                            <ChevronRight size={18} />
-                        </button>
-                    </div>
-
-                    <div
-                        ref={btsCarouselRef}
-                        className="flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-smooth pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-                    >
-                        {behindTheScenesStills.map((stillSrc) => (
-                            <figure
-                                key={stillSrc}
-                                className="group min-w-[9.75rem] shrink-0 snap-start overflow-hidden rounded-[1.3rem] border border-[var(--border-soft)] bg-white/72 shadow-[0_12px_28px_rgba(66,76,119,0.06)] transition duration-300 hover:z-10 hover:scale-[1.18] hover:shadow-[0_26px_54px_rgba(66,76,119,0.18)] sm:min-w-[11rem] lg:min-w-[12rem]"
-                            >
-                                <img
-                                    src={stillSrc}
-                                    alt="Behind-the-scenes production still"
-                                    className="h-28 w-full object-cover transition duration-300 group-hover:scale-[1.08] sm:h-32 lg:h-36"
-                                    loading="lazy"
-                                />
-                            </figure>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            <section id="testimonials" className="rounded-[2.5rem] border border-[var(--border-soft)] bg-[linear-gradient(180deg,rgba(232,241,255,0.88),rgba(246,231,255,0.86))] p-8 sm:p-10 lg:p-14">
-                <div className="space-y-4">
-                    <div className="inline-flex items-center gap-3 rounded-full border border-[var(--border-soft)] bg-white/70 px-4 py-2 text-[var(--surface-panel)]">
-                        <Camera size={16} />
-                        <p className="text-sm uppercase tracking-[0.34em] text-[var(--accent-orange)]">Testimonials</p>
-                    </div>
-                    <h2 className="text-4xl text-[var(--surface-strong)] sm:text-5xl">
-                        Trust when the shoot is beautiful and complex.
-                    </h2>
-                </div>
-
-                <div className="mt-12 grid gap-6 lg:grid-cols-3">
-                    {testimonials.map((testimonial) => (
-                        <blockquote
-                            key={testimonial.name}
-                            className="rounded-[1.9rem] border border-[var(--border-soft)] bg-white/72 p-7"
-                        >
-                            <p className="text-lg leading-8 text-[var(--text-soft)]">“{testimonial.quote}”</p>
-                            <footer className="mt-6 text-sm">
-                                <p className="font-semibold text-[var(--surface-strong)]">{testimonial.name}</p>
-                                <p className="mt-1 text-[var(--text-dim)]">{testimonial.role}</p>
-                            </footer>
-                        </blockquote>
-                    ))}
                 </div>
             </section>
 
