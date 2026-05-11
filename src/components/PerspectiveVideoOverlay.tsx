@@ -46,17 +46,14 @@ export default function PerspectiveVideoOverlay() {
                             transition={{ duration: 0.55, ease: 'easeOut' }}
                             className="relative overflow-hidden rounded-[1.65rem] bg-black aspect-[16/10]"
                         >
-                            <video
+                            <iframe
                                 key={activeVideo.id}
                                 className="h-full w-full"
-                                src={activeVideo.src}
-                                poster={activeVideo.poster}
-                                controls
-                                autoPlay
-                                muted
-                                loop
-                                playsInline
-                                preload="metadata"
+                                src={`${activeVideo.embedUrl}&autoplay=1&mute=1`}
+                                title={activeVideo.title}
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                referrerPolicy="strict-origin-when-cross-origin"
+                                allowFullScreen
                             />
                             <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.16),rgba(255,255,255,0.03)_18%,rgba(0,0,0,0.14)_52%,rgba(0,0,0,0.42))]" />
                             <div className="pointer-events-none absolute inset-0 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.06),inset_0_14px_24px_rgba(255,255,255,0.05),inset_0_-28px_36px_rgba(0,0,0,0.34)]" />
@@ -84,17 +81,16 @@ export default function PerspectiveVideoOverlay() {
                                     </div>
 
                                     <div className="relative overflow-hidden rounded-[1.15rem] bg-black aspect-[16/9]">
-                                        <video
-                                            className="pointer-events-none h-full w-full transition duration-300 group-hover:scale-[1.03]"
-                                            src={video.src}
-                                            poster={video.poster}
-                                            autoPlay
-                                            muted
-                                            loop
-                                            playsInline
-                                            preload="metadata"
+                                        <img
+                                            className="pointer-events-none h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]"
+                                            src={video.poster}
+                                            alt={video.title}
+                                            loading="lazy"
                                         />
                                         <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.15),rgba(255,255,255,0.02)_18%,rgba(0,0,0,0.16)_54%,rgba(0,0,0,0.38))]" />
+                                    </div>
+                                    <div className="px-1 pb-1 pt-3">
+                                        <p className="text-sm font-medium text-white/88">{video.title}</p>
                                     </div>
                                 </motion.div>
                             </button>

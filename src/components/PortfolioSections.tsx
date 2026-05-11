@@ -336,14 +336,13 @@ export default function PortfolioSections() {
                                             className="overflow-hidden rounded-[1.4rem] border border-[var(--border-soft)] bg-slate-950 shadow-[0_14px_30px_rgba(15,23,42,0.18)]"
                                         >
                                             <div className="aspect-[16/10]">
-                                                <video
-                                                    className="h-full w-full object-cover"
-                                                    src={video.src}
-                                                    poster={video.poster}
-                                                    controls
-                                                    muted
-                                                    playsInline
-                                                    preload="metadata"
+                                                <iframe
+                                                    className="h-full w-full"
+                                                    src={video.embedUrl}
+                                                    title={video.title}
+                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                    referrerPolicy="strict-origin-when-cross-origin"
+                                                    allowFullScreen
                                                 />
                                             </div>
                                             <div className="bg-white/92 px-4 py-4">
