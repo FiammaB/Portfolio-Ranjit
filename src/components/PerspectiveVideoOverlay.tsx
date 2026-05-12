@@ -53,11 +53,22 @@ export default function PerspectiveVideoOverlay() {
                                 title={activeVideo.title}
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                 referrerPolicy="strict-origin-when-cross-origin"
+                                loading="eager"
                                 allowFullScreen
                             />
                             <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.16),rgba(255,255,255,0.03)_18%,rgba(0,0,0,0.14)_52%,rgba(0,0,0,0.42))]" />
                             <div className="pointer-events-none absolute inset-0 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.06),inset_0_14px_24px_rgba(255,255,255,0.05),inset_0_-28px_36px_rgba(0,0,0,0.34)]" />
                         </motion.div>
+                        <div className="relative z-20 mt-4 flex justify-end">
+                            <a
+                                href={activeVideo.watchUrl}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="rounded-full border border-white/14 bg-white/[0.08] px-4 py-2 text-xs uppercase tracking-[0.24em] text-white/82 transition hover:bg-white/[0.14]"
+                            >
+                                Open on YouTube
+                            </a>
+                        </div>
                     </motion.article>
 
                     <div className="grid gap-3 grid-cols-2 md:grid-cols-3 xl:grid-cols-4">

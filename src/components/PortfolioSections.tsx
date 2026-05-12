@@ -1,6 +1,6 @@
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { Camera, ChevronLeft, ChevronRight, Compass, Orbit, Sparkles } from 'lucide-react'
-import { screenVideos, testimonials, workCategoryGroups } from '../content/siteContent'
+import { testimonials, workCategoryGroups, workVideoGroups } from '../content/siteContent'
 
 const services = [
     'Executive Production',
@@ -145,6 +145,13 @@ const behindTheScenesStills = [
 export default function PortfolioSections() {
     const customersCarouselRef = useRef<HTMLDivElement | null>(null)
     const btsCarouselRef = useRef<HTMLDivElement | null>(null)
+    const [activeWorkVideos, setActiveWorkVideos] = useState<Record<string, string>>(
+        () =>
+            workVideoGroups.reduce<Record<string, string>>((acc, group) => {
+                acc[group.id] = group.videos[0]?.id ?? ''
+                return acc
+            }, {}),
+    )
 
     const scrollCarousel = (ref: { current: HTMLDivElement | null }, direction: 'left' | 'right') => {
         const container = ref.current
@@ -290,13 +297,14 @@ export default function PortfolioSections() {
                     </p>
                 </div>
 
-                <div className="mt-10 grid gap-6 lg:grid-cols-2">
-                    {workCategoryGroups.map((group, groupIndex) => {
-                        const matchingVideos = screenVideos.filter((video) => video.region === group.title)
+                <div className="mt-10 grid gap-6">
+                    {workVideoGroups.map((group, groupIndex) => {
+                        const activeVideo =
+                            group.videos.find((video) => video.id === activeWorkVideos[group.id]) ?? group.videos[0]
 
                         return (
                             <article
-                                key={group.title}
+                                key={group.id}
                                 className="rounded-[2rem] border border-[var(--border-soft)] bg-white/68 p-6 shadow-[0_16px_36px_rgba(66,76,119,0.08)] sm:p-7"
                                 style={{
                                     background:
@@ -311,12 +319,14 @@ export default function PortfolioSections() {
                                         <h3 className="mt-3 text-2xl font-semibold text-[var(--surface-strong)]">{group.title}</h3>
                                     </div>
                                     <div className="rounded-full border border-[var(--border-soft)] bg-white/75 px-4 py-2 text-xs uppercase tracking-[0.24em] text-[var(--text-dim)]">
-                                        {matchingVideos.length} reels
+                                        {group.videos.length} reels
                                     </div>
                                 </div>
 
-                                <div className="mt-6 grid gap-3">
-                                    {group.items.map((item, itemIndex) => (
+                                <div className="mt-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-5">
+                                    {workCategoryGroups
+                                        .find((categoryGroup) => categoryGroup.title === group.region)
+                                        ?.items.map((item, itemIndex) => (
                                         <div
                                             key={item}
                                             className="rounded-[1.1rem] border border-white/60 bg-white/72 px-4 py-3"
@@ -329,29 +339,72 @@ export default function PortfolioSections() {
                                     ))}
                                 </div>
 
-                                <div className="mt-6 grid gap-4 sm:grid-cols-2">
-                                    {matchingVideos.map((video) => (
-                                        <div
-                                            key={video.id}
-                                            className="overflow-hidden rounded-[1.4rem] border border-[var(--border-soft)] bg-slate-950 shadow-[0_14px_30px_rgba(15,23,42,0.18)]"
-                                        >
-                                            <div className="aspect-[16/10]">
+                                {activeVideo ? (
+                                    <>
+                                        <div className="mt-6 overflow-hidden rounded-[1.5rem] border border-[var(--border-soft)] bg-slate-950 shadow-[0_18px_36px_rgba(15,23,42,0.18)]">
+                                            <div className="aspect-[16/9]">
                                                 <iframe
                                                     className="h-full w-full"
-                                                    src={video.embedUrl}
-                                                    title={video.title}
+                                                    src={activeVideo.embedUrl}
+                                                    title={activeVideo.title}
                                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                                     referrerPolicy="strict-origin-when-cross-origin"
+                                                    loading="lazy"
                                                     allowFullScreen
                                                 />
                                             </div>
                                             <div className="bg-white/92 px-4 py-4">
-                                                <p className="text-xs uppercase tracking-[0.24em] text-[var(--text-dim)]">{video.accent}</p>
-                                                <p className="mt-2 text-base font-semibold text-[var(--surface-strong)]">{video.title}</p>
+                                                <p className="text-xs uppercase tracking-[0.24em] text-[var(--text-dim)]">
+                                                    {group.region} / {activeVideo.accent}
+                                                </p>
+                                                <p className="mt-2 text-base font-semibold text-[var(--surface-strong)]">{activeVideo.title}</p>
+                                                <div className="mt-4">
+                                                    <a
+                                                        href={activeVideo.watchUrl}
+                                                        target="_blank"
+                                                        rel="noreferrer"
+                                                        className="inline-flex rounded-full border border-slate-900/12 bg-slate-950 px-4 py-2 text-xs uppercase tracking-[0.24em] text-white transition hover:bg-slate-800"
+                                                    >
+                                                        Open on YouTube
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
-                                    ))}
-                                </div>
+
+                                        <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                                            {group.videos.map((video) => (
+                                                <button
+                                                    key={video.id}
+                                                    type="button"
+                                                    onClick={() =>
+                                                        setActiveWorkVideos((prev) => ({
+                                                            ...prev,
+                                                            [group.id]: video.id,
+                                                        }))
+                                                    }
+                                                    className={`overflow-hidden rounded-[1.25rem] border text-left transition hover:-translate-y-1 ${
+                                                        activeVideo.id === video.id
+                                                            ? 'border-slate-900/30 bg-white shadow-[0_16px_36px_rgba(66,76,119,0.14)]'
+                                                            : 'border-[var(--border-soft)] bg-white/78'
+                                                    }`}
+                                                >
+                                                    <div className="aspect-[16/10] overflow-hidden bg-slate-950">
+                                                        <img
+                                                            src={video.poster}
+                                                            alt={video.title}
+                                                            className="h-full w-full object-cover transition duration-300 hover:scale-[1.03]"
+                                                            loading="lazy"
+                                                        />
+                                                    </div>
+                                                    <div className="px-4 py-4">
+                                                        <p className="text-xs uppercase tracking-[0.24em] text-[var(--text-dim)]">{video.accent}</p>
+                                                        <p className="mt-2 text-sm font-semibold text-[var(--surface-strong)]">{video.title}</p>
+                                                    </div>
+                                                </button>
+                                            ))}
+                                        </div>
+                                    </>
+                                ) : null}
                             </article>
                         )
                     })}
