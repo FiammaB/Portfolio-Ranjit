@@ -47,9 +47,9 @@ export type Testimonial = {
 export const heroContent = {
     eyebrow: 'International Production Executive',
     name: 'Umang Agarwal',
-    title: 'Executive Producer | Line Producer | Cross-Border Production Specialist for Feature Films, HETV, Commercials & Documentaries',
-    summary: '21+ years delivering Feature Films, HETV, Commercials, Documentaries and international productions across India, the UK and overseas.',
-    badges: ['Production Systems', 'Permits + Logistics'],
+    title: 'Executive Producer | Line Producer | Cross-Border Production Specialist for feature films, high-end television, commercials and documentaries',
+    summary: '21+ years delivering feature films, high-end television, commercials, documentaries and international productions across India, the UK and overseas.',
+    badges: ['Production Systems', 'Permits and Logistics'],
 }
 
 export const workCategoryGroups: WorkCategoryGroup[] = [
@@ -181,16 +181,16 @@ export const testimonials: Testimonial[] = [
     {
         quote: 'With Umang on the ground, we did not have to worry about our crew getting stuck in customs or our shoot being shut down by local authorities.',
         name: 'International Production Team',
-        role: 'Comment on Customs and Permits',
+        role: 'On customs and permits',
     },
     {
         quote: 'Umang does not just manage the budget; he actively finds ways to save us money and leverage international tax incentives, making global shoots far more viable for our company.',
         name: 'Global Production Partner',
-        role: 'Comment on Budget and Incentives',
+        role: 'On budget control and incentives',
     },
     {
         quote: 'He understands exactly what British crews expect and delivers that standard seamlessly, no matter where in the world we are filming.',
         name: 'British Production Team',
-        role: 'Comment on International Operations',
+        role: 'On international production standards',
     },
 ]

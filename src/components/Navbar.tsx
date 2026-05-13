@@ -15,34 +15,43 @@ const navLinks = [
     { href: '#case-studies', label: 'CASE STUDIES' },
     { href: '#testimonials', label: 'TESTIMONIALS' },
     { href: '#network-collaborations', label: 'NETWORK COLLABORATIONS' },
-    { href: '#contact', label: 'CONTACT' },
 ]
 
 export default function Navbar({ menuOpen, onToggle }: NavbarProps) {
     return (
-        <header className="fixed inset-x-0 top-0 z-50 border-b border-slate-900/8 bg-[rgba(246,242,234,0.72)] backdrop-blur-xl">
-            <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 sm:px-8 lg:px-12">
-                <a href="#hero" className="text-sm font-semibold uppercase tracking-[0.24em] text-slate-950">
-                    Umang Agarwal
+        <header className="fixed inset-x-0 top-0 z-50 border-b border-[rgba(16,24,38,0.08)] bg-[rgba(244,239,231,0.82)] backdrop-blur-2xl">
+            <div className="mx-auto flex max-w-[88rem] items-center justify-between px-6 py-4 sm:px-8 lg:px-12">
+                <a href="#hero" className="flex flex-col text-[var(--surface-strong)]">
+                    <span className="text-sm font-semibold uppercase tracking-[0.28em]">Umang Agarwal</span>
+                    <span className="mt-1 text-[10px] uppercase tracking-[0.34em] text-[var(--text-dim)]">
+                        UK-India Production Office
+                    </span>
                 </a>
 
-                <nav className="hidden items-center gap-10 md:flex">
+                <nav className="hidden items-center gap-8 xl:flex">
                     {navLinks.map((link) => (
                         <a
                             key={link.href}
                             href={link.href}
-                            className="text-sm uppercase tracking-[0.28em] text-slate-700 transition hover:text-slate-950"
+                            className="text-[11px] font-medium uppercase tracking-[0.26em] text-[var(--text-dim)] transition hover:text-[var(--surface-strong)]"
                         >
                             {link.label}
                         </a>
                     ))}
                 </nav>
 
+                <a
+                    href="#contact"
+                    className="hidden rounded-full border border-[var(--border-strong)] bg-[var(--surface-strong)] px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.28em] text-white transition hover:bg-[var(--surface-panel)] md:inline-flex"
+                >
+                    Contact Office
+                </a>
+
                 <button
                     type="button"
                     onClick={onToggle}
                     aria-label="Open or close navigation"
-                    className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-900/10 bg-white/60 text-slate-950 transition hover:border-slate-900/20 hover:bg-white md:hidden"
+                    className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[var(--border-strong)] bg-white/70 text-[var(--surface-strong)] transition hover:bg-white xl:hidden"
                 >
                     {menuOpen ? <X size={20} /> : <Menu size={20} />}
                 </button>
@@ -51,7 +60,7 @@ export default function Navbar({ menuOpen, onToggle }: NavbarProps) {
             <motion.div
                 initial={false}
                 animate={{ height: menuOpen ? 'auto' : 0, opacity: menuOpen ? 1 : 0 }}
-                className="overflow-hidden border-t border-slate-900/8 bg-[rgba(246,242,234,0.96)] md:hidden"
+                className="overflow-hidden border-t border-[rgba(16,24,38,0.08)] bg-[rgba(244,239,231,0.98)] xl:hidden"
             >
                 <div className="flex flex-col gap-4 px-6 pb-6 pt-4">
                     {navLinks.map((link) => (
@@ -59,11 +68,18 @@ export default function Navbar({ menuOpen, onToggle }: NavbarProps) {
                             key={link.href}
                             href={link.href}
                             onClick={onToggle}
-                            className="text-base uppercase tracking-[0.24em] text-slate-700 transition hover:text-slate-950"
+                            className="text-sm uppercase tracking-[0.24em] text-[var(--text-dim)] transition hover:text-[var(--surface-strong)]"
                         >
                             {link.label}
                         </a>
                     ))}
+                    <a
+                        href="#contact"
+                        onClick={onToggle}
+                        className="mt-2 inline-flex w-fit rounded-full border border-[var(--border-strong)] bg-[var(--surface-strong)] px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.28em] text-white"
+                    >
+                        Contact Office
+                    </a>
                 </div>
             </motion.div>
         </header>

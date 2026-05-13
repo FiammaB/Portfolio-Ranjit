@@ -15,28 +15,28 @@ const services = [
 
 const works = [
     {
-        title: 'Thailand Feature',
+        title: 'International Feature Shoot',
         role: 'Executive Producer',
         detail:
-            'Led a 100-person unit with customs, permits and multi-location scheduling under tight broadcaster deadlines.',
+            'Led a large cross-border unit through permits, customs clearance and multi-location scheduling while protecting delivery against tight broadcaster timelines.',
     },
     {
-        title: 'UK Streamer Campaign',
-        role: 'Line Production',
+        title: 'UK Streaming Campaign',
+        role: 'Line Producer',
         detail:
-            'Built the India execution layer for a European campaign, from visas and carnet handling to post handoff.',
+            'Built the India production layer for a European campaign, from visas and carnet handling through to on-ground delivery and post handover.',
     },
     {
-        title: 'International Documentary',
+        title: 'International Documentary Unit',
         role: 'Production Facilitation',
         detail:
-            'Managed remote approvals, cross-border crew movement and field logistics across sensitive locations.',
+            'Managed remote approvals, cross-border crew movement and field logistics across sensitive locations with the discretion such productions require.',
     },
     {
-        title: 'Luxury Brand Film',
+        title: 'Premium Brand Film',
         role: 'Production Management',
         detail:
-            'Delivered high-touch production design, equipment flow and premium-location execution for brand storytelling.',
+            'Delivered high-touch production management, equipment flow and premium-location execution for a brand film where finish and control were equally important.',
     },
 ]
 
@@ -145,6 +145,7 @@ const behindTheScenesStills = [
 export default function PortfolioSections() {
     const customersCarouselRef = useRef<HTMLDivElement | null>(null)
     const btsCarouselRef = useRef<HTMLDivElement | null>(null)
+    const [activeWorkRegion, setActiveWorkRegion] = useState<'International Work' | 'Indian Work'>('International Work')
     const [activeWorkVideos, setActiveWorkVideos] = useState<Record<string, string>>(
         () =>
             workVideoGroups.reduce<Record<string, string>>((acc, group) => {
@@ -164,33 +165,35 @@ export default function PortfolioSections() {
         })
     }
 
+    const visibleWorkGroups = workVideoGroups.filter((group) => group.region === activeWorkRegion)
+
     return (
         <div className="space-y-10">
-            <section id="about" className="rounded-[2.5rem] border border-[var(--border-soft)] bg-[linear-gradient(145deg,rgba(197,226,255,0.82),rgba(231,219,255,0.92))] p-8 shadow-[0_30px_80px_rgba(77,94,145,0.12)] sm:p-10 lg:p-14">
+            <section id="about" className="rounded-[2.9rem] border border-[var(--border-soft)] bg-[linear-gradient(145deg,rgba(255,255,255,0.86),rgba(247,241,232,0.96))] p-8 shadow-[0_30px_80px_rgba(16,24,38,0.08)] sm:p-10 lg:p-14">
                 <div className="grid gap-10 lg:grid-cols-[1.25fr_0.75fr] lg:items-end">
                     <div className="space-y-6">
-                        <div className="inline-flex items-center gap-3 rounded-full border border-[var(--border-soft)] bg-white/65 px-4 py-2 text-[var(--surface-panel)]">
+                        <div className="inline-flex items-center gap-3 rounded-full border border-[var(--border-soft)] bg-white/88 px-4 py-2 text-[var(--surface-panel)]">
                             <Compass size={16} />
-                            <p className="text-sm uppercase tracking-[0.34em] text-[var(--accent-cyan)]">Positioning</p>
+                            <p className="text-sm uppercase tracking-[0.34em] text-[var(--accent-gold)]">Positioning</p>
                         </div>
                         <h2 className="max-w-4xl text-4xl text-[var(--surface-strong)] sm:text-5xl">
-                            A production portfolio that feels designed, not templated.
+                            A calm, client-facing production presence built to meet British and international expectations.
                         </h2>
                         <p className="max-w-3xl text-lg leading-9 text-[var(--text-soft)]">
-                            My role is translating complex shooting conditions into a reliable, elegant and visually coherent operation for UK and European collaborators working in India.
+                            I translate complex shooting conditions into a disciplined, credible and visually coherent production operation for UK and European collaborators working in India.
                         </p>
                     </div>
 
-                    <div className="rounded-[2rem] border border-[var(--border-soft)] bg-white/70 p-7 backdrop-blur-sm">
-                        <p className="text-xs uppercase tracking-[0.3em] text-[var(--text-dim)]">Approach</p>
-                        <div className="mt-5 space-y-5 text-[var(--surface-strong)]">
+                    <div className="rounded-[2rem] border border-[var(--border-soft)] bg-[rgba(19,35,60,0.96)] p-7 text-white shadow-[0_22px_54px_rgba(16,24,38,0.16)]">
+                        <p className="text-xs uppercase tracking-[0.3em] text-[rgba(255,224,184,0.74)]">Approach</p>
+                        <div className="mt-5 space-y-5">
                             <div>
-                                <p className="text-sm text-[var(--text-dim)]">Visual sensitivity</p>
-                                <p className="mt-2 text-lg font-semibold">Production structure with creative priority</p>
+                                <p className="text-sm text-white/68">Visual sensitivity</p>
+                                <p className="mt-2 text-lg font-semibold text-white">Production structure with creative priority</p>
                             </div>
                             <div>
-                                <p className="text-sm text-[var(--text-dim)]">Operational discipline</p>
-                                <p className="mt-2 text-lg font-semibold">Permits, customs, crew and timing without chaos</p>
+                                <p className="text-sm text-white/68">Operational discipline</p>
+                                <p className="mt-2 text-lg font-semibold text-white">Permits, customs, crews and schedules handled without unnecessary drama</p>
                             </div>
                         </div>
                     </div>
@@ -198,16 +201,16 @@ export default function PortfolioSections() {
             </section>
 
             <section id="services" className="grid gap-6 lg:grid-cols-[0.78fr_1.22fr]">
-                <div className="rounded-[2.3rem] border border-[var(--border-soft)] bg-[linear-gradient(160deg,rgba(193,224,255,0.88),rgba(219,205,255,0.92))] p-8 sm:p-10">
-                    <div className="inline-flex items-center gap-3 rounded-full border border-[var(--border-soft)] bg-white/60 px-4 py-2 text-[var(--surface-panel)]">
+                <div className="rounded-[2.5rem] border border-[var(--border-soft)] bg-[linear-gradient(180deg,rgba(19,35,60,0.98),rgba(21,29,42,0.96))] p-8 text-white shadow-[0_28px_72px_rgba(16,24,38,0.16)] sm:p-10">
+                    <div className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/8 px-4 py-2 text-white">
                         <Sparkles size={16} />
-                        <p className="text-sm uppercase tracking-[0.34em] text-[var(--accent-orange)]">Services</p>
+                        <p className="text-sm uppercase tracking-[0.34em] text-[rgba(255,224,184,0.76)]">Services</p>
                     </div>
-                    <h2 className="mt-5 text-4xl text-[var(--surface-strong)] sm:text-5xl">
-                        The production layer behind the image.
+                    <h2 className="mt-5 text-4xl sm:text-5xl">
+                        Production support that remains composed in front of demanding clients.
                     </h2>
-                    <p className="mt-5 text-lg leading-8 text-[var(--text-soft)]">
-                        Executive production and line production for international shoots that need creative trust and practical control.
+                    <p className="mt-5 text-lg leading-8 text-white/80">
+                        Executive production and line production for international shoots that require polish, pace and operational control.
                     </p>
                 </div>
 
@@ -219,10 +222,10 @@ export default function PortfolioSections() {
                             style={{
                                 background:
                                     index % 3 === 0
-                                        ? 'linear-gradient(160deg, rgba(175, 219, 255, 0.94), rgba(210, 233, 255, 0.94))'
+                                        ? 'linear-gradient(160deg, rgba(255, 255, 255, 0.94), rgba(242, 236, 227, 0.94))'
                                         : index % 3 === 1
-                                            ? 'linear-gradient(160deg, rgba(224, 206, 255, 0.94), rgba(240, 229, 255, 0.94))'
-                                            : 'linear-gradient(160deg, rgba(255, 214, 182, 0.94), rgba(255, 234, 220, 0.94))',
+                                            ? 'linear-gradient(160deg, rgba(248, 244, 236, 0.94), rgba(236, 232, 224, 0.94))'
+                                            : 'linear-gradient(160deg, rgba(251, 247, 240, 0.94), rgba(237, 229, 217, 0.94))',
                             }}
                         >
                             <p className="text-sm uppercase tracking-[0.24em] text-[var(--text-dim)]">
@@ -234,17 +237,17 @@ export default function PortfolioSections() {
                 </div>
             </section>
 
-            <section id="portfolio" className="rounded-[2.5rem] border border-[var(--border-soft)] bg-[linear-gradient(180deg,rgba(255,255,255,0.88),rgba(239,235,255,0.82))] p-8 sm:p-10 lg:p-14">
+            <section id="portfolio" className="rounded-[2.9rem] border border-[var(--border-soft)] bg-[linear-gradient(180deg,rgba(255,255,255,0.9),rgba(248,244,238,0.92))] p-8 shadow-[0_26px_60px_rgba(16,24,38,0.06)] sm:p-10 lg:p-14">
                 <div className="flex flex-col gap-4">
-                    <div className="inline-flex w-fit items-center gap-3 rounded-full border border-[var(--border-soft)] bg-white/70 px-4 py-2 text-[var(--surface-panel)]">
+                    <div className="inline-flex w-fit items-center gap-3 rounded-full border border-[var(--border-soft)] bg-white/85 px-4 py-2 text-[var(--surface-panel)]">
                         <Orbit size={16} />
-                        <p className="text-sm uppercase tracking-[0.34em] text-[var(--accent-cyan)]">Portfolio</p>
+                        <p className="text-sm uppercase tracking-[0.34em] text-[var(--accent-gold)]">Portfolio</p>
                     </div>
                     <h2 className="text-4xl text-[var(--surface-strong)] sm:text-5xl">
-                        The operating portfolio behind cross-border production.
+                        A portfolio organised the way a commissioning team expects to review it.
                     </h2>
                     <p className="max-w-3xl text-lg leading-8 text-[var(--text-soft)]">
-                        A concise view of the production strengths, systems and local execution experience that support international shoots.
+                        A concise view of the production strengths, operational systems and local execution experience behind international shoots.
                     </p>
                 </div>
 
@@ -257,8 +260,8 @@ export default function PortfolioSections() {
                                 borderColor: 'rgba(21, 28, 52, 0.12)',
                                 background:
                                     index === 0
-                                        ? 'linear-gradient(160deg, rgba(189, 225, 255, 0.94), rgba(227, 241, 255, 0.94))'
-                                        : 'linear-gradient(160deg, rgba(225, 205, 255, 0.94), rgba(243, 234, 255, 0.94))',
+                                        ? 'linear-gradient(160deg, rgba(248, 244, 238, 0.96), rgba(255, 255, 255, 0.92))'
+                                        : 'linear-gradient(160deg, rgba(242, 237, 231, 0.96), rgba(255, 255, 255, 0.92))',
                             }}
                         >
                             <p className="text-sm uppercase tracking-[0.28em] text-[var(--text-dim)]">Portfolio</p>
@@ -281,36 +284,53 @@ export default function PortfolioSections() {
                 </div>
             </section>
 
-            <section id="work" className="rounded-[2.5rem] border border-[var(--border-soft)] bg-[linear-gradient(180deg,rgba(235,241,255,0.92),rgba(255,239,229,0.9))] p-8 sm:p-10 lg:p-14">
+            <section id="work" className="rounded-[2.9rem] border border-[var(--border-soft)] bg-[linear-gradient(180deg,rgba(250,246,239,0.96),rgba(243,236,226,0.98))] p-8 text-[var(--surface-strong)] shadow-[0_32px_84px_rgba(16,24,38,0.08)] sm:p-10 lg:p-14">
                 <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
                     <div className="space-y-4">
-                        <div className="inline-flex items-center gap-3 rounded-full border border-[var(--border-soft)] bg-white/70 px-4 py-2 text-[var(--surface-panel)]">
+                        <div className="inline-flex items-center gap-3 rounded-full border border-[var(--border-soft)] bg-white/85 px-4 py-2 text-[var(--surface-panel)]">
                             <Camera size={16} />
-                            <p className="text-sm uppercase tracking-[0.34em] text-[var(--accent-orange)]">Work</p>
+                            <p className="text-sm uppercase tracking-[0.34em] text-[var(--accent-gold)]">Work</p>
                         </div>
-                        <h2 className="text-4xl text-[var(--surface-strong)] sm:text-5xl">
-                            Work from real sets, crews and production days.
+                        <h2 className="text-4xl sm:text-5xl text-[var(--surface-strong)]">
+                            Selected work presented in a cleaner review format.
                         </h2>
                     </div>
                     <p className="max-w-2xl text-base leading-8 text-[var(--text-soft)]">
-                        A simple work structure where reels are visible, grouped and ready for small content updates.
+                        Organised by territory and format so producers, agencies and commissioners can review projects quickly.
                     </p>
                 </div>
 
+                <div className="mt-8 flex flex-wrap gap-3">
+                    {workCategoryGroups.map((group) => (
+                        <button
+                            key={group.title}
+                            type="button"
+                            onClick={() => setActiveWorkRegion(group.title as 'International Work' | 'Indian Work')}
+                            className={`rounded-full border px-5 py-3 text-sm font-semibold uppercase tracking-[0.22em] transition ${
+                                activeWorkRegion === group.title
+                                    ? 'border-[var(--surface-strong)] bg-[var(--surface-strong)] text-white shadow-[0_16px_36px_rgba(16,24,38,0.14)]'
+                                    : 'border-[var(--border-soft)] bg-white/85 text-[var(--surface-strong)] hover:bg-white'
+                            }`}
+                        >
+                            {group.title}
+                        </button>
+                    ))}
+                </div>
+
                 <div className="mt-10 grid gap-6">
-                    {workVideoGroups.map((group, groupIndex) => {
+                    {visibleWorkGroups.map((group, groupIndex) => {
                         const activeVideo =
                             group.videos.find((video) => video.id === activeWorkVideos[group.id]) ?? group.videos[0]
 
                         return (
                             <article
                                 key={group.id}
-                                className="rounded-[2rem] border border-[var(--border-soft)] bg-white/68 p-6 shadow-[0_16px_36px_rgba(66,76,119,0.08)] sm:p-7"
+                                className="rounded-[2rem] border border-[var(--border-soft)] p-6 shadow-[0_16px_36px_rgba(16,24,38,0.08)] sm:p-7"
                                 style={{
                                     background:
                                         groupIndex === 0
-                                            ? 'linear-gradient(165deg, rgba(228, 240, 255, 0.92), rgba(255, 255, 255, 0.82))'
-                                            : 'linear-gradient(165deg, rgba(244, 234, 255, 0.92), rgba(255, 255, 255, 0.82))',
+                                            ? 'linear-gradient(165deg, rgba(255,255,255,0.92), rgba(245,239,230,0.92))'
+                                            : 'linear-gradient(165deg, rgba(252,248,242,0.94), rgba(240,233,223,0.94))',
                                 }}
                             >
                                 <div className="flex items-start justify-between gap-4">
@@ -318,7 +338,7 @@ export default function PortfolioSections() {
                                         <p className="text-sm uppercase tracking-[0.28em] text-[var(--text-dim)]">Work Group</p>
                                         <h3 className="mt-3 text-2xl font-semibold text-[var(--surface-strong)]">{group.title}</h3>
                                     </div>
-                                    <div className="rounded-full border border-[var(--border-soft)] bg-white/75 px-4 py-2 text-xs uppercase tracking-[0.24em] text-[var(--text-dim)]">
+                                    <div className="rounded-full border border-[var(--border-soft)] bg-white/76 px-4 py-2 text-xs uppercase tracking-[0.24em] text-[var(--text-dim)]">
                                         {group.videos.length} reels
                                     </div>
                                 </div>
@@ -329,7 +349,7 @@ export default function PortfolioSections() {
                                         ?.items.map((item, itemIndex) => (
                                         <div
                                             key={item}
-                                            className="rounded-[1.1rem] border border-white/60 bg-white/72 px-4 py-3"
+                                            className="rounded-[1.1rem] border border-[rgba(16,24,38,0.08)] bg-white/68 px-4 py-3"
                                         >
                                             <p className="text-xs uppercase tracking-[0.24em] text-[var(--text-dim)]">
                                                 0{itemIndex + 1}
@@ -353,7 +373,7 @@ export default function PortfolioSections() {
                                                     allowFullScreen
                                                 />
                                             </div>
-                                            <div className="bg-white/92 px-4 py-4">
+                                            <div className="bg-[rgba(244,239,231,0.98)] px-4 py-4">
                                                 <p className="text-xs uppercase tracking-[0.24em] text-[var(--text-dim)]">
                                                     {group.region} / {activeVideo.accent}
                                                 </p>
@@ -384,8 +404,8 @@ export default function PortfolioSections() {
                                                     }
                                                     className={`overflow-hidden rounded-[1.25rem] border text-left transition hover:-translate-y-1 ${
                                                         activeVideo.id === video.id
-                                                            ? 'border-slate-900/30 bg-white shadow-[0_16px_36px_rgba(66,76,119,0.14)]'
-                                                            : 'border-[var(--border-soft)] bg-white/78'
+                                                            ? 'border-[rgba(255,224,184,0.36)] bg-white shadow-[0_16px_36px_rgba(0,0,0,0.18)]'
+                                                            : 'border-white/8 bg-white/78'
                                                     }`}
                                                 >
                                                     <div className="aspect-[16/10] overflow-hidden bg-slate-950">
@@ -410,7 +430,25 @@ export default function PortfolioSections() {
                     })}
                 </div>
 
-                <div className="mt-10 rounded-[2rem] border border-[var(--border-soft)] bg-white/52 p-4 shadow-[0_18px_40px_rgba(66,76,119,0.06)] sm:p-5">
+            </section>
+
+            <section id="behind-the-scenes" className="rounded-[2.9rem] border border-[var(--border-soft)] bg-[linear-gradient(180deg,rgba(255,255,255,0.92),rgba(244,238,229,0.96))] p-8 shadow-[0_26px_60px_rgba(16,24,38,0.06)] sm:p-10 lg:p-14">
+                <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+                    <div className="space-y-4">
+                        <div className="inline-flex items-center gap-3 rounded-full border border-[var(--border-soft)] bg-white/85 px-4 py-2 text-[var(--surface-panel)]">
+                            <Camera size={16} />
+                            <p className="text-sm uppercase tracking-[0.34em] text-[var(--accent-gold)]">Behind the Scenes</p>
+                        </div>
+                        <h2 className="text-4xl text-[var(--surface-strong)] sm:text-5xl">
+                            On-set stills from live productions.
+                        </h2>
+                    </div>
+                    <p className="max-w-2xl text-base leading-8 text-[var(--text-soft)]">
+                        A lighter visual strip of field stills, giving context to the reels without crowding the main work presentation.
+                    </p>
+                </div>
+
+                <div className="mt-10 rounded-[2rem] border border-[var(--border-soft)] bg-white/72 p-4 shadow-[0_18px_40px_rgba(66,76,119,0.06)] sm:p-5">
                     <div className="mb-4 flex items-center justify-end gap-3">
                         <button
                             type="button"
@@ -449,14 +487,14 @@ export default function PortfolioSections() {
                 </div>
             </section>
 
-            <section id="case-studies" className="rounded-[2.5rem] border border-[var(--border-soft)] bg-[linear-gradient(180deg,rgba(255,255,255,0.88),rgba(239,235,255,0.82))] p-8 sm:p-10 lg:p-14">
+            <section id="case-studies" className="rounded-[2.9rem] border border-[var(--border-soft)] bg-[linear-gradient(180deg,rgba(255,255,255,0.92),rgba(248,244,238,0.94))] p-8 shadow-[0_26px_60px_rgba(16,24,38,0.06)] sm:p-10 lg:p-14">
                 <div className="flex flex-col gap-4">
-                    <div className="inline-flex w-fit items-center gap-3 rounded-full border border-[var(--border-soft)] bg-white/70 px-4 py-2 text-[var(--surface-panel)]">
+                    <div className="inline-flex w-fit items-center gap-3 rounded-full border border-[var(--border-soft)] bg-white/85 px-4 py-2 text-[var(--surface-panel)]">
                         <Orbit size={16} />
-                        <p className="text-sm uppercase tracking-[0.34em] text-[var(--accent-cyan)]">Case studies</p>
+                        <p className="text-sm uppercase tracking-[0.34em] text-[var(--accent-gold)]">Case studies</p>
                     </div>
                     <h2 className="text-4xl text-[var(--surface-strong)] sm:text-5xl">
-                        Selected projects with real operational weight.
+                        Selected projects with genuine operational weight.
                     </h2>
                 </div>
 
@@ -464,10 +502,10 @@ export default function PortfolioSections() {
                     {works.map((work, index) => (
                         <article
                             key={work.title}
-                            className="overflow-hidden rounded-[2rem] border border-[var(--border-soft)] bg-white/72"
+                            className="overflow-hidden rounded-[2rem] border border-[var(--border-soft)] bg-white/82 shadow-[0_18px_36px_rgba(16,24,38,0.06)]"
                         >
                             <div
-                                className="h-2 w-full"
+                                className="h-1.5 w-full"
                                 style={{
                                     background:
                                         index % 2 === 0
@@ -476,25 +514,40 @@ export default function PortfolioSections() {
                                 }}
                             />
                             <div className="space-y-4 p-7 sm:p-8">
-                                <p className="text-sm uppercase tracking-[0.28em] text-[var(--text-dim)]">
-                                    {work.role}
-                                </p>
-                                <h3 className="text-2xl font-semibold text-[var(--surface-strong)]">{work.title}</h3>
+                                <div className="flex items-start justify-between gap-4">
+                                    <div>
+                                        <p className="text-sm uppercase tracking-[0.28em] text-[var(--text-dim)]">
+                                            {work.role}
+                                        </p>
+                                        <h3 className="mt-3 text-2xl font-semibold text-[var(--surface-strong)]">{work.title}</h3>
+                                    </div>
+                                    <div className="rounded-full border border-[var(--border-soft)] bg-[rgba(247,241,232,0.95)] px-4 py-2 text-[11px] uppercase tracking-[0.24em] text-[var(--text-dim)]">
+                                        Case Study
+                                    </div>
+                                </div>
                                 <p className="text-base leading-8 text-[var(--text-soft)]">{work.detail}</p>
+                                <div className="pt-2">
+                                    <p className="text-[11px] uppercase tracking-[0.24em] text-[var(--text-dim)]">
+                                        Focus
+                                    </p>
+                                    <p className="mt-2 text-sm leading-7 text-[var(--surface-strong)]">
+                                        Cross-border production planning, local execution, client confidence and delivery discipline.
+                                    </p>
+                                </div>
                             </div>
                         </article>
                     ))}
                 </div>
             </section>
 
-            <section id="testimonials" className="rounded-[2.5rem] border border-[var(--border-soft)] bg-[linear-gradient(180deg,rgba(232,241,255,0.88),rgba(246,231,255,0.86))] p-8 sm:p-10 lg:p-14">
+            <section id="testimonials" className="rounded-[2.9rem] border border-[var(--border-soft)] bg-[linear-gradient(180deg,rgba(255,255,255,0.9),rgba(242,237,231,0.96))] p-8 shadow-[0_26px_60px_rgba(16,24,38,0.06)] sm:p-10 lg:p-14">
                 <div className="space-y-4">
-                    <div className="inline-flex items-center gap-3 rounded-full border border-[var(--border-soft)] bg-white/70 px-4 py-2 text-[var(--surface-panel)]">
+                    <div className="inline-flex items-center gap-3 rounded-full border border-[var(--border-soft)] bg-white/85 px-4 py-2 text-[var(--surface-panel)]">
                         <Camera size={16} />
-                        <p className="text-sm uppercase tracking-[0.34em] text-[var(--accent-orange)]">Testimonials</p>
+                        <p className="text-sm uppercase tracking-[0.34em] text-[var(--accent-gold)]">Testimonials</p>
                     </div>
                     <h2 className="text-4xl text-[var(--surface-strong)] sm:text-5xl">
-                        Trust when the shoot is beautiful and complex.
+                        Trusted when the work is creatively ambitious and operationally exposed.
                     </h2>
                 </div>
 
@@ -514,18 +567,18 @@ export default function PortfolioSections() {
                 </div>
             </section>
 
-            <section id="network-collaborations" className="rounded-[2.5rem] border border-[var(--border-soft)] bg-[linear-gradient(180deg,rgba(255,248,240,0.9),rgba(233,242,255,0.86))] p-8 sm:p-10 lg:p-14">
+            <section id="network-collaborations" className="rounded-[2.9rem] border border-[var(--border-soft)] bg-[linear-gradient(180deg,rgba(19,35,60,0.98),rgba(30,34,43,0.96))] p-8 text-white shadow-[0_32px_84px_rgba(16,24,38,0.16)] sm:p-10 lg:p-14">
                 <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
                     <div className="space-y-4">
-                        <div className="inline-flex items-center gap-3 rounded-full border border-[var(--border-soft)] bg-white/70 px-4 py-2 text-[var(--surface-panel)]">
+                        <div className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/8 px-4 py-2 text-white">
                             <Orbit size={16} />
-                            <p className="text-sm uppercase tracking-[0.34em] text-[var(--accent-cyan)]">Network Collaborations</p>
+                            <p className="text-sm uppercase tracking-[0.34em] text-[rgba(255,224,184,0.76)]">Network Collaborations</p>
                         </div>
-                        <h2 className="text-4xl text-[var(--surface-strong)] sm:text-5xl">
+                        <h2 className="text-4xl sm:text-5xl">
                             Collaborations across brands, studios and campaigns.
                         </h2>
                     </div>
-                    <p className="max-w-2xl text-base leading-8 text-[var(--text-soft)]">
+                    <p className="max-w-2xl text-base leading-8 text-white/76">
                         A compact logo wall showing the network of production collaborations without overwhelming the page.
                     </p>
                 </div>
@@ -585,18 +638,18 @@ export default function PortfolioSections() {
                 </div>
             </section>
 
-            <section id="contact" className="rounded-[2.5rem] border border-[var(--border-soft)] bg-[linear-gradient(155deg,rgba(206,227,255,0.92),rgba(236,219,255,0.94))] p-8 sm:p-10 lg:p-14">
+            <section id="contact" className="rounded-[2.9rem] border border-[var(--border-soft)] bg-[linear-gradient(155deg,rgba(255,255,255,0.92),rgba(247,241,232,0.98))] p-8 shadow-[0_26px_60px_rgba(16,24,38,0.08)] sm:p-10 lg:p-14">
                 <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
                     <div className="space-y-6">
-                        <div className="inline-flex items-center gap-3 rounded-full border border-[var(--border-soft)] bg-white/70 px-4 py-2 text-[var(--surface-panel)]">
+                        <div className="inline-flex items-center gap-3 rounded-full border border-[var(--border-soft)] bg-white/85 px-4 py-2 text-[var(--surface-panel)]">
                             <Compass size={16} />
-                            <p className="text-sm uppercase tracking-[0.34em] text-[var(--accent-cyan)]">Contact</p>
+                            <p className="text-sm uppercase tracking-[0.34em] text-[var(--accent-gold)]">Contact</p>
                         </div>
                         <h2 className="text-4xl text-[var(--surface-strong)] sm:text-5xl">
-                            Let's talk about the next UK-India production.
+                            Let’s discuss the next UK-India production.
                         </h2>
-                        <p className="max-w-2xl text-lg leading-8 text-[var(--text-soft)]">
-                            Reach out to discuss CV, showreel or a practical conversation about shooting in India, incentives, permits and remote production support.
+                    <p className="max-w-2xl text-lg leading-8 text-[var(--text-soft)]">
+                            Get in touch to discuss a CV, a showreel, or a practical conversation about filming in India, incentives, permits and remote production support.
                         </p>
                     </div>
 
