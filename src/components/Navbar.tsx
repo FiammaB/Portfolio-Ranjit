@@ -20,20 +20,20 @@ const navLinks = [
 export default function Navbar({ menuOpen, onToggle }: NavbarProps) {
     return (
         <header className="fixed inset-x-0 top-0 z-50 border-b border-[rgba(16,24,38,0.08)] bg-[rgba(244,239,231,0.82)] backdrop-blur-2xl">
-            <div className="mx-auto flex max-w-[88rem] items-center justify-between px-6 py-4 sm:px-8 lg:px-12">
-                <a href="#hero" className="flex flex-col text-[var(--surface-strong)]">
+            <div className="mx-auto flex max-w-[88rem] items-center justify-between gap-6 px-6 py-4 sm:px-8 lg:px-12">
+                <a href="#hero" className="shrink-0 flex flex-col text-[var(--surface-strong)]">
                     <span className="text-sm font-semibold uppercase tracking-[0.28em]">Umang Agarwal</span>
                     <span className="mt-1 text-[10px] uppercase tracking-[0.34em] text-[var(--text-dim)]">
-                        UK-India Production Office
+                        International Production Executive
                     </span>
                 </a>
 
-                <nav className="hidden items-center gap-8 xl:flex">
+                <nav className="hidden flex-1 items-center justify-center gap-5 2xl:gap-6 xl:flex">
                     {navLinks.map((link) => (
                         <a
                             key={link.href}
                             href={link.href}
-                            className="text-[11px] font-medium uppercase tracking-[0.26em] text-[var(--text-dim)] transition hover:text-[var(--surface-strong)]"
+                            className="whitespace-nowrap text-[10px] font-medium uppercase tracking-[0.18em] text-[var(--text-dim)] transition hover:text-[var(--surface-strong)]"
                         >
                             {link.label}
                         </a>
@@ -42,7 +42,7 @@ export default function Navbar({ menuOpen, onToggle }: NavbarProps) {
 
                 <a
                     href="#contact"
-                    className="hidden rounded-full border border-[var(--border-strong)] bg-[var(--surface-strong)] px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.28em] text-white transition hover:bg-[var(--surface-panel)] md:inline-flex"
+                    className="hidden shrink-0 rounded-full border border-[var(--border-strong)] bg-[var(--surface-strong)] px-4 py-2.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-white transition hover:bg-[var(--surface-panel)] xl:inline-flex"
                 >
                     Contact Office
                 </a>

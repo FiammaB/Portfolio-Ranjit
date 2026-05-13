@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { useState } from 'react'
+import LazyAutoplayVideoFrame from './LazyAutoplayVideoFrame'
 import { screenVideos } from '../content/siteContent'
 
 export default function PerspectiveVideoOverlay() {
@@ -46,15 +47,12 @@ export default function PerspectiveVideoOverlay() {
                             transition={{ duration: 0.55, ease: 'easeOut' }}
                             className="relative overflow-hidden rounded-[1.65rem] bg-[var(--surface-strong)] aspect-[16/10]"
                         >
-                            <iframe
+                            <LazyAutoplayVideoFrame
                                 key={activeVideo.id}
-                                className="h-full w-full"
-                                src={`${activeVideo.embedUrl}&autoplay=1&mute=1`}
                                 title={activeVideo.title}
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                referrerPolicy="strict-origin-when-cross-origin"
+                                embedUrl={activeVideo.embedUrl}
+                                poster={activeVideo.poster}
                                 loading="eager"
-                                allowFullScreen
                             />
                             <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.01)_18%,rgba(0,0,0,0.06)_54%,rgba(0,0,0,0.22))]" />
                             <div className="pointer-events-none absolute inset-0 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.05),inset_0_-18px_28px_rgba(0,0,0,0.18)]" />
@@ -77,10 +75,8 @@ export default function PerspectiveVideoOverlay() {
 
                     <div className="grid gap-3 grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
                         {secondaryVideos.map((video, index) => (
-                            <button
+                            <div
                                 key={video.id}
-                                type="button"
-                                onClick={() => setActiveVideoId(video.id)}
                                 className="group relative overflow-hidden rounded-[1.5rem] border border-[var(--border-soft)] bg-white/68 p-2 text-left shadow-[0_14px_34px_rgba(16,24,38,0.08)] transition duration-300 hover:-translate-y-1 hover:border-[var(--border-strong)] hover:bg-white"
                             >
                                 <motion.div
@@ -91,24 +87,35 @@ export default function PerspectiveVideoOverlay() {
                                     <div className="absolute inset-x-4 top-3 z-20 flex items-center justify-between text-[10px] uppercase tracking-[0.28em] text-white/82">
                                         <span className="rounded-full border border-white/16 bg-black/34 px-2 py-1">{video.accent}</span>
                                         <span className="rounded-full border border-white/16 bg-black/34 px-2 py-1 text-[9px] tracking-[0.22em] text-white/72">
-                                            Queue
+                                            Preview
                                         </span>
                                     </div>
 
                                     <div className="relative overflow-hidden rounded-[1.15rem] bg-[var(--surface-strong)] aspect-[16/9]">
                                         <img
-                                            className="pointer-events-none h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]"
+                                            className="h-full w-full object-cover"
                                             src={video.poster}
                                             alt={video.title}
                                             loading="lazy"
                                         />
+                                        <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+                                            <span className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/34 bg-black/42 text-[10px] uppercase tracking-[0.2em] text-white">
+                                                Play
+                                            </span>
+                                        </div>
                                         <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.01)_18%,rgba(0,0,0,0.08)_54%,rgba(0,0,0,0.22))]" />
+                                        <button
+                                            type="button"
+                                            onClick={() => setActiveVideoId(video.id)}
+                                            className="absolute inset-0 z-10"
+                                            aria-label={`Highlight ${video.title}`}
+                                        />
                                     </div>
                                     <div className="px-1 pb-1 pt-3">
                                         <p className="text-sm font-medium text-[var(--surface-strong)]">{video.title}</p>
                                     </div>
                                 </motion.div>
-                            </button>
+                            </div>
                         ))}
                     </div>
                 </div>

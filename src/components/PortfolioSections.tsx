@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react'
 import { Camera, ChevronLeft, ChevronRight, Compass, Orbit, Sparkles } from 'lucide-react'
+import LazyAutoplayVideoFrame from './LazyAutoplayVideoFrame'
 import { testimonials, workCategoryGroups, workVideoGroups } from '../content/siteContent'
 
 const services = [
@@ -16,27 +17,55 @@ const services = [
 const works = [
     {
         title: 'International Feature Shoot',
+        format: 'Feature Film',
+        territory: 'UK x India',
+        year: 'Recent',
         role: 'Executive Producer',
-        detail:
-            'Led a large cross-border unit through permits, customs clearance and multi-location scheduling while protecting delivery against tight broadcaster timelines.',
+        context:
+            'A cross-border narrative production requiring a dependable India production structure while aligning with overseas production expectations.',
+        challenge:
+            'Permits, customs clearance, crew movement and multi-location scheduling all had to stay tightly coordinated under delivery pressure.',
+        outcome:
+            'The production moved with stronger control on the ground, protecting schedule confidence and keeping the unit operationally stable.',
     },
     {
         title: 'UK Streaming Campaign',
+        format: 'Streaming Campaign',
+        territory: 'Europe x India',
+        year: 'Recent',
         role: 'Line Producer',
-        detail:
-            'Built the India production layer for a European campaign, from visas and carnet handling through to on-ground delivery and post handover.',
+        context:
+            'A European campaign needed an India production layer that felt polished, responsive and easy for an overseas team to work through.',
+        challenge:
+            'Visas, carnet handling, field logistics and on-ground delivery all needed to connect cleanly without slowing agency or client approvals.',
+        outcome:
+            'The India execution became easier to review, easier to manage and more dependable for the commissioning team through delivery and handover.',
     },
     {
         title: 'International Documentary Unit',
+        format: 'Documentary',
+        territory: 'International',
+        year: 'Recent',
         role: 'Production Facilitation',
-        detail:
-            'Managed remote approvals, cross-border crew movement and field logistics across sensitive locations with the discretion such productions require.',
+        context:
+            'A documentary team was working across sensitive locations and needed discreet local production support without unnecessary operational noise.',
+        challenge:
+            'Remote approvals, cross-border crew movement and field logistics had to be handled carefully while preserving flexibility in the field.',
+        outcome:
+            'The unit was able to keep filming with better local coordination, clearer approvals and less friction around sensitive practical decisions.',
     },
     {
         title: 'Premium Brand Film',
+        format: 'Commercial / Brand Film',
+        territory: 'India',
+        year: 'Recent',
         role: 'Production Management',
-        detail:
-            'Delivered high-touch production management, equipment flow and premium-location execution for a brand film where finish and control were equally important.',
+        context:
+            'A premium-facing brand film required a production setup where finish, control and client-facing confidence mattered as much as speed.',
+        challenge:
+            'Equipment flow, premium locations and day-to-day production management had to stay smooth while protecting the visual standard of the job.',
+        outcome:
+            'The production retained a higher-touch finish on set, helping the team execute with more control and a calmer client experience.',
     },
 ]
 
@@ -146,13 +175,6 @@ export default function PortfolioSections() {
     const customersCarouselRef = useRef<HTMLDivElement | null>(null)
     const btsCarouselRef = useRef<HTMLDivElement | null>(null)
     const [activeWorkRegion, setActiveWorkRegion] = useState<'International Work' | 'Indian Work'>('International Work')
-    const [activeWorkVideos, setActiveWorkVideos] = useState<Record<string, string>>(
-        () =>
-            workVideoGroups.reduce<Record<string, string>>((acc, group) => {
-                acc[group.id] = group.videos[0]?.id ?? ''
-                return acc
-            }, {}),
-    )
 
     const scrollCarousel = (ref: { current: HTMLDivElement | null }, direction: 'left' | 'right') => {
         const container = ref.current
@@ -318,116 +340,99 @@ export default function PortfolioSections() {
                 </div>
 
                 <div className="mt-10 grid gap-6">
-                    {visibleWorkGroups.map((group, groupIndex) => {
-                        const activeVideo =
-                            group.videos.find((video) => video.id === activeWorkVideos[group.id]) ?? group.videos[0]
-
-                        return (
-                            <article
-                                key={group.id}
-                                className="rounded-[2rem] border border-[var(--border-soft)] p-6 shadow-[0_16px_36px_rgba(16,24,38,0.08)] sm:p-7"
-                                style={{
-                                    background:
-                                        groupIndex === 0
-                                            ? 'linear-gradient(165deg, rgba(255,255,255,0.92), rgba(245,239,230,0.92))'
-                                            : 'linear-gradient(165deg, rgba(252,248,242,0.94), rgba(240,233,223,0.94))',
-                                }}
-                            >
-                                <div className="flex items-start justify-between gap-4">
-                                    <div>
-                                        <p className="text-sm uppercase tracking-[0.28em] text-[var(--text-dim)]">Work Group</p>
-                                        <h3 className="mt-3 text-2xl font-semibold text-[var(--surface-strong)]">{group.title}</h3>
-                                    </div>
-                                    <div className="rounded-full border border-[var(--border-soft)] bg-white/76 px-4 py-2 text-xs uppercase tracking-[0.24em] text-[var(--text-dim)]">
-                                        {group.videos.length} reels
-                                    </div>
+                    {visibleWorkGroups.map((group, groupIndex) => (
+                        <article
+                            key={group.id}
+                            className="rounded-[2rem] border border-[var(--border-soft)] p-6 shadow-[0_16px_36px_rgba(16,24,38,0.08)] sm:p-7"
+                            style={{
+                                background:
+                                    groupIndex === 0
+                                        ? 'linear-gradient(165deg, rgba(255,255,255,0.92), rgba(245,239,230,0.92))'
+                                        : 'linear-gradient(165deg, rgba(252,248,242,0.94), rgba(240,233,223,0.94))',
+                            }}
+                        >
+                            <div className="flex items-start justify-between gap-4">
+                                <div>
+                                    <p className="text-sm uppercase tracking-[0.28em] text-[var(--text-dim)]">Work Group</p>
+                                    <h3 className="mt-3 text-2xl font-semibold text-[var(--surface-strong)]">{group.title}</h3>
                                 </div>
-
-                                <div className="mt-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-5">
-                                    {workCategoryGroups
-                                        .find((categoryGroup) => categoryGroup.title === group.region)
-                                        ?.items.map((item, itemIndex) => (
-                                        <div
-                                            key={item}
-                                            className="rounded-[1.1rem] border border-[rgba(16,24,38,0.08)] bg-white/68 px-4 py-3"
-                                        >
-                                            <p className="text-xs uppercase tracking-[0.24em] text-[var(--text-dim)]">
-                                                0{itemIndex + 1}
-                                            </p>
-                                            <p className="mt-2 text-lg font-semibold text-[var(--surface-strong)]">{item}</p>
-                                        </div>
-                                    ))}
+                                <div className="rounded-full border border-[var(--border-soft)] bg-white/76 px-4 py-2 text-xs uppercase tracking-[0.24em] text-[var(--text-dim)]">
+                                    {group.videos.length} reels
                                 </div>
+                            </div>
 
-                                {activeVideo ? (
-                                    <>
-                                        <div className="mt-6 overflow-hidden rounded-[1.5rem] border border-[var(--border-soft)] bg-slate-950 shadow-[0_18px_36px_rgba(15,23,42,0.18)]">
-                                            <div className="aspect-[16/9]">
-                                                <iframe
-                                                    className="h-full w-full"
-                                                    src={activeVideo.embedUrl}
-                                                    title={activeVideo.title}
-                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                                    referrerPolicy="strict-origin-when-cross-origin"
-                                                    loading="lazy"
-                                                    allowFullScreen
+                            <div className="mt-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-5">
+                                {workCategoryGroups
+                                    .find((categoryGroup) => categoryGroup.title === group.region)
+                                    ?.items.map((item, itemIndex) => (
+                                    <div
+                                        key={item}
+                                        className="rounded-[1.1rem] border border-[rgba(16,24,38,0.08)] bg-white/68 px-4 py-3"
+                                    >
+                                        <p className="text-xs uppercase tracking-[0.24em] text-[var(--text-dim)]">
+                                            0{itemIndex + 1}
+                                        </p>
+                                        <p className="mt-2 text-lg font-semibold text-[var(--surface-strong)]">{item}</p>
+                                    </div>
+                                ))}
+                            </div>
+
+                            <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                                {group.videos.map((video, videoIndex) => (
+                                    <div
+                                        key={video.id}
+                                        className="overflow-hidden rounded-[1.25rem] border border-white/8 bg-white/78 text-left transition hover:-translate-y-1"
+                                    >
+                                        <div className="relative aspect-[16/10] overflow-hidden bg-slate-950">
+                                            {videoIndex === 0 ? (
+                                                <LazyAutoplayVideoFrame
+                                                    title={video.title}
+                                                    embedUrl={video.embedUrl}
+                                                    poster={video.poster}
+                                                    controls={false}
+                                                    loading="eager"
                                                 />
+                                            ) : (
+                                                <img
+                                                    className="h-full w-full object-cover"
+                                                    src={video.poster}
+                                                    alt={video.title}
+                                                    loading="lazy"
+                                                />
+                                            )}
+                                            <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.01)_24%,rgba(0,0,0,0.12)_62%,rgba(0,0,0,0.28))]" />
+                                            <div className="pointer-events-none absolute inset-x-3 top-3 flex items-center justify-between text-[10px] uppercase tracking-[0.22em] text-white/84">
+                                                <span className="rounded-full border border-white/16 bg-black/34 px-2 py-1">{video.accent}</span>
+                                                <span className="rounded-full border border-white/16 bg-black/34 px-2 py-1 text-[9px] tracking-[0.18em] text-white/72">
+                                                    {videoIndex === 0 ? 'Live' : 'Preview'}
+                                                </span>
                                             </div>
-                                            <div className="bg-[rgba(244,239,231,0.98)] px-4 py-4">
-                                                <p className="text-xs uppercase tracking-[0.24em] text-[var(--text-dim)]">
-                                                    {group.region} / {activeVideo.accent}
-                                                </p>
-                                                <p className="mt-2 text-base font-semibold text-[var(--surface-strong)]">{activeVideo.title}</p>
-                                                <div className="mt-4">
-                                                    <a
-                                                        href={activeVideo.watchUrl}
-                                                        target="_blank"
-                                                        rel="noreferrer"
-                                                        className="inline-flex rounded-full border border-slate-900/12 bg-slate-950 px-4 py-2 text-xs uppercase tracking-[0.24em] text-white transition hover:bg-slate-800"
-                                                    >
-                                                        Open on YouTube
-                                                    </a>
+                                            {videoIndex !== 0 ? (
+                                                <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+                                                    <span className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/34 bg-black/42 text-[10px] uppercase tracking-[0.2em] text-white">
+                                                        Play
+                                                    </span>
                                                 </div>
+                                            ) : null}
+                                        </div>
+                                        <div className="px-4 py-4">
+                                            <p className="text-sm font-semibold text-[var(--surface-strong)]">{video.title}</p>
+                                            <div className="mt-4">
+                                                <a
+                                                    href={video.watchUrl}
+                                                    target="_blank"
+                                                    rel="noreferrer"
+                                                    className="inline-flex rounded-full border border-slate-900/12 bg-slate-950 px-4 py-2 text-xs uppercase tracking-[0.24em] text-white transition hover:bg-slate-800"
+                                                >
+                                                    Open on YouTube
+                                                </a>
                                             </div>
                                         </div>
-
-                                        <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                                            {group.videos.map((video) => (
-                                                <button
-                                                    key={video.id}
-                                                    type="button"
-                                                    onClick={() =>
-                                                        setActiveWorkVideos((prev) => ({
-                                                            ...prev,
-                                                            [group.id]: video.id,
-                                                        }))
-                                                    }
-                                                    className={`overflow-hidden rounded-[1.25rem] border text-left transition hover:-translate-y-1 ${
-                                                        activeVideo.id === video.id
-                                                            ? 'border-[rgba(255,224,184,0.36)] bg-white shadow-[0_16px_36px_rgba(0,0,0,0.18)]'
-                                                            : 'border-white/8 bg-white/78'
-                                                    }`}
-                                                >
-                                                    <div className="aspect-[16/10] overflow-hidden bg-slate-950">
-                                                        <img
-                                                            src={video.poster}
-                                                            alt={video.title}
-                                                            className="h-full w-full object-cover transition duration-300 hover:scale-[1.03]"
-                                                            loading="lazy"
-                                                        />
-                                                    </div>
-                                                    <div className="px-4 py-4">
-                                                        <p className="text-xs uppercase tracking-[0.24em] text-[var(--text-dim)]">{video.accent}</p>
-                                                        <p className="mt-2 text-sm font-semibold text-[var(--surface-strong)]">{video.title}</p>
-                                                    </div>
-                                                </button>
-                                            ))}
-                                        </div>
-                                    </>
-                                ) : null}
-                            </article>
-                        )
-                    })}
+                                    </div>
+                                ))}
+                            </div>
+                        </article>
+                    ))}
                 </div>
 
             </section>
@@ -505,34 +510,41 @@ export default function PortfolioSections() {
                             className="overflow-hidden rounded-[2rem] border border-[var(--border-soft)] bg-white/82 shadow-[0_18px_36px_rgba(16,24,38,0.06)]"
                         >
                             <div
-                                className="h-1.5 w-full"
+                                className="px-7 pb-6 pt-7 sm:px-8"
                                 style={{
                                     background:
                                         index % 2 === 0
-                                            ? 'linear-gradient(90deg, var(--accent-cyan), var(--accent-violet))'
-                                            : 'linear-gradient(90deg, var(--accent-orange), var(--accent-violet))',
+                                            ? 'linear-gradient(145deg, rgba(19,35,60,0.96), rgba(51,83,122,0.88))'
+                                            : 'linear-gradient(145deg, rgba(92,54,32,0.96), rgba(166,116,72,0.88))',
                                 }}
-                            />
-                            <div className="space-y-4 p-7 sm:p-8">
-                                <div className="flex items-start justify-between gap-4">
+                            >
+                                <div className="flex items-start justify-between gap-4 text-white">
                                     <div>
-                                        <p className="text-sm uppercase tracking-[0.28em] text-[var(--text-dim)]">
-                                            {work.role}
+                                        <p className="text-[11px] uppercase tracking-[0.26em] text-white/68">
+                                            {work.format} · {work.territory}
                                         </p>
-                                        <h3 className="mt-3 text-2xl font-semibold text-[var(--surface-strong)]">{work.title}</h3>
+                                        <h3 className="mt-3 text-2xl font-semibold">{work.title}</h3>
+                                        <p className="mt-3 max-w-xl text-sm leading-7 text-white/76">
+                                            {work.context}
+                                        </p>
                                     </div>
-                                    <div className="rounded-full border border-[var(--border-soft)] bg-[rgba(247,241,232,0.95)] px-4 py-2 text-[11px] uppercase tracking-[0.24em] text-[var(--text-dim)]">
-                                        Case Study
+                                    <div className="rounded-full border border-white/14 bg-white/10 px-4 py-2 text-[11px] uppercase tracking-[0.24em] text-white/78">
+                                        {work.year}
                                     </div>
                                 </div>
-                                <p className="text-base leading-8 text-[var(--text-soft)]">{work.detail}</p>
-                                <div className="pt-2">
-                                    <p className="text-[11px] uppercase tracking-[0.24em] text-[var(--text-dim)]">
-                                        Focus
-                                    </p>
-                                    <p className="mt-2 text-sm leading-7 text-[var(--surface-strong)]">
-                                        Cross-border production planning, local execution, client confidence and delivery discipline.
-                                    </p>
+                            </div>
+                            <div className="grid gap-4 p-7 sm:grid-cols-3 sm:p-8">
+                                <div className="rounded-[1.35rem] border border-[var(--border-soft)] bg-[rgba(247,241,232,0.72)] p-5">
+                                    <p className="text-[11px] uppercase tracking-[0.24em] text-[var(--text-dim)]">Role</p>
+                                    <p className="mt-3 text-base font-semibold text-[var(--surface-strong)]">{work.role}</p>
+                                </div>
+                                <div className="rounded-[1.35rem] border border-[var(--border-soft)] bg-[rgba(255,255,255,0.82)] p-5 sm:col-span-2">
+                                    <p className="text-[11px] uppercase tracking-[0.24em] text-[var(--text-dim)]">Production Challenge</p>
+                                    <p className="mt-3 text-sm leading-7 text-[var(--text-soft)]">{work.challenge}</p>
+                                </div>
+                                <div className="rounded-[1.35rem] border border-[var(--border-soft)] bg-[rgba(255,255,255,0.82)] p-5 sm:col-span-3">
+                                    <p className="text-[11px] uppercase tracking-[0.24em] text-[var(--text-dim)]">Outcome</p>
+                                    <p className="mt-3 text-sm leading-7 text-[var(--surface-strong)]">{work.outcome}</p>
                                 </div>
                             </div>
                         </article>
