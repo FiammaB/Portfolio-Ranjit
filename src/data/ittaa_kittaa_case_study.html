@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ittaa Kittaa — Production Case Study</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;0,600;0,700;1,300;1,600&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #EDEDED;
+    --bg-card:   #E4E4E4;
+    --bg-white:  #F5F5F5;
+    --ink:       #0D0D0D;
+    --ink-mid:   #1F1F1F;
+    --ink-soft:  #3A3A3A;
+    --muted:     #7A7A7A;
+    --rule:      #C0C0C0;
+    --rule-dark: #999999;
+    --red:       #C0392B;
+    --red-dim:   rgba(192,57,43,0.08);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ══════════════════════════════
+     HERO
+  ══════════════════════════════ */
+  .hero {
+    background: var(--ink);
+    color: #F0F0F0;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 400px;
+    width: 4px;
+    height: 100%;
+    background: var(--red);
+  }
+
+  .hero-left {
+    padding: 80px 64px 80px 72px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-right: 1px solid rgba(255,255,255,0.07);
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-left::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(90deg, transparent, transparent 71px, rgba(255,255,255,0.02) 72px);
+    pointer-events: none;
+  }
+
+  .hero-right {
+    padding: 80px 48px 80px 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background: #111111;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-stamp {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 7px 14px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 48px;
+  }
+
+  .hero-stamp span {
+    display: inline-block;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--red);
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(64px, 9vw, 130px);
+    font-weight: 700;
+    line-height: 0.88;
+    letter-spacing: -0.02em;
+    color: #F0F0F0;
+    margin-bottom: 8px;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    font-weight: 300;
+    color: rgba(240,240,240,0.5);
+  }
+
+  .hero-tagline {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.32);
+    margin-top: 20px;
+    margin-bottom: 56px;
+  }
+
+  .hero-bottom-line {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    flex-wrap: wrap;
+  }
+
+  .hero-stat { display: flex; flex-direction: column; gap: 4px; }
+
+  .s-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px;
+    font-weight: 600;
+    color: #F0F0F0;
+    line-height: 1;
+  }
+
+  .s-lbl {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.28);
+  }
+
+  .stat-div { width: 1px; height: 36px; background: rgba(255,255,255,0.1); }
+
+  /* RIGHT PANEL */
+  .right-title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 24px;
+  }
+
+  .meta-row {
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .meta-row:last-of-type { border-bottom: none; }
+
+  .m-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.28);
+  }
+
+  .m-value {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: #E8E8E8;
+    line-height: 1.45;
+  }
+
+  /* ══════════════════════════════
+     PAGE BODY
+  ══════════════════════════════ */
+  .page {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 56px 120px;
+  }
+
+  .section {
+    padding: 68px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .section:last-of-type { border-bottom: none; }
+
+  .sec-header {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 0;
+    align-items: start;
+    margin-bottom: 36px;
+  }
+
+  .sec-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--red);
+    letter-spacing: 0.1em;
+    padding-top: 8px;
+  }
+
+  .sec-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(24px, 3vw, 38px);
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 12px;
+  }
+
+  /* PROSE */
+  .prose {
+    max-width: 800px;
+    font-size: 16px;
+    line-height: 1.85;
+    color: var(--ink-soft);
+    padding-left: 56px;
+  }
+
+  .prose p + p { margin-top: 18px; }
+  .prose strong { color: var(--ink); font-weight: 500; }
+
+  /* CALLOUT */
+  .callout {
+    background: var(--ink);
+    padding: 36px 40px;
+    margin-left: 56px;
+    margin-bottom: 32px;
+    max-width: 800px;
+    position: relative;
+  }
+
+  .callout::before {
+    content: '"';
+    position: absolute;
+    top: -8px;
+    left: 32px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 80px;
+    color: var(--red);
+    line-height: 1;
+  }
+
+  .callout p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: 300;
+    color: #E8E8E8;
+    line-height: 1.65;
+    padding-top: 16px;
+  }
+
+  /* ROLE TAG */
+  .role-tag {
+    display: inline-block;
+    background: var(--ink);
+    color: #F0F0F0;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 7px 16px;
+    margin-left: 56px;
+    margin-bottom: 24px;
+  }
+
+  /* BULLET LIST */
+  .bullet-list {
+    list-style: none;
+    padding: 0;
+    margin-left: 56px;
+    max-width: 800px;
+  }
+
+  .bullet-list li {
+    padding: 13px 0 13px 24px;
+    border-bottom: 1px solid var(--rule);
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--ink-soft);
+    position: relative;
+  }
+
+  .bullet-list li:last-child { border-bottom: none; }
+
+  .bullet-list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    top: 13px;
+    color: var(--red);
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  .bullet-list li strong { color: var(--ink); font-weight: 500; }
+
+  /* METRICS */
+  .metrics-strip {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    margin-left: 56px;
+    margin-bottom: 36px;
+    border: 1px solid var(--rule-dark);
+    max-width: 860px;
+  }
+
+  .metric-cell {
+    padding: 28px 20px;
+    border-right: 1px solid var(--rule-dark);
+    text-align: center;
+    background: var(--bg-white);
+    transition: background 0.2s;
+    cursor: default;
+  }
+
+  .metric-cell:last-child { border-right: none; }
+
+  .metric-cell:hover { background: var(--ink); }
+  .metric-cell:hover .m-big { color: #F0F0F0; }
+  .metric-cell:hover .m-tag { color: rgba(255,255,255,0.38); }
+
+  .m-big {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 34px;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 6px;
+    transition: color 0.2s;
+  }
+
+  .m-tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    transition: color 0.2s;
+  }
+
+  /* CHALLENGE GRID */
+  .challenge-wrap {
+    margin-left: 56px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border: 1px solid var(--rule-dark);
+    max-width: 960px;
+  }
+
+  .ch-card {
+    padding: 28px 24px;
+    border-right: 1px solid var(--rule-dark);
+    border-bottom: 1px solid var(--rule-dark);
+    background: var(--bg-white);
+    transition: background 0.2s;
+    cursor: default;
+  }
+
+  .ch-card:nth-child(3n) { border-right: none; }
+  .ch-card:nth-child(4), .ch-card:nth-child(5), .ch-card:nth-child(6) { border-bottom: none; }
+
+  .ch-card:hover { background: var(--ink); }
+  .ch-card:hover .ch-num { color: var(--red); }
+  .ch-card:hover .ch-title { color: #F0F0F0; }
+  .ch-card:hover .ch-body { color: rgba(240,240,240,0.5); }
+
+  .ch-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 8px;
+    transition: color 0.2s;
+  }
+
+  .ch-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 8px;
+    line-height: 1.3;
+    transition: color 0.2s;
+  }
+
+  .ch-body {
+    font-size: 13px;
+    line-height: 1.65;
+    color: var(--muted);
+    transition: color 0.2s;
+  }
+
+  /* EXECUTION */
+  .exec-list { margin-left: 56px; max-width: 860px; }
+
+  .exec-item {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 20px;
+    padding: 28px 0;
+    border-bottom: 1px solid var(--rule);
+    align-items: start;
+  }
+
+  .exec-item:last-child { border-bottom: none; }
+
+  .ex-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--rule-dark);
+    line-height: 1;
+    padding-top: 2px;
+  }
+
+  .ex-title {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--red);
+    margin-bottom: 8px;
+  }
+
+  .ex-body {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--ink-soft);
+  }
+
+  /* COMPETENCY PILLS */
+  .pill-wrap {
+    margin-left: 56px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    max-width: 820px;
+  }
+
+  .pill {
+    border: 1px solid var(--rule-dark);
+    background: var(--bg-white);
+    color: var(--ink-soft);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 7px 16px;
+    transition: all 0.2s;
+    cursor: default;
+  }
+
+  .pill:hover {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: #F0F0F0;
+  }
+
+  /* MEDIA LINKS */
+  .media-list {
+    margin-left: 56px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    max-width: 760px;
+  }
+
+  .media-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 18px 22px;
+    background: var(--bg-white);
+    border: 1px solid var(--rule);
+    text-decoration: none;
+    transition: all 0.2s;
+    color: inherit;
+  }
+
+  .media-item:hover { background: var(--ink); border-color: var(--ink); }
+  .media-item:hover .mi-type { color: var(--red); }
+  .media-item:hover .mi-title { color: #E8E8E8; }
+  .media-item:hover .mi-arrow { color: #E8E8E8; }
+  .media-item:hover .mi-icon { color: var(--red); }
+
+  .mi-icon { font-size: 18px; color: var(--ink); flex-shrink: 0; transition: color 0.2s; }
+
+  .mi-type {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 3px;
+    transition: color 0.2s;
+  }
+
+  .mi-title { font-size: 14px; font-weight: 400; color: var(--ink); transition: color 0.2s; }
+  .mi-arrow { margin-left: auto; font-size: 16px; color: var(--muted); transition: color 0.2s; }
+
+  /* CREDITS TABLE */
+  .credits-table {
+    margin-left: 56px;
+    width: calc(100% - 56px);
+    max-width: 820px;
+    border-collapse: collapse;
+  }
+
+  .credits-table tr { border-bottom: 1px solid var(--rule); }
+  .credits-table tr:last-child { border-bottom: none; }
+
+  .credits-table td { padding: 13px 0; font-size: 14px; vertical-align: top; line-height: 1.5; }
+
+  .credits-table td:first-child {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    width: 200px;
+    padding-right: 24px;
+  }
+
+  .credits-table td:last-child { color: var(--ink-soft); }
+
+  /* FOOTER */
+  .page-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 40px 0 0;
+    border-top: 2px solid var(--ink);
+  }
+
+  .footer-left {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-style: italic;
+    color: var(--ink-soft);
+  }
+
+  .footer-left strong { font-style: normal; font-weight: 600; color: var(--ink); }
+
+  .footer-right {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: right;
+  }
+
+  .ornament {
+    text-align: center;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.6em;
+    color: var(--rule-dark);
+    padding: 24px 0;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 960px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero::after { display: none; }
+    .hero-right { padding: 48px 40px; border-top: 1px solid rgba(255,255,255,0.07); }
+    .page { padding: 0 28px 80px; }
+    .prose, .bullet-list, .metrics-strip, .challenge-wrap,
+    .exec-list, .pill-wrap, .media-list, .credits-table, .role-tag, .callout { margin-left: 0; }
+    .challenge-wrap { grid-template-columns: 1fr 1fr; }
+    .metrics-strip { grid-template-columns: repeat(3, 1fr); }
+    .credits-table { width: 100%; }
+  }
+
+  @media (max-width: 600px) {
+    .hero-left { padding: 48px 24px; }
+    .challenge-wrap { grid-template-columns: 1fr; }
+    .ch-card:nth-child(n) { border-right: none; border-bottom: 1px solid var(--rule-dark); }
+    .metrics-strip { grid-template-columns: repeat(2, 1fr); }
+    .exec-item { grid-template-columns: 1fr; gap: 4px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════ HERO ══════════════ -->
+<section class="hero">
+  <div class="hero-left">
+    <div>
+      <div class="hero-stamp">
+        <span></span>
+        Production Case Study &nbsp;·&nbsp; Feature Film &nbsp;·&nbsp; 2024
+      </div>
+      <h1 class="hero-title">Ittaa<br><em>Kittaa</em></h1>
+      <p class="hero-tagline">Gujarati Comedy–Drama &nbsp;·&nbsp; Theatrical Release</p>
+    </div>
+    <div class="hero-bottom-line">
+      <div class="hero-stat">
+        <div class="s-num">7.5</div>
+        <div class="s-lbl">IMDb Rating</div>
+      </div>
+      <div class="stat-div"></div>
+      <div class="hero-stat">
+        <div class="s-num">₹3 Cr</div>
+        <div class="s-lbl">Budget</div>
+      </div>
+      <div class="stat-div"></div>
+      <div class="hero-stat">
+        <div class="s-num">4/5</div>
+        <div class="s-lbl">Times of India</div>
+      </div>
+      <div class="stat-div"></div>
+      <div class="hero-stat">
+        <div class="s-num">2h 3m</div>
+        <div class="s-lbl">Runtime</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="right-title">Project Credentials</div>
+    <div class="meta-row">
+      <div class="m-label">Language / Genre</div>
+      <div class="m-value">Gujarati &nbsp;·&nbsp; Comedy–Drama / Family</div>
+    </div>
+    <div class="meta-row">
+      <div class="m-label">Release Date</div>
+      <div class="m-value">19 January 2024 &nbsp;·&nbsp; Theatrical</div>
+    </div>
+    <div class="meta-row">
+      <div class="m-label">Platform</div>
+      <div class="m-value">Shemaroo</div>
+    </div>
+    <div class="meta-row">
+      <div class="m-label">Production Partners</div>
+      <div class="m-value">Janvi Productions · Gayatri Productions · Jio Studios</div>
+    </div>
+    <div class="meta-row">
+      <div class="m-label">Produced By</div>
+      <div class="m-value">Pankaj Keshruwala &amp; Chandni Soni</div>
+    </div>
+    <div class="meta-row">
+      <div class="m-label">Directed By</div>
+      <div class="m-value">Abhinn Sharma &amp; Manthan Purohit</div>
+    </div>
+    <div class="meta-row">
+      <div class="m-label">My Role</div>
+      <div class="m-value">Head of Production</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ CONTENT ══════════════ -->
+<main class="page">
+
+  <!-- 01 · THE BRIEF -->
+  <section class="section">
+    <div class="sec-header">
+      <span class="sec-num">01</span>
+      <h2 class="sec-title">The Brief</h2>
+    </div>
+    <div class="callout">
+      <p>A full-length Gujarati comedy–drama produced for theatrical release and subsequent Shemaroo platform distribution, demanding end-to-end production management across a three-partner co-production structure with a committed opening date and firm platform delivery obligations.</p>
+    </div>
+    <div class="prose">
+      <p>Ittaa Kittaa presented a production mandate of uncommon complexity for the regional Gujarati market: unite three distinct production entities — Janvi Productions, Gayatri Productions, and Jio Studios — under a single, coherent operational framework, shoot across multiple locations in Gujarat, and deliver a finished feature meeting the exacting technical and editorial standards of both theatrical distribution and Shemaroo's streaming platform — all against a fixed theatrical opening date of 19 January 2024.</p>
+    </div>
+  </section>
+
+  <!-- 02 · BACKGROUND -->
+  <section class="section">
+    <div class="sec-header">
+      <span class="sec-num">02</span>
+      <h2 class="sec-title">Background &amp; Organisational Context</h2>
+    </div>
+    <div class="prose">
+      <p><strong>Ittaa Kittaa</strong> is a 2024 Gujarati family comedy–drama charting the transformation of the Jariwala household after Kavya and Nirav — a middle-class couple confronting infertility — accidentally adopt two sisters, aged seven and thirteen. Written by Antima Pawar and Azhar Saiyed, and directed by the co-directing partnership of Abhinn Sharma and Manthan Purohit, the film tackles cultural stigma around infertility and adoption with warmth, wit, and emotional precision.</p>
+      <p>Produced under the joint banner of <strong>Janvi Productions, Gayatri Productions, and Jio Studios</strong>, with Pankaj Keshruwala and Chandni Soni serving as producers, the project sat at the intersection of regional storytelling ambition and national platform infrastructure — a combination that elevated both the operational stakes and the reputational opportunity for every department head involved.</p>
+    </div>
+  </section>
+
+  <!-- 03 · ROLES & RESPONSIBILITIES -->
+  <section class="section">
+    <div class="sec-header">
+      <span class="sec-num">03</span>
+      <h2 class="sec-title">Roles &amp; Responsibilities</h2>
+    </div>
+    <div class="role-tag">Head of Production</div>
+    <ul class="bullet-list">
+      <li><strong>Led</strong> all pre-production planning across the full lifecycle — from initial budgeting and scheduling through crew onboarding and location approvals — functioning as the primary operational authority across all three production partner entities.</li>
+      <li><strong>Structured</strong> multi-vendor contracts, talent agreements, and below-the-line crew terms, ensuring consistent obligations and standardised protocols across all departments.</li>
+      <li><strong>Managed</strong> day-to-day cashflow, phased budget drawdowns, and cost reporting, maintaining financial transparency across the co-production hierarchy throughout the shoot.</li>
+      <li><strong>Coordinated</strong> all location permitting, municipal liaison, and site-specific risk assessments across multiple shooting locations in Gujarat, ensuring full regulatory compliance prior to each unit's arrival.</li>
+      <li><strong>Delegated</strong> departmental responsibilities to heads of art, costume, camera, and post-production, establishing clear accountability chains and standardised communication protocols across units.</li>
+      <li><strong>Navigated</strong> the editorial and technical delivery requirements mandated by Jio Studios and Shemaroo, integrating post-production workflows from picture lock through to final mastering.</li>
+      <li><strong>Oversaw</strong> stakeholder management across producers, directors, platform representatives, and local community contacts, maintaining alignment on creative, logistical, and compliance priorities throughout.</li>
+    </ul>
+  </section>
+
+  <!-- 04 · SCALE & SCOPE -->
+  <section class="section">
+    <div class="sec-header">
+      <span class="sec-num">04</span>
+      <h2 class="sec-title">Scale &amp; Scope</h2>
+    </div>
+
+    <div class="metrics-strip">
+      <div class="metric-cell">
+        <div class="m-big">₹3 Cr</div>
+        <div class="m-tag">Production Budget</div>
+      </div>
+      <div class="metric-cell">
+        <div class="m-big">7.5</div>
+        <div class="m-tag">IMDb Rating</div>
+      </div>
+      <div class="metric-cell">
+        <div class="m-big">4/5</div>
+        <div class="m-tag">Times of India</div>
+      </div>
+      <div class="metric-cell">
+        <div class="m-big">₹3.02 Cr</div>
+        <div class="m-tag">Gross Box Office</div>
+      </div>
+      <div class="metric-cell">
+        <div class="m-big">2h 3m</div>
+        <div class="m-tag">Final Runtime</div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <p>The production encompassed multiple shooting locations across Gujarat, a principal cast of five with a full supporting ensemble, a dual-director creative partnership, and a composer-led original score by Kedar-Bhargav with lyrics by Bhargav Purohit and Kirtidan Gadhvi. Vocal contributions from Aishwarya Majumdar and Jigardan Gadhavi elevated the musical programme to a standard commensurate with the theatrical release window. Following its theatrical run, the film moved to Shemaroo for streaming distribution, extending its audience reach across the domestic Gujarati market and beyond.</p>
+    </div>
+  </section>
+
+  <!-- 05 · THE CHALLENGE -->
+  <section class="section">
+    <div class="sec-header">
+      <span class="sec-num">05</span>
+      <h2 class="sec-title">The Challenge</h2>
+    </div>
+    <div class="challenge-wrap">
+      <div class="ch-card">
+        <div class="ch-num">Challenge 01</div>
+        <div class="ch-title">Multi-Stakeholder Contract Management &amp; Co-Production Alignment</div>
+        <div class="ch-body">Coordinating contractual obligations, creative approvals, and financial reporting across three distinct production partners whilst maintaining unified delivery timelines and editorial governance throughout the production period.</div>
+      </div>
+      <div class="ch-card">
+        <div class="ch-num">Challenge 02</div>
+        <div class="ch-title">Location Permitting, Risk Assessment &amp; Local Authority Compliance</div>
+        <div class="ch-body">Securing multi-location shoot permits across Gujarat, conducting formal risk assessments for public and private filming sites, and managing liaison with municipal bodies, traffic authorities, and cultural site custodians.</div>
+      </div>
+      <div class="ch-card">
+        <div class="ch-num">Challenge 03</div>
+        <div class="ch-title">Budget Control &amp; Cashflow Management</div>
+        <div class="ch-body">Structuring a multi-vendor, multi-location budget with phased drawdowns, managing regional cost variables, and maintaining financial compliance across a co-funded production with a major platform stakeholder.</div>
+      </div>
+      <div class="ch-card">
+        <div class="ch-num">Challenge 04</div>
+        <div class="ch-title">Crew Recruitment, Grading &amp; Department Head Onboarding</div>
+        <div class="ch-body">Sourcing and contracting qualified heads of department within a regional talent pool, standardising call sheets and inter-departmental communication, and managing a multi-unit crew across concurrent shooting days.</div>
+      </div>
+      <div class="ch-card">
+        <div class="ch-num">Challenge 05</div>
+        <div class="ch-title">Platform Delivery Compliance &amp; Technical Post-Production Specifications</div>
+        <div class="ch-body">Meeting Jio Studios' and Shemaroo's precise technical delivery requirements — resolution, subtitle formatting, audio mix specifications, and metadata standards — within a compressed post window tied to a fixed theatrical date.</div>
+      </div>
+      <div class="ch-card">
+        <div class="ch-num">Challenge 06</div>
+        <div class="ch-title">Community Engagement, Cultural Sensitivity &amp; Stakeholder Management</div>
+        <div class="ch-body">Managing relationships with local communities, regional government bodies, and cultural stakeholders across Gujarat, ensuring the production remained operationally respectful, legally compliant, and reputationally sound throughout.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 · EXECUTION & STRATEGY -->
+  <section class="section">
+    <div class="sec-header">
+      <span class="sec-num">06</span>
+      <h2 class="sec-title">Execution &amp; Strategy</h2>
+    </div>
+    <div class="exec-list">
+      <div class="exec-item">
+        <div class="ex-num">01</div>
+        <div>
+          <div class="ex-title">Unified Co-Production Framework</div>
+          <div class="ex-body">Formulated a single, consolidated production governance structure binding all three partner entities to agreed approval hierarchies, escalation pathways, and reporting schedules. Eliminated ambiguity over decision-making authority by establishing a centralised production office as the operational hub, through which all contractual, creative, and logistical matters were routed and resolved.</div>
+        </div>
+      </div>
+      <div class="exec-item">
+        <div class="ex-num">02</div>
+        <div>
+          <div class="ex-title">Location Strategy &amp; Regulatory Compliance</div>
+          <div class="ex-body">Built a phased location-clearance programme covering all shooting sites across Gujarat well in advance of principal photography. Produced formal risk assessments for each location, standardised the permit application process across municipal jurisdictions, and assigned dedicated liaison contacts per site — ensuring zero shoot-day disruptions attributable to regulatory non-compliance.</div>
+        </div>
+      </div>
+      <div class="exec-item">
+        <div class="ex-num">03</div>
+        <div>
+          <div class="ex-title">Budget Architecture &amp; Financial Controls</div>
+          <div class="ex-body">Structured a granular, line-by-line production budget with phased financial drawdowns keyed to milestone deliverables. Identified cost-pressure points early through rigorous pre-production cost reporting, allowing the production to maximise resource allocation in high-visibility areas — performance, locations, and music — without exceeding the agreed production envelope of ₹3 crore.</div>
+        </div>
+      </div>
+      <div class="exec-item">
+        <div class="ex-num">04</div>
+        <div>
+          <div class="ex-title">Regional Crew Recruitment &amp; Departmental Integration</div>
+          <div class="ex-body">Led a targeted recruitment drive within Gujarat's regional production talent base, onboarding qualified department heads across camera, art direction, costume, sound, and post-production. Standardised call sheets, inter-departmental briefing documents, and production protocols across all units, creating a coherent operational rhythm the dual-director team could rely on throughout the schedule.</div>
+        </div>
+      </div>
+      <div class="exec-item">
+        <div class="ex-num">05</div>
+        <div>
+          <div class="ex-title">Post-Production Pipeline &amp; Platform Compliance</div>
+          <div class="ex-body">Integrated post-production workflows from picture lock through to technical delivery, building the editorial, colour, audio, and metadata pipeline around Jio Studios' and Shemaroo's delivery specifications from day one. Produced and maintained a platform compliance checklist updated at each post milestone, eliminating late-stage rejections and securing clearance for both theatrical and streaming distribution on schedule.</div>
+        </div>
+      </div>
+      <div class="exec-item">
+        <div class="ex-num">06</div>
+        <div>
+          <div class="ex-title">Community Relations &amp; Cultural Production Protocol</div>
+          <div class="ex-body">Refined the production's community engagement approach in collaboration with local cultural stakeholders across each shooting district. Produced a location-specific code of conduct for all crew, mentored junior production staff on culturally appropriate communication, and maintained active dialogue with regional contacts throughout — building goodwill that materially supported access to key locations and community co-operation.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 · IMPACT -->
+  <section class="section">
+    <div class="sec-header">
+      <span class="sec-num">07</span>
+      <h2 class="sec-title">The Impact</h2>
+    </div>
+    <ul class="bullet-list">
+      <li>Delivered the finished feature on the committed theatrical release date of <strong>19 January 2024</strong> — a non-negotiable distribution milestone met in full, with zero deferral or release compromise.</li>
+      <li>Achieved a <strong>₹3.02 crore gross box office collection</strong> — recouping the full production budget in the theatrical window alone, ahead of streaming revenue.</li>
+      <li>Secured an <strong>IMDb rating of 7.5 / 10</strong> and a <strong>Times of India critical rating of 4 / 5</strong>, with reviewers specifically commending concept, direction, music, and performances — validating the standard of execution maintained across all production departments.</li>
+      <li>Completed full technical delivery to Jio Studios' and Shemaroo's platform specifications on schedule, enabling a swift streaming transition following the theatrical run and maximising the film's revenue lifecycle across distribution windows.</li>
+      <li>Produced a Gujarati feature earning positive critical notices across <strong>The Times of India, NewzDaddy, FlickOnClick, and Mid-Day Gujarati</strong>, establishing the project as a credible benchmark within the contemporary Gujarati film slate.</li>
+      <li>Built a co-production operational model successfully integrating three partner entities — a framework directly applicable to future multi-stakeholder regional productions at equivalent or greater scale.</li>
+    </ul>
+  </section>
+
+  <!-- 08 · CRITICAL SUCCESS FACTORS -->
+  <section class="section">
+    <div class="sec-header">
+      <span class="sec-num">08</span>
+      <h2 class="sec-title">Critical Success Factors &amp; Key Decisions</h2>
+    </div>
+    <ul class="bullet-list">
+      <li><strong>Standardised the co-production governance model before pre-production began</strong> — establishing a single operational authority binding all three partners early eliminated contractual ambiguity that would otherwise have surfaced mid-shoot, when the cost of resolution is highest.</li>
+      <li><strong>Planned location compliance as a pre-production deliverable, not a production-phase task</strong> — completing formal risk assessments and permit approvals ahead of the shooting schedule created contingency space that protected the programme against unexpected regulatory friction.</li>
+      <li><strong>Built the post-production pipeline around the delivery specification from day one</strong> — integrating Jio Studios' and Shemaroo's technical requirements into pre-production planning eliminated the costly rework that frequently undermines regional productions targeting platform release.</li>
+      <li><strong>Identified and retained regional talent with genuine above-the-line capability</strong> — investing in quality department heads within the Gujarati talent pool, rather than defaulting to external hires, produced a cohesive, culturally attuned crew whose local knowledge directly accelerated location work and community relations.</li>
+      <li><strong>Maintained budget discipline through milestone-linked drawdowns</strong> — structuring financial disbursements against specific production milestones created natural accountability checkpoints and prevented cost drift, keeping the production within its ₹3 crore envelope throughout.</li>
+      <li><strong>Redefined community engagement as a production asset, not a compliance obligation</strong> — treating local stakeholder relationships as operationally valuable produced tangible access advantages and contributed directly to the production's ability to achieve its Gujarat-wide location programme.</li>
+    </ul>
+  </section>
+
+  <!-- 09 · PROFESSIONAL COMPETENCIES -->
+  <section class="section">
+    <div class="sec-header">
+      <span class="sec-num">09</span>
+      <h2 class="sec-title">Professional Competencies Demonstrated</h2>
+    </div>
+    <div class="pill-wrap">
+      <span class="pill">Multi-Stakeholder Management</span>
+      <span class="pill">Co-Production Governance</span>
+      <span class="pill">End-to-End Production Management</span>
+      <span class="pill">Budget Architecture &amp; Control</span>
+      <span class="pill">Location Permitting &amp; Risk Assessment</span>
+      <span class="pill">Platform Delivery Compliance</span>
+      <span class="pill">Regional Crew Leadership</span>
+      <span class="pill">Post-Production Pipeline Integration</span>
+      <span class="pill">Regulatory &amp; Legal Compliance</span>
+      <span class="pill">Cashflow Management</span>
+      <span class="pill">Community &amp; Cultural Stakeholder Relations</span>
+      <span class="pill">Dual-Director Creative Support</span>
+      <span class="pill">Schedule Risk Management</span>
+      <span class="pill">OTT Technical Specification Fulfilment</span>
+      <span class="pill">Department Head Onboarding &amp; Delegation</span>
+    </div>
+  </section>
+
+  <!-- 10 · OFFICIAL MEDIA -->
+  <section class="section">
+    <div class="sec-header">
+      <span class="sec-num">10</span>
+      <h2 class="sec-title">Official Trailer, Teasers &amp; Media</h2>
+    </div>
+    <div class="media-list">
+      <a class="media-item" href="https://www.youtube.com/watch?v=SndmYECnuys" target="_blank" rel="noopener">
+        <span class="mi-icon">▶</span>
+        <div>
+          <div class="mi-type">Official Trailer</div>
+          <div class="mi-title">Ittaa Kittaa — Official Trailer &nbsp;·&nbsp; YouTube &nbsp;·&nbsp; 3 Jan 2024</div>
+        </div>
+        <span class="mi-arrow">↗</span>
+      </a>
+      <a class="media-item" href="https://www.youtube.com/watch?v=k_JTimmcO_g" target="_blank" rel="noopener">
+        <span class="mi-icon">▶</span>
+        <div>
+          <div class="mi-type">Official Teaser</div>
+          <div class="mi-title">Ittaa Kittaa — Official Teaser &nbsp;·&nbsp; YouTube &nbsp;·&nbsp; 21 Dec 2023</div>
+        </div>
+        <span class="mi-arrow">↗</span>
+      </a>
+      <a class="media-item" href="https://www.youtube.com/watch?v=V1pcZJC0ZEQ" target="_blank" rel="noopener">
+        <span class="mi-icon">🎬</span>
+        <div>
+          <div class="mi-type">Official Poster Launch</div>
+          <div class="mi-title">Ittaa Kittaa — Official Poster Reveal &nbsp;·&nbsp; YouTube &nbsp;·&nbsp; 19 Dec 2023</div>
+        </div>
+        <span class="mi-arrow">↗</span>
+      </a>
+      <a class="media-item" href="https://www.imdb.com/title/tt29615171/" target="_blank" rel="noopener">
+        <span class="mi-icon">★</span>
+        <div>
+          <div class="mi-type">IMDb Listing</div>
+          <div class="mi-title">Ittaa Kittaa (2024) &nbsp;·&nbsp; IMDb &nbsp;·&nbsp; Rating: 7.5 / 10</div>
+        </div>
+        <span class="mi-arrow">↗</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- 11 · VERIFIED PRODUCTION CREDITS -->
+  <section class="section">
+    <div class="sec-header">
+      <span class="sec-num">11</span>
+      <h2 class="sec-title">Verified Production Credits</h2>
+    </div>
+    <table class="credits-table">
+      <tr><td>Production Title</td><td>Ittaa Kittaa</td></tr>
+      <tr><td>Language</td><td>Gujarati</td></tr>
+      <tr><td>Genre</td><td>Comedy–Drama / Family</td></tr>
+      <tr><td>Release Date</td><td>19 January 2024 (Theatrical)</td></tr>
+      <tr><td>Runtime</td><td>2 hrs 3 mins</td></tr>
+      <tr><td>Directed By</td><td>Abhinn Sharma &amp; Manthan Purohit</td></tr>
+      <tr><td>Screenplay</td><td>Antima Pawar &amp; Azhar Saiyed</td></tr>
+      <tr><td>Produced By</td><td>Pankaj Keshruwala &amp; Chandni Soni</td></tr>
+      <tr><td>Production Partners</td><td>Janvi Productions · Gayatri Productions · Jio Studios (Everest Entertainment LLP)</td></tr>
+      <tr><td>Platform</td><td>Shemaroo (Streaming)</td></tr>
+      <tr><td>Principal Cast</td><td>Manasi Parekh, Raunaq Kamdar, Alpana Buch, Jia Vaidya, Princy Prajapati, Prashant Barot</td></tr>
+      <tr><td>Music</td><td>Kedar-Bhargav (composer) &nbsp;·&nbsp; Bhargav Purohit &amp; Kirtidan Gadhvi (lyrics)</td></tr>
+      <tr><td>Vocals</td><td>Aishwarya Majumdar &amp; Jigardan Gadhavi</td></tr>
+      <tr><td>Shoot Locations</td><td>Multiple locations across Gujarat, India</td></tr>
+      <tr><td>Box Office (Gross)</td><td>₹3.02 Crore (India)</td></tr>
+      <tr><td>IMDb</td><td>imdb.com/title/tt29615171/ &nbsp;·&nbsp; 7.5 / 10</td></tr>
+      <tr><td>Critical Reception</td><td>Times of India: 4/5 &nbsp;·&nbsp; NewzDaddy: 3.5/5 &nbsp;·&nbsp; FlickOnClick: 3.5/5 &nbsp;·&nbsp; Mid-Day Gujarati: Positive</td></tr>
+    </table>
+  </section>
+
+  <div class="ornament">· · · · ·</div>
+
+  <div class="page-footer">
+    <div class="footer-left">Head of Production &nbsp;·&nbsp; <strong>Ittaa Kittaa</strong>, 2024</div>
+    <div class="footer-right">Senior International Executive Producer<br>Line Producer · Fixer · Production Manager</div>
+  </div>
+
+</main>
+</body>
+</html>

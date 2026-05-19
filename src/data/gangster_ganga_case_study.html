@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gangster Ganga — Production Case Study</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Syne:wght@400;500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --midnight:   #080C1A;
+    --deep-navy:  #0D1530;
+    --navy:       #111F45;
+    --navy-mid:   #162252;
+    --panel:      #0B1126;
+    --saffron:    #F5A623;
+    --amber:      #E8891A;
+    --gold-pale:  #FFC85C;
+    --teal:       #1BBFA0;
+    --teal-dim:   rgba(27,191,160,0.12);
+    --ink:        #F2EDE4;
+    --ink-soft:   rgba(242,237,228,0.72);
+    --ink-muted:  rgba(242,237,228,0.38);
+    --ink-ghost:  rgba(242,237,228,0.12);
+    --rule:       rgba(245,166,35,0.2);
+    --rule-soft:  rgba(242,237,228,0.1);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--midnight);
+    color: var(--ink);
+    font-family: 'Syne', sans-serif;
+    font-weight: 400;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ══════════════════════════════
+     HERO
+  ══════════════════════════════ */
+  .hero {
+    min-height: 100vh;
+    background: var(--midnight);
+    position: relative;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -200px;
+    left: -100px;
+    width: 900px;
+    height: 900px;
+    background: conic-gradient(from 200deg at 30% 40%, transparent 0deg, rgba(245,166,35,0.06) 30deg, transparent 60deg);
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    opacity: 0.6;
+  }
+
+  .hero-inner {
+    padding: 72px 80px 0;
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 0;
+    align-items: end;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-content { padding-bottom: 72px; }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--teal-dim);
+    border: 1px solid var(--teal);
+    padding: 6px 16px;
+    border-radius: 2px;
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 52px;
+  }
+
+  .badge-dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--teal);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.7); }
+  }
+
+  .hero-eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--saffron);
+    margin-bottom: 16px;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(60px, 9vw, 130px);
+    font-weight: 900;
+    line-height: 0.88;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+
+  .hero-title .italic-word {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--saffron);
+  }
+
+  .hero-subtitle {
+    margin-top: 24px;
+    font-family: 'Syne', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+
+  .hero-panel {
+    background: var(--panel);
+    border-left: 1px solid var(--rule);
+    border-top: 1px solid var(--rule);
+    padding: 48px 36px 48px;
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    position: relative;
+  }
+
+  .hero-panel::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--saffron), var(--teal));
+  }
+
+  .panel-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 8px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--saffron);
+    margin-bottom: 28px;
+  }
+
+  .cred-row {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--ink-ghost);
+  }
+  .cred-row:last-of-type { border-bottom: none; }
+
+  .c-lbl {
+    font-family: 'Space Mono', monospace;
+    font-size: 8px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 3px;
+  }
+
+  .c-val {
+    font-family: 'Syne', sans-serif;
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.4;
+  }
+
+  .c-val.highlight {
+    color: var(--saffron);
+    font-weight: 700;
+  }
+
+  .hero-stats-bar {
+    background: var(--navy);
+    border-top: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    position: relative;
+    z-index: 2;
+  }
+
+  .stat-cell {
+    padding: 28px 36px;
+    border-right: 1px solid var(--rule);
+    transition: background 0.25s;
+    cursor: default;
+  }
+
+  .stat-cell:last-child { border-right: none; }
+  .stat-cell:hover { background: rgba(245,166,35,0.06); }
+  .stat-cell:hover .stat-num { color: var(--saffron); }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 5px;
+    transition: color 0.25s;
+  }
+
+  .stat-lbl {
+    font-family: 'Space Mono', monospace;
+    font-size: 8px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+
+  /* ══════════════════════════════
+     PAGE BODY
+  ══════════════════════════════ */
+  .page {
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 0 80px 140px;
+  }
+
+  .section {
+    padding: 80px 0;
+    border-bottom: 1px solid var(--rule-soft);
+    position: relative;
+  }
+
+  .section:last-of-type { border-bottom: none; }
+
+  .sec-header {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    margin-bottom: 44px;
+  }
+
+  .sec-index {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--saffron);
+    flex-shrink: 0;
+  }
+
+  .sec-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(26px, 3.2vw, 42px);
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    position: relative;
+  }
+
+  .sec-title::after {
+    content: '';
+    display: block;
+    width: 48px;
+    height: 2px;
+    background: var(--saffron);
+    margin-top: 12px;
+  }
+
+  .prose {
+    max-width: 800px;
+    font-size: 16px;
+    line-height: 1.9;
+    color: var(--ink-soft);
+    padding-left: 60px;
+  }
+
+  .prose p + p { margin-top: 20px; }
+  .prose strong { color: var(--ink); font-weight: 600; }
+
+  .callout {
+    background: linear-gradient(135deg, var(--navy-mid), var(--navy));
+    border-left: 3px solid var(--saffron);
+    padding: 36px 44px;
+    margin-left: 60px;
+    margin-bottom: 32px;
+    max-width: 800px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .callout::before {
+    content: '❝';
+    position: absolute;
+    top: 8px;
+    right: 28px;
+    font-size: 80px;
+    color: rgba(245,166,35,0.07);
+    font-family: 'Playfair Display', serif;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .callout p {
+    font-family: 'Playfair Display', serif;
+    font-size: 19px;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--ink);
+    line-height: 1.7;
+  }
+
+  .role-tag {
+    display: inline-block;
+    background: var(--saffron);
+    color: var(--midnight);
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 8px 18px;
+    margin-left: 60px;
+    margin-bottom: 28px;
+  }
+
+  .bullet-list {
+    list-style: none;
+    padding: 0;
+    margin-left: 60px;
+    max-width: 800px;
+  }
+
+  .bullet-list li {
+    padding: 16px 0 16px 30px;
+    border-bottom: 1px solid var(--rule-soft);
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--ink-soft);
+    position: relative;
+  }
+
+  .bullet-list li:last-child { border-bottom: none; }
+
+  .bullet-list li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    top: 17px;
+    color: var(--saffron);
+    font-size: 11px;
+  }
+
+  .bullet-list li strong { color: var(--ink); font-weight: 600; }
+
+  .metrics-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin-left: 60px;
+    margin-bottom: 40px;
+    max-width: 880px;
+    gap: 2px;
+  }
+
+  .metric-cell {
+    padding: 30px 20px;
+    text-align: center;
+    background: var(--navy);
+    border: 1px solid var(--rule-soft);
+    transition: all 0.25s;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .metric-cell::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--saffron), var(--teal));
+    transform: scaleX(0);
+    transition: transform 0.25s;
+  }
+
+  .metric-cell:hover { background: var(--navy-mid); }
+  .metric-cell:hover::after { transform: scaleX(1); }
+  .metric-cell:hover .m-big { color: var(--saffron); }
+
+  .m-big {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 8px;
+    transition: color 0.25s;
+  }
+
+  .m-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 8px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+
+  .challenge-grid {
+    margin-left: 60px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    max-width: 960px;
+  }
+
+  .ch-card {
+    background: var(--navy);
+    border: 1px solid var(--rule-soft);
+    padding: 30px 26px;
+    transition: all 0.25s;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ch-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--saffron);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+
+  .ch-card:hover { background: var(--navy-mid); }
+  .ch-card:hover::before { transform: scaleX(1); }
+  .ch-card:hover .ch-num { color: var(--gold-pale); }
+
+  .ch-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 8px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--saffron);
+    margin-bottom: 10px;
+    transition: color 0.2s;
+  }
+
+  .ch-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 10px;
+    line-height: 1.35;
+  }
+
+  .ch-body {
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--ink-muted);
+  }
+
+  .exec-list { margin-left: 60px; max-width: 880px; }
+
+  .exec-item {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 24px;
+    padding: 36px 0;
+    border-bottom: 1px solid var(--rule-soft);
+    align-items: start;
+  }
+
+  .exec-item:last-child { border-bottom: none; }
+
+  .ex-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 52px;
+    font-weight: 900;
+    font-style: italic;
+    color: rgba(245,166,35,0.15);
+    line-height: 1;
+    transition: color 0.25s;
+  }
+
+  .exec-item:hover .ex-num { color: rgba(245,166,35,0.4); }
+
+  .ex-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--teal);
+    margin-bottom: 10px;
+  }
+
+  .ex-body {
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--ink-soft);
+  }
+
+  .pill-wrap {
+    margin-left: 60px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    max-width: 840px;
+  }
+
+  .pill {
+    background: transparent;
+    border: 1px solid rgba(245,166,35,0.35);
+    color: var(--ink-soft);
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    transition: all 0.2s;
+    cursor: default;
+  }
+
+  .pill:hover {
+    background: var(--saffron);
+    border-color: var(--saffron);
+    color: var(--midnight);
+  }
+
+  .media-list {
+    margin-left: 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    max-width: 780px;
+  }
+
+  .media-item {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    padding: 20px 24px;
+    background: var(--navy);
+    border: 1px solid var(--rule-soft);
+    text-decoration: none;
+    transition: all 0.25s;
+    color: inherit;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .media-item::after {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--saffron);
+    transform: scaleY(0);
+    transition: transform 0.25s;
+  }
+
+  .media-item:hover { background: var(--navy-mid); }
+  .media-item:hover::after { transform: scaleY(1); }
+  .media-item:hover .mi-icon { color: var(--saffron); }
+  .media-item:hover .mi-title { color: var(--ink); }
+  .media-item:hover .mi-arrow { color: var(--saffron); }
+
+  .mi-icon { font-size: 18px; color: var(--teal); flex-shrink: 0; transition: color 0.2s; }
+
+  .mi-type {
+    font-family: 'Space Mono', monospace;
+    font-size: 8px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 3px;
+  }
+
+  .mi-title { font-size: 14px; font-weight: 500; color: var(--ink-soft); transition: color 0.2s; }
+  .mi-arrow { margin-left: auto; font-size: 16px; color: var(--ink-muted); transition: color 0.2s; }
+
+  .credits-table {
+    margin-left: 60px;
+    width: calc(100% - 60px);
+    max-width: 840px;
+    border-collapse: collapse;
+    background: var(--navy);
+    border: 1px solid var(--rule-soft);
+  }
+
+  .credits-table tr { border-bottom: 1px solid var(--rule-soft); }
+  .credits-table tr:last-child { border-bottom: none; }
+  .credits-table tr:hover { background: var(--navy-mid); }
+
+  .credits-table td {
+    padding: 14px 20px;
+    font-size: 13.5px;
+    vertical-align: top;
+    line-height: 1.5;
+  }
+
+  .credits-table td:first-child {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--saffron);
+    width: 210px;
+    border-right: 1px solid var(--rule-soft);
+  }
+
+  .credits-table td:last-child { color: var(--ink-soft); }
+
+  .credits-table .highlight-row td:last-child {
+    color: var(--saffron);
+    font-weight: 600;
+  }
+
+  .page-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 48px 0 0;
+    border-top: 1px solid var(--rule);
+  }
+
+  .footer-left {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-style: italic;
+    color: var(--ink-soft);
+  }
+
+  .footer-left strong { font-style: normal; font-weight: 700; color: var(--saffron); }
+
+  .footer-right {
+    font-family: 'Space Mono', monospace;
+    font-size: 8px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    text-align: right;
+  }
+
+  .ornament {
+    text-align: center;
+    padding: 28px 0;
+    color: var(--saffron);
+    opacity: 0.4;
+    font-size: 18px;
+    letter-spacing: 0.5em;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1000px) {
+    .hero-inner { grid-template-columns: 1fr; padding: 56px 40px 0; }
+    .hero-panel { border-left: none; border-top: 1px solid var(--rule); }
+    .hero-stats-bar { grid-template-columns: repeat(2, 1fr); }
+    .page { padding: 0 36px 100px; }
+    .prose, .bullet-list, .metrics-strip, .challenge-grid,
+    .exec-list, .pill-wrap, .media-list, .credits-table,
+    .role-tag, .callout { margin-left: 0; }
+    .challenge-grid { grid-template-columns: 1fr 1fr; }
+    .metrics-strip { grid-template-columns: repeat(2, 1fr); }
+    .credits-table { width: 100%; }
+  }
+
+  @media (max-width: 640px) {
+    .hero-inner { padding: 40px 24px 0; }
+    .page { padding: 0 24px 80px; }
+    .challenge-grid { grid-template-columns: 1fr; }
+    .metrics-strip { grid-template-columns: 1fr 1fr; }
+    .exec-item { grid-template-columns: 1fr; gap: 6px; }
+    .ex-num { font-size: 36px; }
+    .hero-stats-bar { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════ HERO ══════════════ -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="badge">
+        <span class="badge-dot"></span>
+        Production Case Study &nbsp;·&nbsp; Short Film &nbsp;·&nbsp; 2023
+      </div>
+      <div class="hero-eyebrow">Hindi Cinema &nbsp;·&nbsp; Jio Cinema Film Festival</div>
+      <h1 class="hero-title">Gangster<br><span class="italic-word">Ganga</span></h1>
+      <p class="hero-subtitle">Family &nbsp;/&nbsp; Drama &nbsp;·&nbsp; Digital Streaming Premiere</p>
+    </div>
+
+    <div class="hero-panel">
+      <div class="panel-label">Project Credentials</div>
+      <div class="cred-row">
+        <div class="c-lbl">Language / Genre</div>
+        <div class="c-val">Hindi &nbsp;·&nbsp; Family / Drama</div>
+      </div>
+      <div class="cred-row">
+        <div class="c-lbl">Release Date</div>
+        <div class="c-val">4 October 2023 &nbsp;·&nbsp; Jio Cinema</div>
+      </div>
+      <div class="cred-row">
+        <div class="c-lbl">Platform</div>
+        <div class="c-val">Jio Cinema / Jio Hotstar</div>
+      </div>
+      <div class="cred-row">
+        <div class="c-lbl">Production Partners</div>
+        <div class="c-val">Janvi Productions &nbsp;·&nbsp; Jio Studios</div>
+      </div>
+      <div class="cred-row">
+        <div class="c-lbl">Directed By</div>
+        <div class="c-val">Sahil Rakesh Grover</div>
+      </div>
+      <div class="cred-row">
+        <div class="c-lbl">My Role</div>
+        <div class="c-val highlight">Executive Producer</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-stats-bar">
+    <div class="stat-cell">
+      <div class="stat-num">6.2</div>
+      <div class="stat-lbl">IMDb Rating</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num">₹1 Cr</div>
+      <div class="stat-lbl">Budget</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num">25m</div>
+      <div class="stat-lbl">Runtime</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num">Oct '23</div>
+      <div class="stat-lbl">Release</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ CONTENT ══════════════ -->
+<main class="page">
+
+  <!-- 01 · THE BRIEF -->
+  <section class="section">
+    <div class="sec-header">
+      <span class="sec-index">01</span>
+      <h2 class="sec-title">The Brief</h2>
+    </div>
+    <div class="callout">
+      <p>A Hindi short film produced for the Jio Cinema Film Festival — India's biggest digital film festival — demanding end-to-end executive production management across a two-partner co-production structure, with a fixed streaming premiere date and firm platform delivery obligations to Jio Studios.</p>
+    </div>
+    <div class="prose">
+      <p>Gangster Ganga required delivering a polished, platform-ready Hindi short film within a compressed production schedule, aligning the creative ambitions of director Sahil Rakesh Grover with the exacting technical and editorial standards of Jio Cinema's curated festival slate. The film premiered on 4 October 2023 as one of 20 award-winning titles in the Jio Cinema Film Festival — a prestige streaming event that placed the production alongside the most competitive short-form content in the Indian digital market.</p>
+    </div>
+  </section>
+
+  <!-- 02 · BACKGROUND -->
+  <section class="section">
+    <div class="sec-header">
+      <span class="sec-index">02</span>
+      <h2 class="sec-title">Background &amp; Organisational Context</h2>
+    </div>
+    <div class="prose">
+      <p><strong>Gangster Ganga</strong> is a 2023 Hindi family drama charting the relationship between Ganga — an iron-willed, endearingly unruly grandmother — and Ved, the young man who steps in to care for her in her daughter's absence. Written by Prashant Beybaar and Prativa Archana Rathi, and directed by Sahil Rakesh Grover, the film explores the tensions, warmth, and quiet negotiations between two generations under one roof: a story of self-introspection drawn from nostalgia and the complexity of familial love.</p>
+      <p>Produced under the joint banner of <strong>Janvi Productions and Jio Studios</strong>, with Supriya Pathak delivering a standout performance as Ganga alongside Veer Rajwant Singh as Ved, the project sat at the intersection of intimate regional storytelling and national platform infrastructure. Selected for the Jio Cinema Film Festival — a 20-title curated showcase streaming from 29 September 2023 — the film carried both reputational weight and the operational rigour of a premium digital premiere.</p>
+    </div>
+  </section>
+
+  <!-- 03 · ROLES & RESPONSIBILITIES -->
+  <section class="section">
+    <div class="sec-header">
+      <span class="sec-index">03</span>
+      <h2 class="sec-title">Roles &amp; Responsibilities</h2>
+    </div>
+    <div class="role-tag">Executive Producer</div>
+    <ul class="bullet-list">
+      <li><strong>Led</strong> all executive-level production oversight from development through to platform delivery, functioning as the senior operational authority across the Janvi Productions and Jio Studios co-production structure.</li>
+      <li><strong>Structured</strong> the production's financial framework within the ₹1 crore budget envelope, establishing phased drawdown schedules and cost-reporting protocols that maintained full fiscal transparency throughout the shoot.</li>
+      <li><strong>Navigated</strong> Jio Studios' platform delivery requirements — encompassing technical specifications, metadata standards, and editorial compliance — integrating these into the production and post-production workflows from the outset.</li>
+      <li><strong>Oversaw</strong> all talent and crew contracting, ensuring standardised agreements across below-the-line personnel and clearly defined terms for principal cast, including lead performances by Supriya Pathak and Veer Rajwant Singh.</li>
+      <li><strong>Coordinated</strong> the Mumbai-based shooting programme, managing location logistics, unit scheduling, and on-set operational compliance within the compressed short-film production timeline.</li>
+      <li><strong>Delegated</strong> departmental responsibilities across camera, art, costume, and sound, building accountable workflow chains that allowed director Sahil Rakesh Grover to focus on performance and creative execution.</li>
+      <li><strong>Produced</strong> the final deliverable package to Jio Cinema's festival premiere specifications on schedule — securing the film's slot in the 20-title Jio Cinema Film Festival line-up on 4 October 2023 without deferral.</li>
+    </ul>
+  </section>
+
+  <!-- 04 · SCALE & SCOPE -->
+  <section class="section">
+    <div class="sec-header">
+      <span class="sec-index">04</span>
+      <h2 class="sec-title">Scale &amp; Scope</h2>
+    </div>
+
+    <div class="metrics-strip">
+      <div class="metric-cell">
+        <div class="m-big">₹1 Cr</div>
+        <div class="m-tag">Production Budget</div>
+      </div>
+      <div class="metric-cell">
+        <div class="m-big">6.2</div>
+        <div class="m-tag">IMDb Rating</div>
+      </div>
+      <div class="metric-cell">
+        <div class="m-big">25m</div>
+        <div class="m-tag">Final Runtime</div>
+      </div>
+      <div class="metric-cell">
+        <div class="m-big">Top 20</div>
+        <div class="m-tag">Jio Cinema Festival</div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <p>The production encompassed a Mumbai-based shoot with a principal cast of four — Supriya Pathak, Veer Rajwant Singh, Aprajita, and Purva Parag — alongside a full supporting crew. The screenplay by Prashant Beybaar and Prativa Archana Rathi delivered a tightly crafted 25-minute narrative that demanded high production value within a disciplined ₹1 crore budget. Selected as one of only 20 titles for the Jio Cinema Film Festival — streamed free to the platform's national audience from 29 September 2023 — Gangster Ganga reached a significant viewership across the Indian digital market.</p>
+    </div>
+  </section>
+
+  <!-- 05 · THE CHALLENGE -->
+  <section class="section">
+    <div class="sec-header">
+      <span class="sec-index">05</span>
+      <h2 class="sec-title">The Challenge</h2>
+    </div>
+    <div class="challenge-grid">
+      <div class="ch-card">
+        <div class="ch-num">Challenge 01</div>
+        <div class="ch-title">Festival Deadline Compliance &amp; Platform Delivery</div>
+        <div class="ch-body">Delivering a fully finished, technically compliant short film to Jio Cinema's festival specifications within a compressed production and post-production window, aligned to a fixed 4 October 2023 premiere date.</div>
+      </div>
+      <div class="ch-card">
+        <div class="ch-num">Challenge 02</div>
+        <div class="ch-title">Budget Discipline Within a ₹1 Crore Production Envelope</div>
+        <div class="ch-body">Structuring and managing all production expenditure within a tight ₹1 crore budget — maximising on-screen production value whilst maintaining granular financial controls across every department and vendor.</div>
+      </div>
+      <div class="ch-card">
+        <div class="ch-num">Challenge 03</div>
+        <div class="ch-title">Co-Production Alignment Across Two Partner Entities</div>
+        <div class="ch-body">Coordinating contractual, creative, and financial decision-making across Janvi Productions and Jio Studios, maintaining unified delivery timelines and clearly defined governance throughout the production period.</div>
+      </div>
+      <div class="ch-card">
+        <div class="ch-num">Challenge 04</div>
+        <div class="ch-title">High-Profile Cast Management &amp; On-Set Compliance</div>
+        <div class="ch-body">Scheduling, contracting, and operationally supporting a principal cast including acclaimed actress Supriya Pathak, ensuring a professional, fully compliant on-set environment commensurate with talent of that calibre.</div>
+      </div>
+      <div class="ch-card">
+        <div class="ch-num">Challenge 05</div>
+        <div class="ch-title">OTT Technical Specification &amp; Post-Production Pipeline</div>
+        <div class="ch-body">Meeting Jio Cinema's precise technical delivery requirements — resolution, colour grade, audio mix, subtitles, and metadata — within a short-film post-production window structured around a non-negotiable streaming date.</div>
+      </div>
+      <div class="ch-card">
+        <div class="ch-num">Challenge 06</div>
+        <div class="ch-title">Location Logistics &amp; Risk Assessment in Mumbai</div>
+        <div class="ch-body">Managing all Mumbai location permitting, site-specific risk assessments, and unit scheduling across the shoot — ensuring zero regulatory disruptions and full stakeholder compliance at every filming location.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 · EXECUTION & STRATEGY -->
+  <section class="section">
+    <div class="sec-header">
+      <span class="sec-index">06</span>
+      <h2 class="sec-title">Execution &amp; Strategy</h2>
+    </div>
+    <div class="exec-list">
+      <div class="exec-item">
+        <div class="ex-num">01</div>
+        <div>
+          <div class="ex-title">Festival Delivery Framework</div>
+          <div class="ex-body">Structured the entire production and post-production schedule around the Jio Cinema Film Festival premiere date, building backwards from the 4 October 2023 deadline. Produced a milestone-driven delivery plan integrating picture lock, colour grade, audio mix, and platform submission into a single, sequenced pipeline — eliminating schedule risk at each post-production stage and securing clearance for the festival slot on time.</div>
+        </div>
+      </div>
+      <div class="exec-item">
+        <div class="ex-num">02</div>
+        <div>
+          <div class="ex-title">Budget Architecture &amp; Financial Controls</div>
+          <div class="ex-body">Formulated a granular, line-by-line production budget within the ₹1 crore envelope, with phased drawdowns keyed to principal photography and post-production milestones. Identified cost-pressure points through rigorous pre-production cost reporting, maximising resource allocation to the areas of highest creative return — performance, production design, and sound — without breaching the agreed financial ceiling.</div>
+        </div>
+      </div>
+      <div class="exec-item">
+        <div class="ex-num">03</div>
+        <div>
+          <div class="ex-title">Unified Co-Production Governance</div>
+          <div class="ex-body">Built a consolidated operational governance structure binding Janvi Productions and Jio Studios to agreed approval hierarchies, reporting schedules, and escalation pathways. Eliminated decision-making ambiguity by establishing a centralised production authority through which all contractual, creative, and logistical matters were resolved — maintaining unified momentum across both partner entities throughout.</div>
+        </div>
+      </div>
+      <div class="exec-item">
+        <div class="ex-num">04</div>
+        <div>
+          <div class="ex-title">Talent Management &amp; On-Set Standards</div>
+          <div class="ex-body">Oversaw all talent engagement across the principal cast, structuring standardised contracts and clearly defined call schedules to support a professional, disruption-free shoot. Produced a compliant, well-organised on-set environment aligned to the requirements of a high-profile cast led by Supriya Pathak — creating the conditions for the quality performance that defined the film's critical reception.</div>
+        </div>
+      </div>
+      <div class="exec-item">
+        <div class="ex-num">05</div>
+        <div>
+          <div class="ex-title">OTT Post-Production Pipeline &amp; Technical Compliance</div>
+          <div class="ex-body">Integrated post-production workflows from picture lock through to final platform submission, building the editorial, colour, audio, and metadata pipeline around Jio Cinema's delivery specifications from day one. Maintained a platform compliance checklist updated at every post milestone — eliminating late-stage technical rejections and ensuring the film was submitted to the festival slate on schedule.</div>
+        </div>
+      </div>
+      <div class="exec-item">
+        <div class="ex-num">06</div>
+        <div>
+          <div class="ex-title">Mumbai Location Strategy &amp; Regulatory Compliance</div>
+          <div class="ex-body">Planned and cleared all Mumbai filming locations well in advance of principal photography, producing formal risk assessments and securing the required municipal permits for each site. Assigned dedicated liaison responsibilities per location, standardised the permit process across all shooting days, and built sufficient contingency into the shooting schedule — producing zero regulatory disruptions throughout the unit's filming programme.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 · IMPACT -->
+  <section class="section">
+    <div class="sec-header">
+      <span class="sec-index">07</span>
+      <h2 class="sec-title">The Impact</h2>
+    </div>
+    <ul class="bullet-list">
+      <li>Delivered the finished short film on the committed digital premiere date of <strong>4 October 2023</strong> — securing its position in the Jio Cinema Film Festival's curated 20-title line-up with zero deferral or schedule compromise.</li>
+      <li>Produced the film within the agreed <strong>₹1 crore production budget</strong>, maintaining full financial compliance across all departments and vendors throughout the production and post-production period.</li>
+      <li>Achieved an <strong>IMDb rating of 6.2 / 10</strong> — establishing a verified public production credit on one of the most prominent global film databases.</li>
+      <li>Secured a slot in <strong>India's Biggest Digital Film Festival</strong> on Jio Cinema, placing the film in front of the platform's national audience of millions — a significant distribution outcome for a short-form production of this scale and budget.</li>
+      <li>Completed full technical delivery to Jio Cinema's platform specifications on schedule, enabling a clean festival premiere and maximising the film's digital reach from launch day.</li>
+      <li>Built an efficient, replicable co-production operational model integrating Janvi Productions and Jio Studios — a framework directly applicable to future short-form and feature productions targeting premium OTT platforms.</li>
+    </ul>
+  </section>
+
+  <!-- 08 · CRITICAL SUCCESS FACTORS -->
+  <section class="section">
+    <div class="sec-header">
+      <span class="sec-index">08</span>
+      <h2 class="sec-title">Critical Success Factors &amp; Key Decisions</h2>
+    </div>
+    <ul class="bullet-list">
+      <li><strong>Structured the entire production schedule around the festival deadline, not around production convenience</strong> — reverse-engineering the shoot and post calendar from the 4 October premiere date created a non-negotiable delivery discipline that kept all departments aligned to a single shared milestone.</li>
+      <li><strong>Built the OTT post-production pipeline from day one</strong> — integrating Jio Cinema's technical delivery requirements into pre-production planning eliminated the costly rework that frequently derails short-form productions targeting premium platform release under compressed timescales.</li>
+      <li><strong>Maintained financial discipline through milestone-linked drawdowns</strong> — structuring all financial disbursements against specific production milestones created natural accountability checkpoints and prevented cost drift, keeping the production within its ₹1 crore envelope throughout.</li>
+      <li><strong>Standardised the co-production governance model before pre-production commenced</strong> — establishing clear operational authority across Janvi Productions and Jio Studios from the outset eliminated contractual ambiguity that would otherwise have surfaced mid-production, when the cost of resolution is highest.</li>
+      <li><strong>Created a professional on-set environment commensurate with the cast's profile</strong> — producing compliant, well-organised shoot conditions for a principal cast of Supriya Pathak's calibre was a non-negotiable prerequisite for the standard of performance the film required.</li>
+      <li><strong>Planned location compliance as a pre-production deliverable, not a production-phase task</strong> — completing all Mumbai location risk assessments and permit clearances ahead of principal photography created contingency headroom that protected the schedule against regulatory friction.</li>
+    </ul>
+  </section>
+
+  <!-- 09 · PROFESSIONAL COMPETENCIES -->
+  <section class="section">
+    <div class="sec-header">
+      <span class="sec-index">09</span>
+      <h2 class="sec-title">Professional Competencies Demonstrated</h2>
+    </div>
+    <div class="pill-wrap">
+      <span class="pill">Executive Production Leadership</span>
+      <span class="pill">Co-Production Governance</span>
+      <span class="pill">OTT Platform Delivery Compliance</span>
+      <span class="pill">Budget Architecture &amp; Control</span>
+      <span class="pill">Short-Form Production Management</span>
+      <span class="pill">Festival Delivery Scheduling</span>
+      <span class="pill">Talent &amp; Cast Management</span>
+      <span class="pill">Post-Production Pipeline Integration</span>
+      <span class="pill">Regulatory &amp; Location Compliance</span>
+      <span class="pill">Cashflow &amp; Milestone Management</span>
+      <span class="pill">Multi-Stakeholder Alignment</span>
+      <span class="pill">Technical Specification Fulfilment</span>
+      <span class="pill">Vendor &amp; Crew Contracting</span>
+      <span class="pill">Digital Platform Stakeholder Management</span>
+      <span class="pill">Risk Assessment &amp; Contingency Planning</span>
+    </div>
+  </section>
+
+  <!-- 10 · OFFICIAL MEDIA -->
+  <section class="section">
+    <div class="sec-header">
+      <span class="sec-index">10</span>
+      <h2 class="sec-title">Official Trailer, Teasers &amp; Media</h2>
+    </div>
+    <div class="media-list">
+      <a class="media-item" href="https://www.youtube.com/watch?v=5grYR_Q4T90" target="_blank" rel="noopener">
+        <span class="mi-icon">▶</span>
+        <div>
+          <div class="mi-type">Official Film — Full Stream</div>
+          <div class="mi-title">Gangster Ganga &nbsp;·&nbsp; JioCinema Film Festival &nbsp;·&nbsp; YouTube &nbsp;·&nbsp; 4 Oct 2023</div>
+        </div>
+        <span class="mi-arrow">↗</span>
+      </a>
+      <a class="media-item" href="https://www.imdb.com/title/tt29267827/" target="_blank" rel="noopener">
+        <span class="mi-icon">★</span>
+        <div>
+          <div class="mi-type">IMDb Listing</div>
+          <div class="mi-title">Gangster Ganga (2023) &nbsp;·&nbsp; IMDb &nbsp;·&nbsp; Rating: 6.2 / 10</div>
+        </div>
+        <span class="mi-arrow">↗</span>
+      </a>
+      <a class="media-item" href="https://letterboxd.com/film/gangster-ganga/" target="_blank" rel="noopener">
+        <span class="mi-icon">◈</span>
+        <div>
+          <div class="mi-type">Letterboxd</div>
+          <div class="mi-title">Gangster Ganga (2023) &nbsp;·&nbsp; Letterboxd &nbsp;·&nbsp; Audience Reviews</div>
+        </div>
+        <span class="mi-arrow">↗</span>
+      </a>
+      <a class="media-item" href="https://www.themoviedb.org/movie/1186985-gangster-ganga" target="_blank" rel="noopener">
+        <span class="mi-icon">◉</span>
+        <div>
+          <div class="mi-type">TMDB Listing</div>
+          <div class="mi-title">Gangster Ganga (2023) &nbsp;·&nbsp; The Movie Database</div>
+        </div>
+        <span class="mi-arrow">↗</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- 11 · VERIFIED PRODUCTION CREDITS -->
+  <section class="section">
+    <div class="sec-header">
+      <span class="sec-index">11</span>
+      <h2 class="sec-title">Verified Production Credits</h2>
+    </div>
+    <table class="credits-table">
+      <tr><td>Production Title</td><td>Gangster Ganga</td></tr>
+      <tr><td>Format</td><td>Short Film</td></tr>
+      <tr><td>Language</td><td>Hindi</td></tr>
+      <tr><td>Genre</td><td>Family / Drama</td></tr>
+      <tr><td>Release Date</td><td>4 October 2023 (Jio Cinema Film Festival)</td></tr>
+      <tr><td>Runtime</td><td>25 minutes</td></tr>
+      <tr><td>Directed By</td><td>Sahil Rakesh Grover</td></tr>
+      <tr><td>Written By</td><td>Prashant Beybaar &amp; Prativa Archana Rathi</td></tr>
+      <tr><td>Production Partners</td><td>Janvi Productions &nbsp;·&nbsp; Jio Studios</td></tr>
+      <tr><td>Platform</td><td>Jio Cinema / Jio Hotstar</td></tr>
+      <tr class="highlight-row"><td>My Role</td><td>Executive Producer</td></tr>
+      <tr><td>Principal Cast</td><td>Supriya Pathak (Ganga) &nbsp;·&nbsp; Veer Rajwant Singh (Ved) &nbsp;·&nbsp; Aprajita &nbsp;·&nbsp; Purva Parag</td></tr>
+      <tr><td>Shoot Location</td><td>Mumbai, India</td></tr>
+      <tr><td>Production Budget</td><td>₹1 Crore</td></tr>
+      <tr><td>IMDb</td><td>imdb.com/title/tt29267827/ &nbsp;·&nbsp; 6.2 / 10</td></tr>
+      <tr><td>Festival Selection</td><td>Jio Cinema Film Festival — 1 of 20 curated digital premieres (29 Sep–18 Oct 2023)</td></tr>
+    </table>
+  </section>
+
+  <div class="ornament">◆ &nbsp; ◆ &nbsp; ◆</div>
+
+  <div class="page-footer">
+    <div class="footer-left">Executive Producer &nbsp;·&nbsp; <strong>Gangster Ganga</strong>, 2023</div>
+    <div class="footer-right">Senior International Executive Producer<br>Line Producer · Fixer · Production Manager</div>
+  </div>
+
+</main>
+</body>
+</html>

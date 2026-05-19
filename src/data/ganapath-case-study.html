@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ganapath | Case Study — Umang Agarwal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:        #0d0d0d;
+    --parchment:  #f5f0e8;
+    --gold:       #b8962e;
+    --gold-light: #d4a93c;
+    --steel:      #2c4a6e;
+    --steel-light:#3a6491;
+    --cream:      #faf7f2;
+    --grey-mid:   #6b6560;
+    --grey-light: #e8e3db;
+    --rule:       #c9bfb0;
+    --white:      #ffffff;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.75;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── HERO ─────────────────────────────────────────────────────── */
+  .hero {
+    background: var(--ink);
+    color: var(--parchment);
+    min-height: 420px;
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    align-items: stretch;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-content {
+    padding: 72px 60px 64px;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .hero-top {}
+
+  .hero-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(40px, 6.5vw, 80px);
+    font-weight: 900;
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    color: var(--white);
+    margin-bottom: 22px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .hero-sub {
+    font-size: 15px;
+    color: rgba(245,240,232,0.62);
+    max-width: 500px;
+    font-weight: 300;
+    line-height: 1.65;
+  }
+
+  /* ── HERO RIGHT PANEL ─────────────────────────────────────────── */
+  .hero-panel {
+    background: var(--steel);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 36px 36px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-panel::before {
+    content: 'G';
+    position: absolute;
+    top: -40px;
+    right: -30px;
+    font-family: 'Playfair Display', serif;
+    font-size: 320px;
+    font-weight: 900;
+    color: rgba(255,255,255,0.04);
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .hero-panel-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 16px;
+    display: block;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-panel-role {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.3;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-panel-role em {
+    display: block;
+    font-style: normal;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--gold-light);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+
+  .solo-badge {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    background: var(--gold);
+    color: var(--ink);
+    padding: 5px 12px;
+    font-weight: 500;
+    position: relative;
+    z-index: 2;
+    margin-top: 4px;
+  }
+
+  /* ── META STRIP ───────────────────────────────────────────────── */
+  .meta-strip {
+    background: #161616;
+    border-top: 1px solid rgba(184,150,46,0.25);
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+    padding: 0;
+  }
+
+  .meta-item {
+    padding: 22px 28px;
+    border-right: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .meta-item:last-child { border-right: none; }
+
+  .meta-item dt {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 5px;
+  }
+
+  .meta-item dd {
+    font-size: 13px;
+    color: var(--parchment);
+    font-weight: 400;
+    line-height: 1.4;
+  }
+
+  /* ── LAYOUT ───────────────────────────────────────────────────── */
+  .page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  /* ── SECTION ──────────────────────────────────────────────────── */
+  section {
+    padding: 64px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  section:last-child { border-bottom: none; }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--steel-light);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-label::before {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 2px;
+    background: var(--gold);
+    flex-shrink: 0;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(24px, 3.8vw, 38px);
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 28px;
+    letter-spacing: -0.01em;
+  }
+
+  h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 19px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 14px;
+    margin-top: 36px;
+    letter-spacing: -0.01em;
+  }
+
+  h3:first-child { margin-top: 0; }
+
+  p {
+    font-size: 15.5px;
+    color: #2a2520;
+    line-height: 1.8;
+    margin-bottom: 16px;
+  }
+
+  p:last-child { margin-bottom: 0; }
+
+  .lead {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.7;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+
+  /* ── SOLO CALLOUT ─────────────────────────────────────────────── */
+  .solo-callout {
+    background: var(--steel);
+    color: var(--white);
+    padding: 28px 36px;
+    margin: 32px 0;
+    display: grid;
+    grid-template-columns: 4px 1fr;
+    gap: 28px;
+    align-items: center;
+  }
+
+  .solo-callout-bar {
+    background: var(--gold);
+    height: 100%;
+    min-height: 60px;
+    border-radius: 2px;
+  }
+
+  .solo-callout p {
+    font-size: 15px;
+    color: rgba(255,255,255,0.9);
+    margin: 0;
+    line-height: 1.7;
+  }
+
+  .solo-callout strong {
+    color: var(--gold-light);
+  }
+
+  /* ── BULLET LIST ──────────────────────────────────────────────── */
+  ul.styled {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  ul.styled li {
+    font-size: 15px;
+    color: #2a2520;
+    line-height: 1.75;
+    padding: 10px 0 10px 24px;
+    border-bottom: 1px solid var(--grey-light);
+    position: relative;
+  }
+
+  ul.styled li:last-child { border-bottom: none; }
+
+  ul.styled li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-weight: 500;
+  }
+
+  /* ── CHALLENGE TIMELINE ───────────────────────────────────────── */
+  .challenge-timeline {
+    margin-top: 12px;
+    position: relative;
+  }
+
+  .challenge-timeline::before {
+    content: '';
+    position: absolute;
+    left: 21px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: var(--rule);
+  }
+
+  .challenge-item {
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    gap: 24px;
+    margin-bottom: 0;
+    position: relative;
+  }
+
+  .challenge-item + .challenge-item {
+    border-top: 1px solid var(--grey-light);
+  }
+
+  .challenge-num-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 28px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .challenge-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--white);
+    background: var(--gold);
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+    flex-shrink: 0;
+  }
+
+  .challenge-body {
+    padding: 28px 0 28px;
+  }
+
+  .challenge-body h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+
+  .challenge-body p {
+    font-size: 14px;
+    color: var(--grey-mid);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  /* ── METRICS SPLIT ────────────────────────────────────────────── */
+  .metrics-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 48px -40px 0;
+    border-top: 1px solid var(--rule);
+  }
+
+  .metrics-dark {
+    background: var(--ink);
+    padding: 44px 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-content: start;
+  }
+
+  .metrics-light {
+    background: var(--parchment);
+    padding: 44px 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-content: start;
+    border-left: 1px solid var(--rule);
+  }
+
+  .metric dt {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .metrics-dark .metric dt { color: var(--gold); }
+  .metrics-light .metric dt { color: var(--steel); }
+
+  .metric dd {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(24px, 3.5vw, 34px);
+    font-weight: 900;
+    line-height: 1.1;
+  }
+
+  .metrics-dark .metric dd { color: var(--white); }
+  .metrics-light .metric dd { color: var(--ink); }
+
+  .metric dd span {
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11.5px;
+    font-weight: 300;
+    margin-top: 4px;
+    letter-spacing: 0;
+  }
+
+  .metrics-dark .metric dd span  { color: rgba(245,240,232,0.5); }
+  .metrics-light .metric dd span { color: var(--grey-mid); }
+
+  /* ── EXECUTION STEPS ──────────────────────────────────────────── */
+  .execution-steps {
+    counter-reset: exec;
+    margin-top: 8px;
+  }
+
+  .execution-step {
+    counter-increment: exec;
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 28px;
+    padding: 36px 0;
+    border-bottom: 1px solid var(--grey-light);
+    position: relative;
+  }
+
+  .execution-step:last-child { border-bottom: none; }
+
+  .exec-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 40px;
+    font-weight: 900;
+    color: var(--grey-light);
+    line-height: 1;
+    padding-top: 4px;
+    text-align: right;
+    letter-spacing: -0.02em;
+    user-select: none;
+  }
+
+  .exec-content h3 {
+    margin-top: 0;
+    font-size: 18px;
+    color: var(--ink);
+  }
+
+  /* ── CSF NUMBERED ─────────────────────────────────────────────── */
+  .csf-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin-top: 8px;
+  }
+
+  .csf-card {
+    background: var(--cream);
+    padding: 28px;
+  }
+
+  .csf-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--steel-light);
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .csf-card p {
+    font-size: 14px;
+    color: #2a2520;
+    margin: 0;
+    line-height: 1.7;
+  }
+
+  .csf-card strong {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+
+  /* ── COMPETENCY TAGS ──────────────────────────────────────────── */
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 8px;
+  }
+
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border: 1px solid var(--ink);
+    color: var(--ink);
+    padding: 7px 14px;
+    transition: background 0.18s, color 0.18s;
+  }
+
+  .tag:hover {
+    background: var(--ink);
+    color: var(--gold);
+  }
+
+  .tag.highlight {
+    background: var(--steel);
+    color: var(--gold-light);
+    border-color: var(--steel);
+  }
+
+  /* ── MEDIA LINKS ──────────────────────────────────────────────── */
+  .media-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 8px;
+  }
+
+  .media-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--white);
+    text-decoration: none;
+    background: var(--steel);
+    padding: 10px 20px;
+    transition: background 0.2s;
+  }
+
+  .media-link:hover { background: var(--steel-light); }
+  .media-link .arrow { font-size: 13px; }
+
+  /* ── CREDIT BLOCK ─────────────────────────────────────────────── */
+  .credit-block {
+    border: 1px solid var(--rule);
+    padding: 0;
+    margin-top: 8px;
+    display: grid;
+    grid-template-columns: 6px 1fr;
+    overflow: hidden;
+  }
+
+  .credit-bar { background: var(--gold); }
+
+  .credit-inner {
+    padding: 24px 28px;
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+  }
+
+  .credit-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--steel);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--white);
+    flex-shrink: 0;
+  }
+
+  .credit-text {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    color: #2a2520;
+    line-height: 1.55;
+  }
+
+  .credit-text strong {
+    display: block;
+    font-size: 14.5px;
+    color: var(--ink);
+    margin-bottom: 4px;
+    font-weight: 500;
+  }
+
+  /* ── FOOTER ───────────────────────────────────────────────────── */
+  .footer-strip {
+    background: var(--steel);
+    padding: 24px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .footer-strip p {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    margin: 0;
+  }
+
+  /* ── RESPONSIVE ───────────────────────────────────────────────── */
+  @media (max-width: 780px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-panel { display: none; }
+    .hero-content { padding: 56px 24px 56px; }
+    .page { padding: 0 24px; }
+    .metrics-split { grid-template-columns: 1fr; margin: 40px -24px 0; }
+    .metrics-light { border-left: none; border-top: 1px solid var(--rule); }
+    .metrics-dark, .metrics-light { padding: 36px 24px; }
+    .challenge-item { grid-template-columns: 1fr; }
+    .challenge-num-wrap { display: none; }
+    .challenge-timeline::before { display: none; }
+    .execution-step { grid-template-columns: 1fr; gap: 8px; }
+    .exec-num { text-align: left; font-size: 28px; }
+    .csf-grid { grid-template-columns: 1fr; }
+    .footer-strip { padding: 20px 24px; flex-direction: column; align-items: flex-start; }
+  }
+
+  /* ── ANIMATIONS ───────────────────────────────────────────────── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-content > * { animation: fadeUp 0.7s ease both; }
+  .hero-label    { animation-delay: 0.05s; }
+  .hero h1       { animation-delay: 0.15s; }
+  .hero-sub      { animation-delay: 0.25s; }
+  .hero-panel    { animation: fadeUp 0.9s 0.3s ease both; }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ HERO ═══════════════════════════════════════════ -->
+<header class="hero">
+  <div class="hero-content">
+    <div class="hero-top">
+      <span class="hero-label">Case Study · Feature Film · 2023</span>
+      <h1><em>Ganapath</em><br>A Hero is Born</h1>
+      <p class="hero-sub">A dystopian Hindi action feature filmed across the United Kingdom and India — a ₹190 Crore (approx. £19M) studio production delivered under full UK operational command, spanning crew, compliance, locations, logistics and international crew movement.</p>
+    </div>
+  </div>
+
+  <div class="hero-panel">
+    <span class="hero-panel-label">Production Role</span>
+    <div class="hero-panel-role">
+      <em>My Role</em>
+      Line Producer<br>(United Kingdom)
+    </div>
+    <span class="solo-badge">Solo UK Command</span>
+  </div>
+</header>
+
+<!-- ═══════════════ META STRIP ══════════════════════════════════════ -->
+<div class="meta-strip">
+  <dl class="meta-item"><dt>Client / Partner</dt><dd>Pooja Entertainment<br>Good Co.</dd></dl>
+  <dl class="meta-item"><dt>Producer</dt><dd>Vashu Bhagnani<br>&amp; Vikas Bahl</dd></dl>
+  <dl class="meta-item"><dt>Shot In</dt><dd>United Kingdom<br>&amp; India</dd></dl>
+  <dl class="meta-item"><dt>Platform</dt><dd>Theatrical Release<br>20 October 2023</dd></dl>
+  <dl class="meta-item"><dt>Format</dt><dd>Hindi Feature Film</dd></dl>
+  <dl class="meta-item"><dt>Director</dt><dd>Vikas Bahl</dd></dl>
+  <dl class="meta-item"><dt>Budget</dt><dd>₹190 Crore INR<br>approx. £19M GBP</dd></dl>
+  <dl class="meta-item"><dt>Release Year</dt><dd>2023</dd></dl>
+</div>
+
+<!-- ═══════════════ CONTENT ═════════════════════════════════════════ -->
+<div class="page">
+
+  <!-- THE BRIEF -->
+  <section>
+    <span class="section-label">01 · The Brief</span>
+    <p class="lead">Deliver the complete United Kingdom production leg of a ₹190 Crore (approx. £19M) Hindi action feature filmed across the UK and India — managing every local department, vendor and compliance obligation on behalf of the incoming Indian production team, with no British production service partner appointed to the shoot.</p>
+    <p>The UK production infrastructure — crew sourcing, location permissions, transport, catering, accommodation, Indian crew movement, visa management, UK Film Tax Relief navigation and full departmental coordination between the British and Indian teams — was built and managed from the ground up, without a British production service partner. Supported only by a very small team of production runners and interns, I solely controlled every experienced production decision required to meet the delivery standards of a major Hindi studio theatrical release.</p>
+  </section>
+
+  <!-- BACKGROUND -->
+  <section>
+    <span class="section-label">02 · Background & Organisational Context</span>
+    <h2>A High-Stakes Action Production Built for Global Scale</h2>
+    <p><em>Ganapath: A Hero Is Born</em> entered production as one of Hindi cinema's most ambitious action projects of 2023 — a dystopian thriller starring Tiger Shroff and Kriti Sanon, produced under Pooja Entertainment and Good Co., and directed by Vikas Bahl. Budgeted at ₹190 Crore (approx. £19M), the film's United Kingdom schedule formed a critical component of the production's international footprint, requiring the full apparatus of a professional UK shoot: local crew, licensed locations, legal permissions, safety frameworks, and financial compliance structures specific to the British production environment.</p>
+    <p>Uniquely, no local UK Line Producer was appointed to this production — the Indian production team did not engage a British counterpart to share operational duties, manage local departments, or interface with UK authorities. The full responsibility for the British schedule was absorbed into a single operational brief: building and running the UK production infrastructure while simultaneously serving as the primary liaison for the incoming Indian crew and production management team — supported only by a very small team of production runners and interns, with no experienced UK production professionals in place.</p>
+
+    <div class="solo-callout">
+      <div class="solo-callout-bar"></div>
+      <p><strong>No local UK Line Producer was appointed on Ganapath.</strong> I solely controlled the entire UK operation — managing local UK crew, locations, permissions, production logistics, catering, transport, Indian crew, hotels, visas, permits and tax rebates — supported only by a very small team of production runners and interns. Every experienced production decision, every departmental coordination, and every compliance obligation across both the UK and India sides of the production was my direct responsibility.</p>
+    </div>
+  </section>
+
+  <!-- ROLES -->
+  <section>
+    <span class="section-label">03 · Roles & Responsibilities</span>
+    <h2>End-to-End UK Production Leadership</h2>
+    <p>As Line Producer for the United Kingdom schedule, I operated across every production discipline simultaneously. My responsibilities covered six core areas of operational control:</p>
+
+    <h3>Full UK Production Infrastructure Build</h3>
+    <ul class="styled">
+      <li>Sourced, contracted and managed all local UK crew across every department — from camera and art to transport, catering and security — without support from a co-producer or local production company.</li>
+      <li>Built the UK production's operational structure from first principles, establishing protocols, communication hierarchies and escalation channels between the UK and India teams.</li>
+      <li>Produced and maintained all UK shooting schedules, call sheets and departmental briefings to meet both Indian production timelines and UK industry standards.</li>
+    </ul>
+
+    <h3>Location Management & UK Permitting</h3>
+    <ul class="styled">
+      <li>Identified, recce'd and secured all UK filming locations, managing liaison with borough councils, Transport for London, police coordination, and landowner negotiations independently.</li>
+      <li>Produced all location permission documentation, road-closure applications and public space filming permits required across the UK schedule.</li>
+      <li>Coordinated crowd management and security planning for sequences involving globally recognised lead talent in public UK environments.</li>
+    </ul>
+
+    <h3>Immigration & Indian Crew Movement</h3>
+    <ul class="styled">
+      <li>Managed all UK visa applications and immigration documentation for the incoming Indian crew, coordinating directly with UKVI and ensuring approvals aligned with the locked shooting schedule.</li>
+      <li>Structured crew movement logistics — including international flights, ground transfers, hotel bookings and turnaround schedules — for the Indian production contingent operating in the UK.</li>
+      <li>Resolved visa complications in real time, restructuring crew assignments where necessary without triggering schedule delays.</li>
+    </ul>
+
+    <h3>Health & Safety Compliance</h3>
+    <ul class="styled">
+      <li>Produced all required Risk Assessments and Method Statements to HSE standards for the full UK schedule, including sequences involving action choreography, stunt coordination and public-space filming.</li>
+      <li>Managed Working Time Regulations compliance throughout the UK shoot, ensuring crew turnaround obligations, daily hour caps and call-sheet structures met statutory requirements.</li>
+      <li>Coordinated with insurers and safety advisors to ensure policy compliance across every filming day.</li>
+    </ul>
+
+    <h3>Logistics: Catering, Transport & Accommodation</h3>
+    <ul class="styled">
+      <li>Managed all on-set UK catering, sourcing and contracting caterers who could service the specific dietary requirements of a large Indian production crew alongside local UK departments.</li>
+      <li>Organised all UK ground transport — unit base logistics, location moves, airport transfers and daily crew movement — across the full shooting schedule.</li>
+      <li>Arranged and managed all UK hotel and accommodation bookings for the Indian production contingent, coordinating check-in logistics with the shooting schedule.</li>
+    </ul>
+
+    <h3>Financial Oversight & UK Tax Rebate Navigation</h3>
+    <ul class="styled">
+      <li>Managed UK production expenditure and vendor payments, maintaining financial records in a format compatible with UK Film Tax Relief audit requirements.</li>
+      <li>Navigated the UK Film Tax Relief framework — structuring qualifying British expenditure, liaising with financial advisors on eligibility documentation, and managing the compliance trail required for rebate claims.</li>
+      <li>Reported production financial status to the Indian production team, bridging between INR-based budget planning and GBP-denominated UK spend.</li>
+    </ul>
+  </section>
+
+  <!-- SCALE & SCOPE -->
+  <section>
+    <span class="section-label">04 · Scale & Scope</span>
+    <h2>Production Scale at a Glance</h2>
+
+    <div class="metrics-split">
+      <div class="metrics-dark">
+        <dl class="metric"><dt>Production Budget</dt><dd>₹190Cr<span>INR total production</span></dd></dl>
+        <dl class="metric"><dt>GBP Equivalent</dt><dd>~£19M<span>Sterling spend</span></dd></dl>
+        <dl class="metric"><dt>Lead Talent</dt><dd>2<span>Tiger Shroff · Kriti Sanon</span></dd></dl>
+        <dl class="metric"><dt>UK Line Producers</dt><dd>1<span>Full UK operational remit</span></dd></dl>
+      </div>
+      <div class="metrics-light">
+        <dl class="metric"><dt>Departments Managed</dt><dd>All<span>Camera to catering, stunt to security</span></dd></dl>
+        <dl class="metric"><dt>Territories</dt><dd>UK + IN<span>Full international schedule</span></dd></dl>
+        <dl class="metric"><dt>Release Date</dt><dd>20 Oct<span>2023 theatrical release</span></dd></dl>
+        <dl class="metric"><dt>UK Tax Relief</dt><dd>FTR<span>UK Film Tax Relief navigated</span></dd></dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE CHALLENGE -->
+  <section>
+    <span class="section-label">05 · The Challenge</span>
+    <h2>Every Operational Risk. One Point of Accountability.</h2>
+    <p>The structural challenge of <em>Ganapath's</em> UK schedule was singular: every operational function that a British production would ordinarily distribute across a local production company, a UK line producer, and a series of specialist department heads was consolidated into a single operational brief — without a British production partner in place.</p>
+
+    <div class="challenge-timeline">
+
+      <div class="challenge-item">
+        <div class="challenge-num-wrap">
+          <div class="challenge-num">01</div>
+        </div>
+        <div class="challenge-body">
+          <h4>UK Production Build Without a Local Infrastructure Partner</h4>
+          <p>Most incoming international productions engage a UK-based production service company or local line producer to establish the ground infrastructure before the foreign crew arrives. On Ganapath, no such appointment was made. Every element of the UK production — crew, vendors, locations, logistics, compliance documentation and stakeholder relationships — was built from scratch, on the schedule the Indian production required, without the lead-time a conventional production build would afford.</p>
+        </div>
+      </div>
+
+      <div class="challenge-item">
+        <div class="challenge-num-wrap">
+          <div class="challenge-num">02</div>
+        </div>
+        <div class="challenge-body">
+          <h4>UKVI Visa Coordination for a Large Indian Crew Contingent</h4>
+          <p>Securing UK Standard Visitor or Permitted Paid Engagement visas for an Indian film crew requires meticulous documentation, individual employment and schedule evidence, and precise submission timing relative to filming dates. Managing this process as the primary UK immigration contact — without immigration legal support from the production company — required constructing and managing every individual crew member's application and tracking all approvals against a locked shooting schedule with no flexibility for delay.</p>
+        </div>
+      </div>
+
+      <div class="challenge-item">
+        <div class="challenge-num-wrap">
+          <div class="challenge-num">03</div>
+        </div>
+        <div class="challenge-body">
+          <h4>Multi-Location UK Permitting & Civic Liaison Across Public Environments</h4>
+          <p>Securing filming permissions across UK public locations — including borough council liaison, Transport for London operational requirements and police coordination — required a detailed understanding of the British civic permitting landscape that is typically managed by an experienced local production team. On Ganapath, negotiating and obtaining all permits, managing local authority relationships and coordinating crowd and security management for sequences featuring a high-profile Indian star in public UK settings was managed entirely without local institutional support.</p>
+        </div>
+      </div>
+
+      <div class="challenge-item">
+        <div class="challenge-num-wrap">
+          <div class="challenge-num">04</div>
+        </div>
+        <div class="challenge-body">
+          <h4>HSE Compliance & Working Time Regulations Management for Action Sequences</h4>
+          <p>Ganapath's production included action choreography and stunt sequences that placed significant obligations on the UK production under HSE regulations — requiring detailed Risk Assessments, Method Statements and stunt-coordination documentation beyond the standard requirements of a conventional drama shoot. Simultaneously, maintaining Working Time Regulations compliance for UK crew across a schedule driven by Indian production rhythms required active oversight to prevent breaches that could have triggered regulatory exposure.</p>
+        </div>
+      </div>
+
+      <div class="challenge-item">
+        <div class="challenge-num-wrap">
+          <div class="challenge-num">05</div>
+        </div>
+        <div class="challenge-body">
+          <h4>Cross-Cultural Production Coordination: UK Departments & Indian Production Team</h4>
+          <p>Managing the interface between local UK crew — operating to British industry standards, union expectations and working practice norms — and the Indian production team's scheduling rhythms, communication styles and operational priorities required a precise translation function between two distinct professional cultures. Breakdowns in this coordination carried immediate schedule and cost consequences, and there was no dedicated cross-cultural production liaison to manage the gap.</p>
+        </div>
+      </div>
+
+      <div class="challenge-item">
+        <div class="challenge-num-wrap">
+          <div class="challenge-num">06</div>
+        </div>
+        <div class="challenge-body">
+          <h4>UK Film Tax Relief Navigation Without a Dedicated Finance Partner</h4>
+          <p>Accessing the UK Film Tax Relief required structuring qualifying British expenditure correctly from day one of the shoot — a process that demands advance planning, rigorous spend categorisation and a compliant audit trail of UK-eligible costs. Managing this framework without a dedicated UK financial controller or production accountant embedded in the UK team placed the documentation and compliance obligations directly within the operational workload of the line producer managing every other production function simultaneously.</p>
+        </div>
+      </div>
+
+      <div class="challenge-item">
+        <div class="challenge-num-wrap">
+          <div class="challenge-num">07</div>
+        </div>
+        <div class="challenge-body">
+          <h4>Full Logistics Command: Catering, Transport, Hotels & On-Set Operations</h4>
+          <p>Coordinating on-set catering for a combined UK–India crew with specific dietary requirements, managing ground transport across all UK locations, overseeing hotel logistics for the Indian contingent and maintaining the day-to-day operational rhythm of an active production unit — each of these functions would ordinarily be distributed across several specialist roles. On Ganapath, they were managed as part of a single operational brief.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EXECUTION -->
+  <section>
+    <span class="section-label">06 · Execution & Strategy</span>
+    <h2>Structured Solutions Across Every Front.</h2>
+
+    <div class="execution-steps">
+
+      <div class="execution-step">
+        <div class="exec-num">01</div>
+        <div class="exec-content">
+          <h3>Building the UK Production Infrastructure from Scratch</h3>
+          <p>In the absence of a UK production service partner, I constructed the full operational infrastructure of the British schedule independently — sourcing all local crew across every department, establishing vendor relationships, building the logistics network and creating the administrative systems needed to run a compliant UK shoot to Indian production deadlines. This required front-loading a significant volume of pre-production work that would ordinarily be distributed across a production company structure, compressing it into a concentrated build executed in parallel with the Indian team's own pre-production planning.</p>
+          <p>Established clear communication protocols between the UK operational team and the Indian production office — creating reporting rhythms, escalation pathways and schedule-alignment processes that ensured both sides operated with identical information in real time, eliminating the information lag that typically undermines internationally fragmented productions.</p>
+        </div>
+      </div>
+
+      <div class="execution-step">
+        <div class="exec-num">02</div>
+        <div class="exec-content">
+          <h3>Managing UKVI Applications for the Incoming Indian Crew</h3>
+          <p>Constructed and managed individual UKVI application packages for every member of the incoming Indian crew, building the documentation trail — including employment evidence, shooting schedules and financial guarantees — required to demonstrate the legitimacy of each crew member's visit under the applicable visa category. Tracked all application timelines against the locked UK shooting schedule, identified applications at risk of delay, and restructured crew assignments proactively where visa uncertainty threatened to affect on-set availability.</p>
+        </div>
+      </div>
+
+      <div class="execution-step">
+        <div class="exec-num">03</div>
+        <div class="exec-content">
+          <h3>Securing All UK Filming Permissions Across Public Environments</h3>
+          <p>Managed the full permitting process for every UK filming location independently — liaising directly with borough councils, Transport for London, police liaison officers and private landowners to obtain the necessary filming consents, road-closure approvals and public-space permissions. Built security and crowd-management plans for sequences in public environments where the presence of Tiger Shroff required specific crowd control and safety protocols, coordinating with specialist security advisors to satisfy both local authority requirements and the production's own duty-of-care obligations.</p>
+        </div>
+      </div>
+
+      <div class="execution-step">
+        <div class="exec-num">04</div>
+        <div class="exec-content">
+          <h3>Producing Full HSE Compliance Documentation for Action Sequences</h3>
+          <p>Produced location-specific Risk Assessments and Method Statements to HSE standards for every filming day, with enhanced documentation for sequences involving action choreography and stunt coordination. Structured the UK call sheet to reflect Working Time Regulations turnaround requirements throughout the shoot, ensuring crew hour caps and rest period obligations were documented and observed — protecting both the production's regulatory position and the welfare of the UK crew operating under British labour law.</p>
+        </div>
+      </div>
+
+      <div class="execution-step">
+        <div class="exec-num">05</div>
+        <div class="exec-content">
+          <h3>Operating as the Cross-Cultural Production Bridge</h3>
+          <p>Positioned myself as the operational interface between the UK crew and the Indian production management — translating between the working practices, communication norms and scheduling expectations of both professional cultures. Maintained a consistent communication standard across both sides of the production, ensuring that UK crew received clear directional information and that the Indian production team received accurate status updates, escalation flags and schedule intelligence in a format their operational decision-making required. This translation function prevented the miscommunication-driven delays that characterise poorly managed cross-cultural shoots.</p>
+        </div>
+      </div>
+
+      <div class="execution-step">
+        <div class="exec-num">06</div>
+        <div class="exec-content">
+          <h3>Navigating the UK Film Tax Relief Framework</h3>
+          <p>Structured the UK production's expenditure from commencement of photography to maximise eligibility under the UK Film Tax Relief framework — categorising qualifying British spend, maintaining the compliant cost documentation required for audit, and coordinating with financial advisors to ensure the rebate application reflected the full extent of the production's UK-eligible expenditure. Integrated the anticipated rebate into the production's financial reporting, ensuring the Indian production team had accurate visibility of the UK's net cost position throughout the shoot.</p>
+        </div>
+      </div>
+
+      <div class="execution-step">
+        <div class="exec-num">07</div>
+        <div class="exec-content">
+          <h3>Coordinating Full UK Logistics: Catering, Transport & Accommodation</h3>
+          <p>Sourced and contracted all on-set UK catering — selecting providers capable of servicing the specific dietary requirements of a combined Indian and British crew at scale across every filming day. Managed all UK ground transport, coordinating unit base positioning, location moves, airport transfers and daily crew movement across the full shooting schedule. Arranged and administered all hotel bookings and accommodation logistics for the Indian production contingent, aligning check-in, check-out and daily turnaround schedules with the shoot. Each of these functions — ordinarily distributed across multiple specialist roles — was planned, contracted and managed as part of a single integrated operational brief, without a dedicated logistics coordinator.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- IMPACT -->
+  <section>
+    <span class="section-label">07 · The Impact</span>
+    <h2>Delivered on Every Metric That Mattered.</h2>
+    <p>The UK production schedule of <em>Ganapath: A Hero Is Born</em> was delivered in its entirety — on schedule, in compliance, and to the delivery standards required for a ₹190 Crore (approx. £19M) theatrical release — with no British production service partner in place, and a single operational authority managing the full breadth of UK production functions from pre-production through wrap.</p>
+    <ul class="styled">
+      <li>Delivered the complete UK filming schedule on time, enabling the production to maintain its India filming continuity and meet its 20 October 2023 theatrical release date.</li>
+      <li>Sourced and managed 100% of local UK crew across every department — ensuring qualified, experienced British crew were in place for every UK filming day, contracted and operational without a local production company.</li>
+      <li>Secured all required UK filming location permissions, road-closure approvals, borough council consents and police coordination for every UK shoot day — a process ordinarily managed by a dedicated local production team.</li>
+      <li>Managed all UKVI visa applications for the incoming Indian crew, maintaining 100% schedule continuity across the UK block without disruption from immigration delays or refusals.</li>
+      <li>Produced all HSE-compliant Risk Assessments and Method Statements for the full UK schedule — including enhanced stunt and action sequence safety documentation — with Working Time Regulations compliance maintained across every filming day.</li>
+      <li>Structured qualifying UK expenditure to access the 25% UK Film Tax Relief credit on eligible British core spend — maintaining the full audit documentation trail required for rebate submission and maximising the production's cost recovery.</li>
+      <li>Managed all UK catering, ground transport, hotel logistics and on-set operations for the Indian production contingent, delivering 100% operational continuity across every filming day.</li>
+    </ul>
+  </section>
+
+  <!-- CSF -->
+  <section>
+    <span class="section-label">08 · Critical Success Factors & Key Decisions</span>
+    <h2>The Decisions That Held the Production Together</h2>
+
+    <div class="csf-grid">
+
+      <div class="csf-card">
+        <span class="csf-num">Decision 01</span>
+        <p><strong>Front-Loaded Every Build Phase</strong> The absence of a local production partner meant that every infrastructure decision — crew, vendors, locations, permits — had to be resolved before the Indian crew arrived. Compressing the pre-production build and completing it ahead of schedule created the operational headroom that absorbed the inevitable complications of a live shoot.</p>
+      </div>
+
+      <div class="csf-card">
+        <span class="csf-num">Decision 02</span>
+        <p><strong>Treated Immigration as a Schedule Function</strong> Visa applications were planned and submitted as a production scheduling variable — with contingency built around known UKVI processing timelines — rather than managed as a separate administrative process. This prevented visa delays from creating scheduling surprises.</p>
+      </div>
+
+      <div class="csf-card">
+        <span class="csf-num">Decision 03</span>
+        <p><strong>Standardised Cross-Cultural Communication from Day One</strong> Establishing clear reporting formats and escalation protocols between the UK team and the Indian production office at the outset of the schedule eliminated the information asymmetry that typically generates cost and delay on international co-productions.</p>
+      </div>
+
+      <div class="csf-card">
+        <span class="csf-num">Decision 04</span>
+        <p><strong>Structured the UK Tax Relief Framework Before Photography Commenced</strong> Registering qualifying expenditure categories and establishing the audit documentation trail from the first day of UK filming ensured the production's Film Tax Relief entitlement was protected in full — with no requirement for retroactive compliance correction that could have delayed or reduced the rebate.</p>
+      </div>
+
+      <div class="csf-card">
+        <span class="csf-num">Decision 05</span>
+        <p><strong>Maintained HSE Compliance as a Non-Negotiable Operational Baseline</strong> On a production without a dedicated UK safety officer, maintaining full HSE compliance required embedding risk assessment and method statement production into the pre-production workflow for every filming day — rather than treating it as a documentation task to be completed reactively. This protected the production's legal and regulatory position throughout the UK schedule.</p>
+      </div>
+
+      <div class="csf-card">
+        <span class="csf-num">Decision 06</span>
+        <p><strong>Operated Proactively Across Every Department Simultaneously</strong> With end-to-end responsibility across logistics, immigration, compliance, permissions, crew and finance, the only viable management model was proactive identification of risks before they compounded. Reactive management of any single strand would have created cascading delays across the others — a consequence that a fully compressed operational structure could not absorb.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- COMPETENCIES -->
+  <section>
+    <span class="section-label">09 · Professional Competencies Demonstrated</span>
+    <h2>Capabilities Proven at Scale</h2>
+    <div class="tags">
+      <span class="tag highlight">UK Line Production — Full Operational Command</span>
+      <span class="tag">International Feature Film Management</span>
+      <span class="tag">UKVI Immigration Coordination</span>
+      <span class="tag">UK Film Tax Relief Navigation</span>
+      <span class="tag">HSE Compliance & Risk Assessments</span>
+      <span class="tag">Working Time Regulations Management</span>
+      <span class="tag">UK Location Permitting & Civic Liaison</span>
+      <span class="tag">Cross-Cultural Production Management</span>
+      <span class="tag">Action Sequence Safety Compliance</span>
+      <span class="tag">UK Crew Sourcing & Management</span>
+      <span class="tag">Indian Crew UK Logistics</span>
+      <span class="tag">On-Set Catering & Transport Management</span>
+      <span class="tag">Multi-Currency Budget Control</span>
+      <span class="tag">Stakeholder & Authority Liaison</span>
+      <span class="tag">Production Workflow Continuity</span>
+    </div>
+  </section>
+
+  <!-- MEDIA -->
+  <section>
+    <span class="section-label">10 · Official Trailer, Teasers & Media</span>
+    <h2>Verified Promotional Material</h2>
+    <div class="media-row">
+      <a class="media-link" href="https://www.youtube.com/watch?v=G_XHAjfpMZs" target="_blank" rel="noopener">
+        <span class="arrow">▶</span> Official Trailer — Ganapath
+      </a>
+      <a class="media-link" href="https://www.youtube.com/watch?v=a4pJPXU_DQI" target="_blank" rel="noopener">
+        <span class="arrow">▶</span> Teaser — Ganapath
+      </a>
+    </div>
+    <br>
+    <ul class="styled" style="margin-top:12px;">
+      <li><strong>Ganapath Teaser</strong> — Official teaser released on Tiger Shroff's birthday, 2 March 2023, via Pooja Entertainment YouTube channel.</li>
+      <li><strong>Ganapath Trailer</strong> — Official theatrical trailer released September 2023 ahead of 20 October theatrical release date.</li>
+      <li><strong>Theatrical Release</strong> — <em>Ganapath: A Hero Is Born</em> released in cinemas on 20 October 2023 (theatrical only; no OTT platform announced at time of release).</li>
+    </ul>
+  </section>
+
+  <!-- CREDIT -->
+  <section>
+    <span class="section-label">11 · Verified Production Credit</span>
+    <h2>On-Screen End-Title Credit</h2>
+    <div class="credit-block">
+      <div class="credit-bar"></div>
+      <div class="credit-inner">
+        <div class="credit-icon">✓</div>
+        <div class="credit-text">
+          <strong>"Line Producer (UK) — Umang Agarwal"</strong>
+          Verified via official end titles of <em>Ganapath: A Hero Is Born</em> (2023). Pooja Entertainment / Good Co. Theatrical release 20 October 2023. Verified via IMDb and LinkedIn production credits.
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /page -->
+
+<footer class="footer-strip">
+  <p>Umang Agarwal · Senior International Executive Producer / Line Producer / Fixer</p>
+  <p>21+ Years · Mumbai · Budapest · London · UK Market Portfolio</p>
+</footer>
+
+</body>
+</html>

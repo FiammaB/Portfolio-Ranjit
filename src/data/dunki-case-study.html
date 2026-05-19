@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dunki | Case Study — Umang Agarwal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0d0d0d;
+    --parchment: #f5f0e8;
+    --gold: #b8962e;
+    --gold-light: #d4a93c;
+    --rust: #8b3a1f;
+    --cream: #faf7f2;
+    --grey-mid: #6b6560;
+    --grey-light: #e8e3db;
+    --rule: #c9bfb0;
+    --white: #ffffff;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.75;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── HERO ─────────────────────────────────────────── */
+  .hero {
+    background: var(--ink);
+    color: var(--parchment);
+    padding: 80px 60px 72px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: 'DUNKI';
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(120px, 20vw, 280px);
+    font-weight: 900;
+    color: rgba(255,255,255,0.03);
+    pointer-events: none;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(42px, 7vw, 88px);
+    font-weight: 900;
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    color: var(--white);
+    margin-bottom: 28px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .hero-sub {
+    font-size: 15px;
+    color: rgba(245,240,232,0.65);
+    max-width: 540px;
+    font-weight: 300;
+    line-height: 1.65;
+    margin-bottom: 48px;
+  }
+
+  /* ── META GRID ───────────────────────────────────── */
+  .hero-credits {
+    font-size: 13px;
+    color: rgba(245,240,232,0.75);
+    font-weight: 300;
+    letter-spacing: 0.01em;
+    margin-bottom: 36px;
+  }
+
+  .hero-credit-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-right: 6px;
+  }
+
+  .meta-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 0;
+    border-top: 1px solid rgba(184,150,46,0.3);
+    padding-top: 36px;
+  }
+
+  .meta-item {
+    padding-right: 32px;
+    padding-bottom: 8px;
+  }
+
+  .meta-item dt {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 5px;
+  }
+
+  .meta-item dd {
+    font-size: 13px;
+    color: var(--parchment);
+    font-weight: 400;
+    line-height: 1.4;
+  }
+
+  /* ── LAYOUT ──────────────────────────────────────── */
+  .page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  /* ── SECTION ─────────────────────────────────────── */
+  section {
+    padding: 64px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  section:last-child {
+    border-bottom: none;
+  }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(26px, 4vw, 40px);
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 28px;
+    letter-spacing: -0.01em;
+  }
+
+  h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 14px;
+    margin-top: 36px;
+    letter-spacing: -0.01em;
+  }
+
+  h3:first-child { margin-top: 0; }
+
+  p {
+    font-size: 15.5px;
+    color: #2a2520;
+    line-height: 1.8;
+    margin-bottom: 16px;
+  }
+
+  p:last-child { margin-bottom: 0; }
+
+  /* ── LEAD TEXT ───────────────────────────────────── */
+  .lead {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.7;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+
+  /* ── BULLET LIST ─────────────────────────────────── */
+  ul.styled {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  ul.styled li {
+    font-size: 15px;
+    color: #2a2520;
+    line-height: 1.75;
+    padding: 10px 0 10px 24px;
+    border-bottom: 1px solid var(--grey-light);
+    position: relative;
+  }
+
+  ul.styled li:last-child { border-bottom: none; }
+
+  ul.styled li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-weight: 500;
+  }
+
+  /* ── CHALLENGE CARDS ─────────────────────────────── */
+  .challenge-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin-top: 8px;
+  }
+
+  .challenge-card {
+    background: var(--cream);
+    padding: 28px 28px 24px;
+  }
+
+  .challenge-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .challenge-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+
+  .challenge-card p {
+    font-size: 13.5px;
+    color: var(--grey-mid);
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  /* ── EXECUTION BLOCKS ────────────────────────────── */
+  .execution-block {
+    margin-bottom: 40px;
+    padding-left: 20px;
+    border-left: 3px solid var(--gold);
+  }
+
+  .execution-block:last-child { margin-bottom: 0; }
+
+  /* ── METRICS STRIP ───────────────────────────────── */
+  .metrics {
+    background: var(--ink);
+    color: var(--parchment);
+    margin: 64px -40px 0;
+    padding: 52px 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 36px;
+  }
+
+  .metric dt {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .metric dd {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(26px, 4vw, 38px);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.1;
+  }
+
+  .metric dd span {
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 300;
+    color: rgba(245,240,232,0.55);
+    margin-top: 4px;
+    letter-spacing: 0;
+  }
+
+  /* ── CSF BOX ─────────────────────────────────────── */
+  .csf-box {
+    background: var(--parchment);
+    border: 1px solid var(--rule);
+    padding: 36px 36px 28px;
+    margin-top: 8px;
+  }
+
+  /* ── COMPETENCY TAGS ─────────────────────────────── */
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 8px;
+  }
+
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: var(--ink);
+    color: var(--gold);
+    padding: 7px 14px;
+    border-radius: 2px;
+  }
+
+  /* ── MEDIA LINKS ─────────────────────────────────── */
+  .media-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 8px;
+  }
+
+  .media-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    border: 1px solid var(--ink);
+    padding: 10px 18px;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .media-link:hover {
+    background: var(--ink);
+    color: var(--gold-light);
+  }
+
+  .media-link .arrow { font-size: 13px; }
+
+  /* ── CREDIT BLOCK ────────────────────────────────── */
+  .credit-block {
+    background: var(--ink);
+    color: var(--white);
+    padding: 28px 32px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-top: 8px;
+  }
+
+  .credit-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 900;
+    color: var(--ink);
+    flex-shrink: 0;
+  }
+
+  .credit-text {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    color: var(--parchment);
+    line-height: 1.5;
+  }
+
+  .credit-text strong {
+    display: block;
+    font-size: 15px;
+    color: var(--white);
+    margin-bottom: 3px;
+    font-weight: 500;
+  }
+
+  /* ── FOOTER ──────────────────────────────────────── */
+  .footer-strip {
+    background: var(--ink);
+    padding: 24px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .footer-strip p {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.35);
+    margin: 0;
+  }
+
+  /* ── RESPONSIVE ──────────────────────────────────── */
+  @media (max-width: 680px) {
+    .hero { padding: 56px 24px 56px; }
+    .page { padding: 0 24px; }
+    .challenge-grid { grid-template-columns: 1fr; }
+    .metrics { margin: 48px -24px 0; padding: 40px 24px; }
+    .footer-strip { padding: 20px 24px; }
+  }
+
+  /* ── FADE-IN ─────────────────────────────────────── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero > * {
+    animation: fadeUp 0.7s ease both;
+  }
+
+  .hero-label   { animation-delay: 0.05s; }
+  .hero h1      { animation-delay: 0.15s; }
+  .hero-sub     { animation-delay: 0.25s; }
+  .hero-credits { animation-delay: 0.30s; }
+  .meta-grid    { animation-delay: 0.35s; }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ HERO ═══════════════════════════════════════ -->
+<header class="hero">
+  <span class="hero-label">Case Study · Feature Film · 2023</span>
+  <h1><em>Dunki</em></h1>
+  <p class="hero-sub">A multi-territory, multi-currency Hindi feature shot across Mumbai, Budapest and London — managed under significant immigration, regulatory and financial complexity on a production scale exceeding ₹120 Crore.</p>
+  <p class="hero-credits"><span class="hero-credit-label">Directed by</span> Raj Kumar Hirani&emsp;<span class="hero-credit-label">Produced by</span> Red Chillies Entertainment &amp; Raj Kumar Hirani Films</p>
+  <dl class="meta-grid">
+    <div class="meta-item"><dt>Client / Partner</dt><dd>Red Chillies Entertainment<br>Rajkumar Hirani Films</dd></div>
+    <div class="meta-item"><dt>Platform</dt><dd>Theatrical (Dec 2023)<br>Netflix (Feb 2024)</dd></div>
+    <div class="meta-item"><dt>Format</dt><dd>Hindi Feature Film</dd></div>
+    <div class="meta-item"><dt>Director</dt><dd>Rajkumar Hirani</dd></div>
+    <div class="meta-item"><dt>My Role</dt><dd>Line Producer<br>(Mumbai & Budapest)</dd></div>
+    <div class="meta-item"><dt>Release Year</dt><dd>2023</dd></div>
+  </dl>
+</header>
+
+<!-- ═══════════════ CONTENT ════════════════════════════════════ -->
+<div class="page">
+
+  <!-- THE BRIEF -->
+  <section>
+    <span class="section-label">01 · The Brief</span>
+    <p class="lead">Deliver principal photography across Mumbai and Budapest for a ₹85 Crore studio feature — the first collaboration between Shah Rukh Khan and director Rajkumar Hirani — requiring simultaneous management of cross-border crew movement, immigration compliance, financial control and multi-territory scheduling continuity on a fixed theatrical release date.</p>
+    <p>With London and Budapest consolidated into a single combined international schedule, every decision carried direct consequences for schedule viability, budget integrity and global delivery standards aligned with both theatrical exhibition and Netflix streaming requirements.</p>
+  </section>
+
+  <!-- BACKGROUND -->
+  <section>
+    <span class="section-label">02 · Background & Organisational Context</span>
+    <h2>The Most Anticipated Hindi Film of 2023</h2>
+    <p><em>Dunki</em> entered production already carrying the weight of extraordinary commercial expectation. The first-ever collaboration between Shah Rukh Khan — returning from a four-year hiatus — and Rajkumar Hirani, one of Hindi cinema's most commercially reliable directors, meant that any operational failure at the production level would have immediate financial and reputational consequences for Red Chillies Entertainment and the wider release ecosystem.</p>
+    <p>Principal photography ran from April 2022 through April 2023 across seven filming territories: Mumbai, Jabalpur, Kashmir, Budapest, London, Jeddah and Neom. Budapest and London were consolidated into one combined European schedule, with the production operating in Budapest for precisely 20 days and London for 6 days before returning to India. Managing the operational infrastructure of this concentrated European leg — while simultaneously dealing with a tightly contested theatrical release window against rival studio tentpole <em>Salaar</em> — placed premium on precise, proactive production management.</p>
+  </section>
+
+  <!-- ROLES -->
+  <section>
+    <span class="section-label">03 · Roles & Responsibilities</span>
+    <h2>Production Leadership Across Critical Schedules</h2>
+    <p>As Line Producer (Mumbai and Budapest), I held direct operational accountability for two of the film's most logistically complex production blocks. My responsibilities spanned four core disciplines:</p>
+
+    <h3>Production Management & Scheduling</h3>
+    <ul class="styled">
+      <li>Structured and maintained shooting schedules across Mumbai and Budapest production blocks, ensuring timeline integrity under shifting operational conditions.</li>
+      <li>Coordinated inter-departmental workflows to maintain continuity between location phases and subsequent production stages.</li>
+      <li>Monitored daily production milestones and escalated risk items before they affected the wider schedule.</li>
+    </ul>
+
+    <h3>Immigration & International Crew Movement</h3>
+    <ul class="styled">
+      <li>Managed all visa documentation, application timelines and approvals for the combined UK and Budapest schedule — coordinating directly with UKVI (UK Visas and Immigration) and the Consul General of Hungary.</li>
+      <li>Planned and sequenced international crew movement to protect filming continuity across the consolidated European leg.</li>
+      <li>Resolved UKVI visa refusals and restructured crew assignments to maintain schedule viability without disrupting the production's financial or operational plan.</li>
+    </ul>
+
+    <h3>Financial Control & Commercial Oversight</h3>
+    <ul class="styled">
+      <li>Supported cost-control measures throughout the shoot, identifying and eliminating avoidable expenditure across international production phases.</li>
+      <li>Coordinated with local Hungarian production partners on the National Film Institute tax rebate structure, navigating eligibility documentation and compliance requirements under the 30% rebate framework.</li>
+      <li>Maintained budget discipline across multi-currency operational spend in INR, EUR and GBP.</li>
+    </ul>
+
+    <h3>Stakeholder & Vendor Coordination</h3>
+    <ul class="styled">
+      <li>Maintained active communication across production, logistics, immigration and operational teams to ensure all departments remained aligned with the shooting schedule.</li>
+      <li>Coordinated with local service companies, location managers and authorities in Budapest and the UK to meet location access, permitting and safety requirements.</li>
+    </ul>
+  </section>
+
+  <!-- SCALE & SCOPE -->
+  <section>
+    <span class="section-label">04 · Scale & Scope</span>
+    <h2>Production Scale at a Glance</h2>
+
+    <div class="metrics">
+      <dl class="metric"><dt>Production Budget</dt><dd>₹85Cr<span>INR direct production cost</span></dd></dl>
+      <dl class="metric"><dt>Total P&A Spend</dt><dd>₹120Cr<span>INR including marketing</span></dd></dl>
+      <dl class="metric"><dt>Worldwide Box Office</dt><dd>₹470Cr<span>INR global gross</span></dd></dl>
+      <dl class="metric"><dt>Budapest Schedule</dt><dd>20<span>shoot days, combined EU leg</span></dd></dl>
+      <dl class="metric"><dt>Total Shoot Days</dt><dd>90<span>days across all territories</span></dd></dl>
+      <dl class="metric"><dt>Budget Reduction</dt><dd>€2M<span>EUR saved during execution</span></dd></dl>
+    </div>
+  </section>
+
+  <!-- THE CHALLENGE -->
+  <section>
+    <span class="section-label">05 · The Challenge</span>
+    <h2>Seven Operational Fronts. One Fixed Release Date.</h2>
+    <p>The structural complexity of <em>Dunki</em> was not defined by any single problem. It was defined by the simultaneous pressure across multiple operational fronts — each of which had the potential to collapse schedule continuity if not managed with precision and foresight.</p>
+
+    <div class="challenge-grid">
+
+      <div class="challenge-card">
+        <span class="challenge-num">01</span>
+        <h4>UKVI Visa Delays, Refusals & Combined Schedule Pressure</h4>
+        <p>The Budapest and London schedules were consolidated into a single European leg, requiring UK and Hungarian visas to be secured simultaneously — with zero margin for staggered processing. UKVI refusals and extended processing delays forced crew changes and rapid re-crewing decisions that had to be absorbed without disrupting the European shooting schedule or the production's financial plan. Coordinating directly with UKVI and the Consul General of Hungary under live-schedule pressure represented one of the most time-critical operational challenges of the production.</p>
+      </div>
+
+      <div class="challenge-card">
+        <span class="challenge-num">02</span>
+        <h4>Multi-Jurisdiction Health & Safety Compliance & Risk Assessments</h4>
+        <p>Producing location-specific Risk Assessments and Method Statements that satisfied HSE regulations for UK shoots, Hungarian national safety frameworks and the production's own duty-of-care requirements — across large exterior sequences and controlled public environments — required disciplined compliance documentation across every territory.</p>
+      </div>
+
+      <div class="challenge-card">
+        <span class="challenge-num">03</span>
+        <h4>International Budget Control & Foreign Exchange Exposure</h4>
+        <p>Managing a multi-currency production budget across INR, EUR and GBP — with expenditure flowing through India, Hungary and the UK simultaneously — introduced foreign exchange risk, cross-border vendor payment complexity and cost-reporting challenges that required active financial governance throughout the shoot.</p>
+      </div>
+
+      <div class="challenge-card">
+        <span class="challenge-num">04</span>
+        <h4>Working Time Regulations & Cross-Border Labour Compliance</h4>
+        <p>The UK portions of the shoot fell under Working Time Regulations, mandating crew turnaround management, daily hour caps and meticulous call-sheet compliance. Aligning UK labour standards with the production's broader international operational tempo — and ensuring crew welfare obligations were met without schedule overrun — demanded structured, proactive roster management.</p>
+      </div>
+
+      <div class="challenge-card">
+        <span class="challenge-num">05</span>
+        <h4>Location Permitting, Civic Coordination & Stakeholder Management</h4>
+        <p>Securing filming permissions across public locations in London — including liaison with borough councils, Transport for London operational requirements and police coordination — alongside Hungarian location authority approvals and road-closure permits, was amplified by the global visibility of the lead actor and the security and crowd-management obligations that accompanied his presence.</p>
+      </div>
+
+      <div class="challenge-card">
+        <span class="challenge-num">06</span>
+        <h4>Multi-Territory Production Continuity & Logistics Management</h4>
+        <p>Maintaining narrative and technical continuity across seven filming territories required tight coordination of art department replication, props and costume freight, rushes management and DIT workflows — ensuring the post-production pipeline and editorial team received uninterrupted, properly labelled output from every location block without delay or data loss.</p>
+      </div>
+
+      <div class="challenge-card">
+        <span class="challenge-num">07</span>
+        <h4>Hungarian Film Commission Tax Rebate Navigation</h4>
+        <p>Accessing Hungary's 30% NFI tax rebate — one of Central Europe's most commercially significant production incentives — required meticulous documentation of eligible spend, registration compliance with the National Film Office, cultural test submissions and careful structuring of Hungarian versus non-Hungarian expenditure to maximise the rebate entitlement. The complexity of the application, audit and repatriation process added a significant financial administration workload to an already demanding production schedule.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EXECUTION -->
+  <section>
+    <span class="section-label">06 · Execution & Strategy</span>
+    <h2>Structured Response Across Every Front</h2>
+
+    <div class="execution-block">
+      <h3>Solving the Visa Crisis: A Dual-Track Immigration Strategy</h3>
+      <p>Recognising that the consolidated European leg made UK and Hungarian visa timelines interdependent, I built a dual-track coordination process — running UKVI and Hungarian Consulate General submissions simultaneously rather than sequentially. This required constructing parallel documentation packages, maintaining individual crew status tracking, and managing submission windows against the production's locked European departure dates.</p>
+      <p>When UKVI refusals emerged mid-process, I restructured affected crew assignments, identified replacement personnel, and integrated the changes into the shooting schedule without triggering downstream delays. The ability to absorb refusals without schedule impact was the direct result of building contingency into the crew movement plan from the outset — treating immigration risk as a production scheduling variable, not an administrative afterthought.</p>
+    </div>
+
+    <div class="execution-block">
+      <h3>Eliminating €2 Million in Production Cost Through Operational Discipline</h3>
+      <p>Large international productions accumulate cost through inefficiency: schedule slippage, extended vendor retention, poorly sequenced crew movement, and reactive rather than planned decision-making. I addressed these systematically — overhauling workflow sequencing, tightening departmental communication, standardising escalation protocols and eliminating avoidable idle time across the Budapest schedule.</p>
+      <p>The result was a reduction of approximately €2 million EUR in production expenditure during execution — achieved without compromising creative output, delivery standards or crew welfare obligations.</p>
+    </div>
+
+    <div class="execution-block">
+      <h3>Navigating the Hungarian Film Commission Rebate Framework</h3>
+      <p>Structured the production's Hungarian expenditure in close coordination with local production partners and financial advisors to maximise eligibility under the National Film Institute's 30% cash rebate scheme. This required careful separation of qualifying Hungarian spend from non-qualifying costs, registration compliance with the National Film Office prior to photography commencement, and building the audit-ready documentation trail required for rebate claims. Integrated the rebate timeline into the production's broader cash-flow planning to ensure the financial benefit was accurately reflected in budget projections and reported to production stakeholders.</p>
+    </div>
+
+    <div class="execution-block">
+      <h3>Building a Compliant UK & Budapest Safety Framework</h3>
+      <p>Produced location-specific Risk Assessments and Method Statements aligned with HSE requirements for the UK schedule and Hungarian regulatory standards for the Budapest block. Structured call-sheet management to reflect Working Time Regulation turnaround obligations throughout the UK shoot, ensuring crew welfare compliance was documented and defensible. Coordinated security and crowd-management planning for London locations to address the specific risks associated with a globally recognised lead actor in a high-footfall public environment.</p>
+    </div>
+
+    <div class="execution-block">
+      <h3>Protecting Schedule Continuity Across Seven Territories</h3>
+      <p>Implemented a structured schedule-tracking and real-time escalation system that kept all departments — production, logistics, art, DIT, and technical — aligned across the film's internationally fragmented shoot. Built inter-departmental communication protocols that reduced information lag and ensured location readiness, crew availability and technical continuity remained synchronised across the Mumbai and Budapest production blocks throughout the shoot.</p>
+    </div>
+  </section>
+
+  <!-- IMPACT -->
+  <section>
+    <span class="section-label">07 · The Impact</span>
+    <h2>Delivered on Every Metric That Mattered</h2>
+    <p>The production completed principal photography across all seven international territories, delivered on-time for a 21 December 2023 theatrical release and achieved global Netflix streaming launch on 15 February 2024 — meeting both theatrical exhibition and platform delivery standards without post-production delay.</p>
+    <ul class="styled">
+      <li>Generated worldwide box-office gross of ₹470.6 Crore INR, making <em>Dunki</em> the highest-grossing Hindi comedy film of the post-pandemic era and the eighth-highest grossing Indian film of 2023.</li>
+      <li>Sold 12 million tickets globally, with strong domestic and overseas performance across all major distribution territories.</li>
+      <li>Combined digital, satellite and music rights valued at ₹230 Crore INR — confirming the production's long-tail commercial strength beyond theatrical.</li>
+      <li>Delivered a €2 million EUR reduction in production expenditure during execution through disciplined schedule management and operational efficiency.</li>
+      <li>Maintained full schedule continuity across the consolidated European leg despite UKVI refusals, crew changes and multi-jurisdiction compliance obligations — protecting the film's fixed release date.</li>
+      <li>Structured and submitted the Hungarian Film Commission tax rebate application, maximising eligible spend recovery under the NFI's 30% framework and contributing to the production's commercial efficiency.</li>
+      <li>Produced all required Risk Assessments, Method Statements and Working Time Regulations compliance documentation for UK and Budapest shoots to meet HSE and local authority standards.</li>
+    </ul>
+  </section>
+
+  <!-- CSF -->
+  <section>
+    <span class="section-label">08 · Critical Success Factors & Key Decisions</span>
+    <h2>The Decisions That Held the Production Together</h2>
+    <div class="csf-box">
+      <ul class="styled">
+        <li><strong>Treated immigration as a production-critical function, not an administrative one.</strong> Building the UK and Hungarian visa processes into the core production schedule — with contingency built around known UKVI refusal rates — meant that when refusals arrived, the production had room to absorb them without schedule consequences.</li>
+        <li><strong>Consolidated the European schedule into a single leg and planned for its full complexity from day one.</strong> Rather than managing London and Budapest as sequential, discrete risks, integrating them as a single interdependent operational block produced a more resilient, cost-efficient European schedule.</li>
+        <li><strong>Structured the Hungarian rebate framework before photography commenced.</strong> Early registration with the National Film Office and proactive spend-categorisation maximised rebate eligibility and avoided post-production compliance corrections that could have delayed rebate repatriation.</li>
+        <li><strong>Maintained proactive over reactive production management throughout.</strong> Problems that are escalated early cost a fraction of those that become crises. Building fast escalation loops across all departments ensured that scheduling, safety and financial risks were identified and resolved before they compounded.</li>
+        <li><strong>Preserved financial discipline under the pressure of a global release window.</strong> On a production of this commercial profile, the instinct is to spend to solve problems. Maintaining cost-sensitive decision-making throughout the international schedules — without compromising creative or delivery quality — was the discipline that produced the €2 million EUR saving.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- COMPETENCIES -->
+  <section>
+    <span class="section-label">09 · Professional Competencies Demonstrated</span>
+    <h2>Capabilities Proven at Scale</h2>
+    <div class="tags">
+      <span class="tag">International Line Production</span>
+      <span class="tag">Multi-Territory Feature Film Management</span>
+      <span class="tag">Cross-Border Immigration Coordination</span>
+      <span class="tag">UKVI & Consulate Liaison</span>
+      <span class="tag">Hungarian Film Commission Tax Rebate Navigation</span>
+      <span class="tag">HSE Compliance & Risk Assessments</span>
+      <span class="tag">Working Time Regulations Management</span>
+      <span class="tag">Multi-Currency Budget Control</span>
+      <span class="tag">Schedule Protection & Execution</span>
+      <span class="tag">Cross-Border Logistics Management</span>
+      <span class="tag">Production Workflow Continuity</span>
+      <span class="tag">Stakeholder & Vendor Coordination</span>
+      <span class="tag">Commercially Controlled Production Delivery</span>
+      <span class="tag">Crew Crisis Management</span>
+    </div>
+  </section>
+
+  <!-- MEDIA -->
+  <section>
+    <span class="section-label">10 · Official Trailer, Teasers & Media</span>
+    <h2>Verified Promotional Material</h2>
+    <div class="media-row">
+      <a class="media-link" href="https://www.youtube.com/watch?v=uOlDK7g7b-E" target="_blank" rel="noopener">
+        <span class="arrow">▶</span> Official Trailer — Dunki Drop 4
+      </a>
+      <a class="media-link" href="https://www.netflix.com/title/81731618" target="_blank" rel="noopener">
+        <span class="arrow">▶</span> Netflix — Dunki
+      </a>
+    </div>
+    <br>
+    <ul class="styled" style="margin-top:12px;">
+      <li><strong>Dunki Drop 1</strong> — Official Teaser, released 2 November 2023 (coinciding with Shah Rukh Khan's 58th birthday).</li>
+      <li><strong>Dunki Drop 2</strong> — <em>Lutt Putt Gaya</em> music video teaser, released 22 November 2023.</li>
+      <li><strong>Dunki Drop 3</strong> — <em>Nikle The Kabhi Hum Ghar Se</em> music video teaser, released 1 December 2023.</li>
+      <li><strong>Dunki Drop 4</strong> — Official Theatrical Trailer, released December 2023 ahead of 21 December theatrical release.</li>
+    </ul>
+  </section>
+
+  <!-- CREDIT -->
+  <section>
+    <span class="section-label">11 · Verified Production Credit</span>
+    <h2>On-Screen End-Title Credit</h2>
+    <div class="credit-block">
+      <div class="credit-icon">✓</div>
+      <div class="credit-text">
+        <strong>"Line Producer (Mumbai and Budapest) — Umang Agarwal"</strong>
+        Verified via official end titles of <em>Dunki</em> (2023). Red Chillies Entertainment / Rajkumar Hirani Films. Theatrical release 21 December 2023. Netflix global streaming from 15 February 2024.
+      </div>
+    </div>
+  </section>
+
+</div><!-- /page -->
+
+<footer class="footer-strip">
+  <p>Umang Agarwal · Senior International Executive Producer / Line Producer / Fixer</p>
+  <p>21+ Years · Mumbai · Budapest · London · UK Market Portfolio</p>
+</footer>
+
+</body>
+</html>
