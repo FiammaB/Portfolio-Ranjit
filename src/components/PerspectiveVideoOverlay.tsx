@@ -8,6 +8,12 @@ export default function PerspectiveVideoOverlay() {
 
     const activeVideo = screenVideos.find((video) => video.id === activeVideoId) ?? screenVideos[0]
     const secondaryVideos = screenVideos.filter((video) => video.id !== activeVideo.id)
+    const activeVideoIndex = screenVideos.findIndex((video) => video.id === activeVideo.id)
+
+    const playNextVideo = () => {
+        const nextVideo = screenVideos[(activeVideoIndex + 1) % screenVideos.length]
+        setActiveVideoId(nextVideo.id)
+    }
 
     return (
         <section className="relative overflow-hidden rounded-[2.85rem] border border-[rgba(255,255,255,0.56)] bg-[linear-gradient(165deg,rgba(247,242,234,0.98),rgba(255,255,255,0.94)_52%,rgba(239,232,222,0.98))] px-4 py-6 shadow-[0_34px_100px_rgba(16,24,38,0.14)] sm:px-6 sm:py-8 lg:px-8">
@@ -53,6 +59,10 @@ export default function PerspectiveVideoOverlay() {
                                 embedUrl={activeVideo.embedUrl}
                                 poster={activeVideo.poster}
                                 loading="eager"
+                                controls
+                                muted
+                                enableJsApi
+                                onPlaybackEnd={playNextVideo}
                             />
                             <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.01)_18%,rgba(0,0,0,0.06)_54%,rgba(0,0,0,0.22))]" />
                             <div className="pointer-events-none absolute inset-0 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.05),inset_0_-18px_28px_rgba(0,0,0,0.18)]" />

@@ -335,6 +335,9 @@ export default function PortfolioSections() {
     const customersCarouselRef = useRef<HTMLDivElement | null>(null)
     const btsCarouselRef = useRef<HTMLDivElement | null>(null)
     const [activeWorkRegion, setActiveWorkRegion] = useState<'International Work' | 'Indian Work'>('International Work')
+    const [activeWorkVideos, setActiveWorkVideos] = useState<Record<string, string>>(() =>
+        Object.fromEntries(workVideoGroups.map((group) => [group.id, group.videos[0]?.id ?? ''])),
+    )
     const [expandedWorks, setExpandedWorks] = useState<string[]>([])
     const [isAboutExpanded, setIsAboutExpanded] = useState(false)
     const [activeCaseStudy, setActiveCaseStudy] = useState<{ title: string; url: string } | null>(null)
@@ -662,99 +665,130 @@ export default function PortfolioSections() {
                 </div>
 
                 <div className="mt-10 grid gap-6">
-                    {visibleWorkGroups.map((group, groupIndex) => (
-                        <article
-                            key={group.id}
-                            className="rounded-[2rem] border border-[var(--border-soft)] p-6 shadow-[0_16px_36px_rgba(16,24,38,0.08)] sm:p-7"
-                            style={{
-                                background:
-                                    groupIndex === 0
-                                        ? 'linear-gradient(165deg, rgba(255,255,255,0.92), rgba(245,239,230,0.92))'
-                                        : 'linear-gradient(165deg, rgba(252,248,242,0.94), rgba(240,233,223,0.94))',
-                            }}
-                        >
-                            <div className="flex items-start justify-between gap-4">
-                                <div>
-                                    <p className="text-sm uppercase tracking-[0.28em] text-[var(--text-dim)]">Work Group</p>
-                                    <h3 className="mt-3 text-2xl font-semibold text-[var(--surface-strong)]">{group.title}</h3>
-                                </div>
-                                <div className="rounded-full border border-[var(--border-soft)] bg-white/76 px-4 py-2 text-xs uppercase tracking-[0.24em] text-[var(--text-dim)]">
-                                    {group.videos.length} reels
-                                </div>
-                            </div>
+                    {visibleWorkGroups.map((group, groupIndex) => {
+                        const activeVideoId = activeWorkVideos[group.id] || group.videos[0]?.id
+                        const activeVideo = group.videos.find((video) => video.id === activeVideoId) ?? group.videos[0]
+                        const secondaryVideos = group.videos.filter((video) => video.id !== activeVideo.id)
 
-                            <div className="mt-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-5">
-                                {workCategoryGroups
-                                    .find((categoryGroup) => categoryGroup.title === group.region)
-                                    ?.items.map((item, itemIndex) => (
-                                    <div
-                                        key={item}
-                                        className="rounded-[1.1rem] border border-[rgba(16,24,38,0.08)] bg-white/68 px-4 py-3"
-                                    >
-                                        <p className="text-xs uppercase tracking-[0.24em] text-[var(--text-dim)]">
-                                            0{itemIndex + 1}
-                                        </p>
-                                        <p className="mt-2 text-lg font-semibold text-[var(--surface-strong)]">{item}</p>
+                        return (
+                            <article
+                                key={group.id}
+                                className="rounded-[2rem] border border-[var(--border-soft)] p-6 shadow-[0_16px_36px_rgba(16,24,38,0.08)] sm:p-7"
+                                style={{
+                                    background:
+                                        groupIndex === 0
+                                            ? 'linear-gradient(165deg, rgba(255,255,255,0.92), rgba(245,239,230,0.92))'
+                                            : 'linear-gradient(165deg, rgba(252,248,242,0.94), rgba(240,233,223,0.94))',
+                                }}
+                            >
+                                <div className="flex items-start justify-between gap-4">
+                                    <div>
+                                        <p className="text-sm uppercase tracking-[0.28em] text-[var(--text-dim)]">Work Group</p>
+                                        <h3 className="mt-3 text-2xl font-semibold text-[var(--surface-strong)]">{group.title}</h3>
                                     </div>
-                                ))}
-                            </div>
+                                    <div className="rounded-full border border-[var(--border-soft)] bg-white/76 px-4 py-2 text-xs uppercase tracking-[0.24em] text-[var(--text-dim)]">
+                                        {group.videos.length} reels
+                                    </div>
+                                </div>
 
-                            <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                                {group.videos.map((video, videoIndex) => (
-                                    <div
-                                        key={video.id}
-                                        className="overflow-hidden rounded-[1.25rem] border border-white/8 bg-white/78 text-left transition hover:-translate-y-1"
-                                    >
+                                <div className="mt-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-5">
+                                    {workCategoryGroups
+                                        .find((categoryGroup) => categoryGroup.title === group.region)
+                                        ?.items.map((item, itemIndex) => (
+                                        <div
+                                            key={item}
+                                            className="rounded-[1.1rem] border border-[rgba(16,24,38,0.08)] bg-white/68 px-4 py-3"
+                                        >
+                                            <p className="text-xs uppercase tracking-[0.24em] text-[var(--text-dim)]">
+                                                0{itemIndex + 1}
+                                            </p>
+                                            <p className="mt-2 text-lg font-semibold text-[var(--surface-strong)]">{item}</p>
+                                        </div>
+                                    ))}
+                                </div>
+
+                                <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                                    <div className="overflow-hidden rounded-[1.25rem] border border-white/8 bg-white/78 text-left transition hover:-translate-y-1">
                                         <div className="relative aspect-[16/10] overflow-hidden bg-slate-950">
-                                            {videoIndex === 0 ? (
-                                                <LazyAutoplayVideoFrame
-                                                    title={video.title}
-                                                    embedUrl={video.embedUrl}
-                                                    poster={video.poster}
-                                                    controls={false}
-                                                    loading="eager"
-                                                />
-                                            ) : (
+                                            <LazyAutoplayVideoFrame
+                                                key={activeVideo.id}
+                                                title={activeVideo.title}
+                                                embedUrl={activeVideo.embedUrl}
+                                                poster={activeVideo.poster}
+                                                controls
+                                                muted
+                                                loading="eager"
+                                                badge={activeVideo.accent}
+                                                hint="Featured in portfolio"
+                                                playLabel="Play on site"
+                                            />
+                                        </div>
+                                        <div className="px-4 py-4">
+                                            <p className="text-sm font-semibold text-[var(--surface-strong)]">{activeVideo.title}</p>
+                                            <p className="mt-2 text-sm leading-6 text-[var(--text-soft)]">
+                                                {activeVideo.description}
+                                            </p>
+                                            <div className="mt-4">
+                                                <a
+                                                    href={activeVideo.watchUrl}
+                                                    target="_blank"
+                                                    rel="noreferrer"
+                                                    className="inline-flex rounded-full border border-slate-900/12 bg-transparent px-4 py-2 text-xs uppercase tracking-[0.24em] text-[var(--surface-strong)] transition hover:bg-slate-950 hover:text-white"
+                                                >
+                                                    Open original on YouTube
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {secondaryVideos.map((video) => (
+                                        <div
+                                            key={video.id}
+                                            className="overflow-hidden rounded-[1.25rem] border border-white/8 bg-white/78 text-left transition hover:-translate-y-1"
+                                        >
+                                            <div className="relative aspect-[16/10] overflow-hidden bg-slate-950">
                                                 <img
                                                     className="h-full w-full object-cover"
                                                     src={video.poster}
                                                     alt={video.title}
                                                     loading="lazy"
                                                 />
-                                            )}
-                                            <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.01)_24%,rgba(0,0,0,0.12)_62%,rgba(0,0,0,0.28))]" />
-                                            <div className="pointer-events-none absolute inset-x-3 top-3 flex items-center justify-between text-[10px] uppercase tracking-[0.22em] text-white/84">
-                                                <span className="rounded-full border border-white/16 bg-black/34 px-2 py-1">{video.accent}</span>
-                                                <span className="rounded-full border border-white/16 bg-black/34 px-2 py-1 text-[9px] tracking-[0.18em] text-white/72">
-                                                    {videoIndex === 0 ? 'Live' : 'Preview'}
-                                                </span>
-                                            </div>
-                                            {videoIndex !== 0 ? (
+                                                <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.01)_24%,rgba(0,0,0,0.12)_62%,rgba(0,0,0,0.28))]" />
+                                                <div className="pointer-events-none absolute inset-x-3 top-3 flex items-center justify-between text-[10px] uppercase tracking-[0.22em] text-white/84">
+                                                    <span className="rounded-full border border-white/16 bg-black/34 px-2 py-1">{video.accent}</span>
+                                                    <span className="rounded-full border border-white/16 bg-black/34 px-2 py-1 text-[9px] tracking-[0.18em] text-white/72">
+                                                        Preview
+                                                    </span>
+                                                </div>
                                                 <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
                                                     <span className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/34 bg-black/42 text-[10px] uppercase tracking-[0.2em] text-white">
                                                         Play
                                                     </span>
                                                 </div>
-                                            ) : null}
-                                        </div>
-                                        <div className="px-4 py-4">
-                                            <p className="text-sm font-semibold text-[var(--surface-strong)]">{video.title}</p>
-                                            <div className="mt-4">
-                                                <a
-                                                    href={video.watchUrl}
-                                                    target="_blank"
-                                                    rel="noreferrer"
-                                                    className="inline-flex rounded-full border border-slate-900/12 bg-slate-950 px-4 py-2 text-xs uppercase tracking-[0.24em] text-white transition hover:bg-slate-800"
-                                                >
-                                                    Open on YouTube
-                                                </a>
+                                                <button
+                                                    type="button"
+                                                    onClick={() =>
+                                                        setActiveWorkVideos((current) => ({
+                                                            ...current,
+                                                            [group.id]: video.id,
+                                                        }))
+                                                    }
+                                                    className="absolute inset-0 z-10"
+                                                    aria-label={`Highlight ${video.title}`}
+                                                />
+                                            </div>
+                                            <div className="px-4 py-4">
+                                                <p className="text-sm font-semibold text-[var(--surface-strong)]">{video.title}</p>
+                                                <p className="mt-2 text-sm leading-6 text-[var(--text-soft)]">
+                                                    {video.description}
+                                                </p>
                                             </div>
                                         </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </article>
-                    ))}
+                                    ))}
+                                </div>
+                            </article>
+                        )
+                    })}
                 </div>
 
             </section>
