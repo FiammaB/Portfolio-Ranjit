@@ -725,9 +725,6 @@ export default function PortfolioSections() {
                                         </div>
                                         <div className="px-4 py-4">
                                             <p className="text-sm font-semibold text-[var(--surface-strong)]">{activeVideo.title}</p>
-                                            <p className="mt-2 text-sm leading-6 text-[var(--text-soft)]">
-                                                {activeVideo.description}
-                                            </p>
                                             <div className="mt-4">
                                                 <a
                                                     href={activeVideo.watchUrl}
@@ -779,9 +776,6 @@ export default function PortfolioSections() {
                                             </div>
                                             <div className="px-4 py-4">
                                                 <p className="text-sm font-semibold text-[var(--surface-strong)]">{video.title}</p>
-                                                <p className="mt-2 text-sm leading-6 text-[var(--text-soft)]">
-                                                    {video.description}
-                                                </p>
                                             </div>
                                         </div>
                                     ))}
