@@ -853,7 +853,6 @@ export default function PortfolioSections() {
                                     className="h-28 w-full object-cover transition duration-300 group-hover:scale-[1.08] sm:h-32 lg:h-36"
                                     loading="lazy"
                                     decoding="async"
-                                    fetchPriority="low"
                                 />
                             </figure>
                         ))}
@@ -1229,7 +1228,6 @@ export default function PortfolioSections() {
                                         className="max-h-9 w-full object-contain opacity-95 transition duration-300 group-hover:scale-[1.3]"
                                         loading="lazy"
                                         decoding="async"
-                                        fetchPriority="low"
                                     />
                                 </div>
                             </div>

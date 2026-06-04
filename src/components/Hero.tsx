@@ -24,7 +24,7 @@ export default function Hero() {
 
             <div className="relative mx-auto max-w-[88rem]">
                 <div className="grid gap-12 xl:grid-cols-[0.98fr_1.02fr] xl:items-start">
-                    <div className="order-2 space-y-8 xl:order-1">
+                    <div className="order-1 space-y-8 xl:order-1">
                         <div className="inline-flex items-center gap-3 rounded-full border border-[var(--border-strong)] bg-white/72 px-4 py-2 text-[var(--surface-panel)] shadow-[0_16px_36px_rgba(16,24,38,0.06)]">
                             <span className="h-2.5 w-2.5 rounded-full bg-[var(--accent-gold)]" />
                             <p className="text-[11px] uppercase tracking-[0.36em] text-[var(--accent-gold)]">
@@ -97,7 +97,7 @@ export default function Hero() {
                         </div>
                     </div>
 
-                    <div className="order-1 xl:order-2 xl:pl-4">
+                    <div className="order-2 xl:order-2 xl:pl-4">
                         <PerspectiveVideoOverlay />
                     </div>
                 </div>

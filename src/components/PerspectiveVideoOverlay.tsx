@@ -15,12 +15,12 @@ export default function PerspectiveVideoOverlay() {
     }
 
     return (
-        <section className="relative overflow-hidden rounded-[2.85rem] border border-[rgba(255,255,255,0.56)] bg-[linear-gradient(165deg,rgba(247,242,234,0.98),rgba(255,255,255,0.94)_52%,rgba(239,232,222,0.98))] px-4 py-6 shadow-[0_34px_100px_rgba(16,24,38,0.14)] sm:px-6 sm:py-8 lg:px-8">
+        <section className="relative overflow-hidden rounded-[2.2rem] border border-[rgba(255,255,255,0.56)] bg-[linear-gradient(165deg,rgba(247,242,234,0.98),rgba(255,255,255,0.94)_52%,rgba(239,232,222,0.98))] px-4 py-5 shadow-[0_24px_70px_rgba(16,24,38,0.12)] sm:rounded-[2.85rem] sm:px-6 sm:py-8 lg:px-8">
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_14%_16%,rgba(176,138,83,0.16),transparent_18%),radial-gradient(circle_at_86%_18%,rgba(127,159,198,0.16),transparent_18%),linear-gradient(180deg,rgba(255,255,255,0.48),transparent_34%)]" />
             <div className="pointer-events-none absolute inset-0 opacity-[0.06]" style={{ backgroundImage: 'linear-gradient(rgba(16,24,38,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(16,24,38,0.08) 1px, transparent 1px)', backgroundSize: '42px 42px' }} />
 
             <div className="relative z-10">
-                <div className="mb-6 flex items-center justify-between gap-4">
+                <div className="mb-5 flex items-center justify-between gap-4 sm:mb-6">
                     <div>
                         <p className="text-[11px] uppercase tracking-[0.42em] text-[var(--accent-gold)]">Screening Room</p>
                         <p className="mt-2 max-w-sm text-sm leading-6 text-[var(--text-soft)]">A curated reel wall for agencies, producers and broadcasters reviewing international production work.</p>
@@ -33,7 +33,7 @@ export default function PerspectiveVideoOverlay() {
                 <div className="space-y-4">
                     <article
                         key={activeVideo.id}
-                        className="relative overflow-hidden rounded-[2.1rem] border border-[rgba(16,24,38,0.08)] bg-[rgba(255,255,255,0.68)] p-3 shadow-[0_22px_60px_rgba(16,24,38,0.12)]"
+                        className="relative overflow-hidden rounded-[1.7rem] border border-[rgba(16,24,38,0.08)] bg-[rgba(255,255,255,0.68)] p-2.5 shadow-[0_18px_46px_rgba(16,24,38,0.1)] sm:rounded-[2.1rem] sm:p-3 sm:shadow-[0_22px_60px_rgba(16,24,38,0.12)]"
                     >
                         <div className="absolute inset-x-6 top-4 z-20 flex items-center justify-between text-[10px] uppercase tracking-[0.3em] text-white/88">
                             <span className="rounded-full border border-white/16 bg-black/36 px-3 py-1">{activeVideo.accent}</span>
@@ -44,14 +44,14 @@ export default function PerspectiveVideoOverlay() {
 
                         <div
                             key={`${activeVideo.id}-frame`}
-                            className="relative overflow-hidden rounded-[1.65rem] bg-[var(--surface-strong)] aspect-[16/10]"
+                            className="relative overflow-hidden rounded-[1.3rem] bg-[var(--surface-strong)] aspect-[16/10] sm:rounded-[1.65rem]"
                         >
                             <LazyAutoplayVideoFrame
                                 key={activeVideo.id}
                                 title={activeVideo.title}
                                 embedUrl={activeVideo.embedUrl}
                                 poster={activeVideo.poster}
-                                loading="eager"
+                                loading="lazy"
                                 controls
                                 muted
                                 enableJsApi
@@ -76,7 +76,7 @@ export default function PerspectiveVideoOverlay() {
                         </div>
                     </article>
 
-                    <div className="grid gap-3 grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+                    <div className="hidden gap-3 md:grid md:grid-cols-3 xl:grid-cols-4">
                         {secondaryVideos.map((video, index) => (
                             <div
                                 key={video.id}
