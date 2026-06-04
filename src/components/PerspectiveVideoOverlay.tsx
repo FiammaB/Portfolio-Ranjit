@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion'
 import { useState } from 'react'
 import LazyAutoplayVideoFrame from './LazyAutoplayVideoFrame'
 import { screenVideos } from '../content/siteContent'
@@ -32,11 +31,8 @@ export default function PerspectiveVideoOverlay() {
                 </div>
 
                 <div className="space-y-4">
-                    <motion.article
+                    <article
                         key={activeVideo.id}
-                        initial={{ opacity: 0, y: 18, scale: 0.98 }}
-                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                        transition={{ duration: 0.5, ease: 'easeOut' }}
                         className="relative overflow-hidden rounded-[2.1rem] border border-[rgba(16,24,38,0.08)] bg-[rgba(255,255,255,0.68)] p-3 shadow-[0_22px_60px_rgba(16,24,38,0.12)]"
                     >
                         <div className="absolute inset-x-6 top-4 z-20 flex items-center justify-between text-[10px] uppercase tracking-[0.3em] text-white/88">
@@ -46,11 +42,8 @@ export default function PerspectiveVideoOverlay() {
                             </span>
                         </div>
 
-                        <motion.div
+                        <div
                             key={`${activeVideo.id}-frame`}
-                            initial={{ opacity: 0.72, scale: 0.94, filter: 'blur(8px)' }}
-                            animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
-                            transition={{ duration: 0.55, ease: 'easeOut' }}
                             className="relative overflow-hidden rounded-[1.65rem] bg-[var(--surface-strong)] aspect-[16/10]"
                         >
                             <LazyAutoplayVideoFrame
@@ -66,7 +59,7 @@ export default function PerspectiveVideoOverlay() {
                             />
                             <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.01)_18%,rgba(0,0,0,0.06)_54%,rgba(0,0,0,0.22))]" />
                             <div className="pointer-events-none absolute inset-0 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.05),inset_0_-18px_28px_rgba(0,0,0,0.18)]" />
-                        </motion.div>
+                        </div>
                         <div className="relative z-20 mt-4 flex items-center justify-between gap-4 px-1">
                             <div>
                                 <p className="text-base font-semibold text-[var(--surface-strong)]">{activeVideo.title}</p>
@@ -81,7 +74,7 @@ export default function PerspectiveVideoOverlay() {
                                 Open on YouTube
                             </a>
                         </div>
-                    </motion.article>
+                    </article>
 
                     <div className="grid gap-3 grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
                         {secondaryVideos.map((video, index) => (
@@ -89,11 +82,7 @@ export default function PerspectiveVideoOverlay() {
                                 key={video.id}
                                 className="group relative overflow-hidden rounded-[1.5rem] border border-[var(--border-soft)] bg-white/68 p-2 text-left shadow-[0_14px_34px_rgba(16,24,38,0.08)] transition duration-300 hover:-translate-y-1 hover:border-[var(--border-strong)] hover:bg-white"
                             >
-                                <motion.div
-                                    initial={{ opacity: 0, y: 14 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ duration: 0.45, delay: index * 0.04, ease: 'easeOut' }}
-                                >
+                                <div>
                                     <div className="absolute inset-x-4 top-3 z-20 flex items-center justify-between text-[10px] uppercase tracking-[0.28em] text-white/82">
                                         <span className="rounded-full border border-white/16 bg-black/34 px-2 py-1">{video.accent}</span>
                                         <span className="rounded-full border border-white/16 bg-black/34 px-2 py-1 text-[9px] tracking-[0.22em] text-white/72">
@@ -127,7 +116,7 @@ export default function PerspectiveVideoOverlay() {
                                     <div className="px-1 pb-1 pt-3">
                                         <p className="text-sm font-medium text-[var(--surface-strong)]">{video.title}</p>
                                     </div>
-                                </motion.div>
+                                </div>
                             </div>
                         ))}
                     </div>

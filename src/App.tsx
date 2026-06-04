@@ -1,4 +1,4 @@
-import { lazy, Suspense, useState } from 'react'
+import { lazy, Suspense, useEffect, useRef, useState } from 'react'
 import { Clapperboard, Linkedin, Mail, MessageCircle } from 'lucide-react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
@@ -7,6 +7,26 @@ const PortfolioSections = lazy(() => import('./components/PortfolioSections'))
 
 function App() {
     const [menuOpen, setMenuOpen] = useState(false)
+    const [shouldLoadPortfolio, setShouldLoadPortfolio] = useState(false)
+    const portfolioEntryRef = useRef<HTMLDivElement | null>(null)
+
+    useEffect(() => {
+        if (shouldLoadPortfolio || !portfolioEntryRef.current) return
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                if (entries.some((entry) => entry.isIntersecting)) {
+                    setShouldLoadPortfolio(true)
+                    observer.disconnect()
+                }
+            },
+            { rootMargin: '240px 0px' },
+        )
+
+        observer.observe(portfolioEntryRef.current)
+
+        return () => observer.disconnect()
+    }, [shouldLoadPortfolio])
 
     return (
         <div className="min-h-screen bg-[var(--surface-base)] text-white">
@@ -14,16 +34,23 @@ function App() {
             <Navbar menuOpen={menuOpen} onToggle={() => setMenuOpen((prev) => !prev)} />
             <Hero />
 
+            <div ref={portfolioEntryRef} aria-hidden="true" className="h-px w-full" />
             <main className="relative mx-auto max-w-[88rem] px-6 pb-28 pt-6 sm:px-8 lg:px-12">
-                <Suspense
-                    fallback={
-                        <div className="rounded-[2.4rem] border border-[var(--border-soft)] bg-white/72 px-6 py-10 text-sm text-[var(--text-dim)] shadow-[0_18px_40px_rgba(16,24,38,0.04)]">
-                            Loading portfolio sections...
-                        </div>
-                    }
-                >
-                    <PortfolioSections />
-                </Suspense>
+                {shouldLoadPortfolio ? (
+                    <Suspense
+                        fallback={
+                            <div className="rounded-[2.4rem] border border-[var(--border-soft)] bg-white/72 px-6 py-10 text-sm text-[var(--text-dim)] shadow-[0_18px_40px_rgba(16,24,38,0.04)]">
+                                Loading portfolio sections...
+                            </div>
+                        }
+                    >
+                        <PortfolioSections />
+                    </Suspense>
+                ) : (
+                    <div className="rounded-[2.4rem] border border-[var(--border-soft)] bg-white/60 px-6 py-10 text-sm text-[var(--text-dim)] shadow-[0_18px_40px_rgba(16,24,38,0.04)]">
+                        Scroll to load portfolio sections.
+                    </div>
+                )}
             </main>
 
             <footer className="relative border-t border-[rgba(16,24,38,0.08)] bg-[rgba(244,239,231,0.6)]">

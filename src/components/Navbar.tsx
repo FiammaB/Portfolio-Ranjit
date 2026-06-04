@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 
 interface NavbarProps {
@@ -57,10 +56,10 @@ export default function Navbar({ menuOpen, onToggle }: NavbarProps) {
                 </button>
             </div>
 
-            <motion.div
-                initial={false}
-                animate={{ height: menuOpen ? 'auto' : 0, opacity: menuOpen ? 1 : 0 }}
-                className="overflow-hidden border-t border-[rgba(16,24,38,0.08)] bg-[rgba(244,239,231,0.98)] xl:hidden"
+            <div
+                className={`overflow-hidden border-t border-[rgba(16,24,38,0.08)] bg-[rgba(244,239,231,0.98)] transition-[max-height,opacity] duration-300 ease-out xl:hidden ${
+                    menuOpen ? 'max-h-[32rem] opacity-100' : 'max-h-0 opacity-0'
+                }`}
             >
                 <div className="flex flex-col gap-4 px-6 pb-6 pt-4">
                     {navLinks.map((link) => (
@@ -81,7 +80,7 @@ export default function Navbar({ menuOpen, onToggle }: NavbarProps) {
                         Contact Office
                     </a>
                 </div>
-            </motion.div>
+            </div>
         </header>
     )
 }
