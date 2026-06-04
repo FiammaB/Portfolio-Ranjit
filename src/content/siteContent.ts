@@ -50,8 +50,8 @@ export type Testimonial = {
 export const heroContent = {
     eyebrow: 'International Production Executive',
     name: 'Umang Agarwal',
-    title: 'Executive Producer | Line Producer | Cross-Border Production Specialist for feature films, high-end television, commercials and documentaries',
-    summary: '21+ years delivering feature films, high-end television, commercials, documentaries and international productions across India, the UK and overseas.',
+    title: 'Executive Producer and Line Producer for cross-border film, streaming and commercial production',
+    summary: '21+ years delivering production leadership across India, the UK and international shoots, with a focus on permits, logistics, crews and execution under pressure.',
     badges: ['Production Systems', 'Permits and Logistics'],
 }
 

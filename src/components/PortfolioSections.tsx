@@ -3,16 +3,29 @@ import { Camera, ChevronLeft, ChevronRight, Compass, Orbit, Sparkles, X } from '
 import LazyAutoplayVideoFrame from './LazyAutoplayVideoFrame'
 import { testimonials, workCategoryGroups, workVideoGroups } from '../content/siteContent'
 
-const dunkiPoster = new URL('../data/Film posters/Feature Films/Dunki.jpg', import.meta.url).href
+const dunkiPoster = new URL('../data/Case Studies-20260604T182810Z-3-001/Case Studies/Films/Overseas/Dunki-2/Poster.png', import.meta.url).href
 const ganapathPoster = new URL('../data/Film posters/Feature Films/Ganapath.jpg', import.meta.url).href
-const gangsterGangaPoster = new URL('../data/Film posters/Feature Films/Gangster Ganga.jpg', import.meta.url).href
-const ittaaKittaaPoster = new URL('../data/Film posters/Feature Films/Itta Kitta.jpg', import.meta.url).href
-const theRoshansPoster = new URL('../data/Film posters/Streaming Series/The Roshans.jpg', import.meta.url).href
-const dunkiCaseStudyUrl = new URL('../data/dunki-case-study.html', import.meta.url).href
-const ganapathCaseStudyUrl = new URL('../data/ganapath-case-study.html', import.meta.url).href
-const gangsterGangaCaseStudyUrl = new URL('../data/gangster_ganga_case_study.html', import.meta.url).href
-const ittaaKittaaCaseStudyUrl = new URL('../data/ittaa_kittaa_case_study.html', import.meta.url).href
-const theRoshansCaseStudyUrl = new URL('../data/the-roshans-case-study.html', import.meta.url).href
+const gangsterGangaPoster = new URL('../data/Case Studies-20260604T182810Z-3-001/Case Studies/Films/India/Gangster Ganga-2/poster.jpeg', import.meta.url).href
+const ittaaKittaaPoster = new URL('../data/Case Studies-20260604T182810Z-3-001/Case Studies/Films/India/Ittaa Kittaa-1/poster.jpeg', import.meta.url).href
+const theRoshansPoster = new URL('../data/Case Studies-20260604T182810Z-3-001/Case Studies/Streaming Series/The Roshans-1/poster.jpeg', import.meta.url).href
+
+const dunkiDetailPoster = new URL('../data/Film Details-20260604T182815Z-3-001/Film Details/Feature Films/Dunki - 4/Poster.png', import.meta.url).href
+const ganapathDetailPoster = new URL('../data/Film posters/Feature Films/Ganapath.jpg', import.meta.url).href
+const gangsterGangaDetailPoster = new URL('../data/Film Details-20260604T182815Z-3-001/Film Details/Feature Films/Gangster Ganga - 2/poster.jpeg', import.meta.url).href
+const ittaaKittaaDetailPoster = new URL('../data/Film Details-20260604T182815Z-3-001/Film Details/Feature Films/Ittaa Kittaa - 3/poster.jpeg', import.meta.url).href
+const theRoshansDetailPoster = new URL('../data/Film Details-20260604T182815Z-3-001/Film Details/Streaming Series/The Roshans-1/poster.jpeg', import.meta.url).href
+
+const dunkiCaseStudyDocUrl = new URL('../data/Case Studies-20260604T182810Z-3-001/Case Studies/Films/Overseas/Dunki-2/Dunki (case study).docx', import.meta.url).href
+const ganapathCaseStudyDocUrl = new URL('../data/Case Studies-20260604T182810Z-3-001/Case Studies/Films/Overseas/Ganapath-3/Ganapath (case study).docx', import.meta.url).href
+const gangsterGangaCaseStudyDocUrl = new URL('../data/Case Studies-20260604T182810Z-3-001/Case Studies/Films/India/Gangster Ganga-2/CASE STUDY.docx', import.meta.url).href
+const ittaaKittaaCaseStudyDocUrl = new URL('../data/Case Studies-20260604T182810Z-3-001/Case Studies/Films/India/Ittaa Kittaa-1/Case Study.docx', import.meta.url).href
+const theRoshansCaseStudyDocUrl = new URL('../data/Case Studies-20260604T182810Z-3-001/Case Studies/Streaming Series/The Roshans-1/The Roshans (case study).docx', import.meta.url).href
+
+const dunkiFilmDetailsDocUrl = new URL('../data/Film Details-20260604T182815Z-3-001/Film Details/Feature Films/Dunki - 4/Description.docx', import.meta.url).href
+const ganapathFilmDetailsDocUrl = new URL('../data/Film Details-20260604T182815Z-3-001/Film Details/Feature Films/Ganapath-5/Description.docx', import.meta.url).href
+const gangsterGangaFilmDetailsDocUrl = new URL('../data/Film Details-20260604T182815Z-3-001/Film Details/Feature Films/Gangster Ganga - 2/Description.docx', import.meta.url).href
+const ittaaKittaaFilmDetailsDocUrl = new URL('../data/Film Details-20260604T182815Z-3-001/Film Details/Feature Films/Ittaa Kittaa - 3/Description.docx', import.meta.url).href
+const theRoshansFilmDetailsDocUrl = new URL('../data/Film Details-20260604T182815Z-3-001/Film Details/Streaming Series/The Roshans-1/Description.docx', import.meta.url).href
 
 const services = [
     'Executive Production',
@@ -41,6 +54,21 @@ const aboutFocusAreas = [
     'International co-productions',
 ]
 
+const portfolioReviewSteps = [
+    {
+        title: 'Reels',
+        text: 'Commercials and music videos are presented as a quick visual review, not as long written case studies.',
+    },
+    {
+        title: 'Case Studies',
+        text: 'Only selected flagship projects are expanded in detail for film, streaming and major production work.',
+    },
+    {
+        title: 'Contact',
+        text: 'The site is designed to move serious enquiries toward a direct conversation, not to overwhelm with too much text.',
+    },
+]
+
 const works = [
     {
         title: 'Dunki',
@@ -49,7 +77,9 @@ const works = [
         year: '2023',
         role: 'Line Producer',
         image: dunkiPoster,
-        caseStudyUrl: dunkiCaseStudyUrl,
+        supportingImage: dunkiDetailPoster,
+        caseStudyDocUrl: dunkiCaseStudyDocUrl,
+        filmDetailsDocUrl: dunkiFilmDetailsDocUrl,
         context:
             'A multi-territory Hindi feature spanning Mumbai, Budapest and London, delivered against a fixed theatrical release schedule with significant immigration, logistics and budget pressure across the European leg.',
         challenge:
@@ -86,7 +116,9 @@ const works = [
         year: '2023',
         role: 'Line Producer (UK)',
         image: ganapathPoster,
-        caseStudyUrl: ganapathCaseStudyUrl,
+        supportingImage: ganapathDetailPoster,
+        caseStudyDocUrl: ganapathCaseStudyDocUrl,
+        filmDetailsDocUrl: ganapathFilmDetailsDocUrl,
         context:
             'A large-scale Hindi action feature requiring the full UK production leg to be built and managed locally across crew, permits, logistics, visas and compliance.',
         challenge:
@@ -123,7 +155,9 @@ const works = [
         year: '2023',
         role: 'Executive Producer',
         image: gangsterGangaPoster,
-        caseStudyUrl: gangsterGangaCaseStudyUrl,
+        supportingImage: gangsterGangaDetailPoster,
+        caseStudyDocUrl: gangsterGangaCaseStudyDocUrl,
+        filmDetailsDocUrl: gangsterGangaFilmDetailsDocUrl,
         context:
             'A Hindi OTT release featuring Supriya Pathak and Veer Rajwant Singh, delivered through a tightly controlled production structure for streaming release.',
         challenge:
@@ -160,7 +194,9 @@ const works = [
         year: '2024',
         role: 'Head of Production',
         image: ittaaKittaaPoster,
-        caseStudyUrl: ittaaKittaaCaseStudyUrl,
+        supportingImage: ittaaKittaaDetailPoster,
+        caseStudyDocUrl: ittaaKittaaCaseStudyDocUrl,
+        filmDetailsDocUrl: ittaaKittaaFilmDetailsDocUrl,
         context:
             'A Gujarati feature delivered through a three-partner production structure, combining theatrical release requirements with later platform delivery expectations.',
         challenge:
@@ -197,7 +233,9 @@ const works = [
         year: '2025',
         role: 'Executive Producer',
         image: theRoshansPoster,
-        caseStudyUrl: theRoshansCaseStudyUrl,
+        supportingImage: theRoshansDetailPoster,
+        caseStudyDocUrl: theRoshansCaseStudyDocUrl,
+        filmDetailsDocUrl: theRoshansFilmDetailsDocUrl,
         context:
             'A four-part Netflix docu-series built around archival material, senior industry contributors and a fixed global release date.',
         challenge:
@@ -230,37 +268,25 @@ const works = [
 ]
 
 const partnerLogos = [
-    'Company Logo 2.png',
-    'companylogo.png',
-    'download (1).jpg',
-    'download (1).png',
-    'download (1).webp',
-    'download (2).jpg',
-    'download (2).png',
-    'download (3).jpg',
-    'download (3).png',
-    'download (4).jpg',
-    'download (4).png',
-    'download (5).jpg',
-    'download (5).png',
-    'download (6).jpg',
-    'download (6).png',
-    'download (7).jpg',
-    'download (7).png',
-    'download.jpg',
-    'download.png',
-    'download.webp',
-    'FILMS1-copy-copy-300x45.webp',
-    'logo-y.png',
-    'logo.png',
-    'lX5vswczZoFSUq3H8dX6Db3zqjM.avif',
+    'partner-logo-01.png',
+    'partner-logo-02.png',
+    'partner-logo-03.webp',
+    'partner-logo-04.png',
+    'partner-logo-05.png',
+    'partner-logo-06.png',
+    'partner-logo-07.png',
+    'partner-logo-08.png',
+    'partner-logo-09.png',
+    'partner-logo-10.webp',
+    'partner-logo-11.webp',
+    'partner-logo-12.png',
+    'partner-logo-13.png',
+    'partner-logo-14.avif',
 ].map((fileName) => `/company-logos/Company Logos/${fileName}`)
 
 const darkLogoBackgrounds = new Set([
-    '/company-logos/Company Logos/logo.png',
-
-    
-    '/company-logos/Company Logos/lX5vswczZoFSUq3H8dX6Db3zqjM.avif',
+    '/company-logos/Company Logos/partner-logo-13.png',
+    '/company-logos/Company Logos/partner-logo-14.avif',
 ])
 
 const behindTheScenesStills = [
@@ -340,7 +366,7 @@ export default function PortfolioSections() {
     )
     const [expandedWorks, setExpandedWorks] = useState<string[]>([])
     const [isAboutExpanded, setIsAboutExpanded] = useState(false)
-    const [activeCaseStudy, setActiveCaseStudy] = useState<{ title: string; url: string } | null>(null)
+    const [activeCaseStudy, setActiveCaseStudy] = useState<(typeof works)[number] | null>(null)
 
     useEffect(() => {
         if (!activeCaseStudy) return
@@ -588,20 +614,20 @@ export default function PortfolioSections() {
                 <div className="flex flex-col gap-4">
                     <div className="inline-flex w-fit items-center gap-3 rounded-full border border-[var(--border-soft)] bg-white/85 px-4 py-2 text-[var(--surface-panel)]">
                         <Orbit size={16} />
-                        <p className="text-sm uppercase tracking-[0.34em] text-[var(--accent-gold)]">Portfolio</p>
+                        <p className="text-sm uppercase tracking-[0.34em] text-[var(--accent-gold)]">How To Read The Site</p>
                     </div>
                     <h2 className="text-4xl text-[var(--surface-strong)] sm:text-5xl">
-                        A portfolio organised the way a commissioning team expects to review it.
+                        A simpler structure for commissioners, producers and agencies.
                     </h2>
                     <p className="max-w-3xl text-lg leading-8 text-[var(--text-soft)]">
-                        A concise view of the production strengths, operational systems and local execution experience behind international shoots.
+                        Reels are kept visual. Selected projects carry the detailed case studies. The aim is clarity first.
                     </p>
                 </div>
 
-                <div className="mt-12 grid gap-6">
-                    {workCategoryGroups.map((group, index) => (
+                <div className="mt-12 grid gap-6 lg:grid-cols-3">
+                    {portfolioReviewSteps.map((step, index) => (
                         <div
-                            key={group.title}
+                            key={step.title}
                             className="rounded-[2rem] border p-7 sm:p-8"
                             style={{
                                 borderColor: 'rgba(21, 28, 52, 0.12)',
@@ -611,21 +637,9 @@ export default function PortfolioSections() {
                                         : 'linear-gradient(160deg, rgba(242, 237, 231, 0.96), rgba(255, 255, 255, 0.92))',
                             }}
                         >
-                            <p className="text-sm uppercase tracking-[0.28em] text-[var(--text-dim)]">Portfolio</p>
-                            <h3 className="mt-4 text-2xl font-semibold text-[var(--surface-strong)]">{group.title}</h3>
-                            <div className="mt-6 grid gap-3">
-                                {group.items.map((item, itemIndex) => (
-                                    <div
-                                        key={item}
-                                        className="rounded-[1.2rem] border border-white/50 bg-white/55 px-4 py-3 text-[var(--surface-strong)]"
-                                    >
-                                        <p className="text-xs uppercase tracking-[0.24em] text-[var(--text-dim)]">
-                                            0{itemIndex + 1}
-                                        </p>
-                                        <p className="mt-2 text-lg font-semibold">{item}</p>
-                                    </div>
-                                ))}
-                            </div>
+                            <p className="text-sm uppercase tracking-[0.28em] text-[var(--text-dim)]">Step 0{index + 1}</p>
+                            <h3 className="mt-4 text-2xl font-semibold text-[var(--surface-strong)]">{step.title}</h3>
+                            <p className="mt-4 text-base leading-8 text-[var(--text-soft)]">{step.text}</p>
                         </div>
                     ))}
                 </div>
@@ -636,14 +650,14 @@ export default function PortfolioSections() {
                     <div className="space-y-4">
                         <div className="inline-flex items-center gap-3 rounded-full border border-[var(--border-soft)] bg-white/85 px-4 py-2 text-[var(--surface-panel)]">
                             <Camera size={16} />
-                            <p className="text-sm uppercase tracking-[0.34em] text-[var(--accent-gold)]">Work</p>
+                            <p className="text-sm uppercase tracking-[0.34em] text-[var(--accent-gold)]">Selected Reels</p>
                         </div>
                         <h2 className="text-4xl sm:text-5xl text-[var(--surface-strong)]">
-                            Selected work presented in a cleaner review format.
+                            Commercials and music videos, organised for quick review.
                         </h2>
                     </div>
                     <p className="max-w-2xl text-base leading-8 text-[var(--text-soft)]">
-                        Organised by territory and format so producers, agencies and commissioners can review projects quickly.
+                        Choose a region, then switch between selected projects inside each group. This section is for fast visual review.
                     </p>
                 </div>
 
@@ -683,7 +697,7 @@ export default function PortfolioSections() {
                             >
                                 <div className="flex items-start justify-between gap-4">
                                     <div>
-                                        <p className="text-sm uppercase tracking-[0.28em] text-[var(--text-dim)]">Work Group</p>
+                                        <p className="text-sm uppercase tracking-[0.28em] text-[var(--text-dim)]">{group.region}</p>
                                         <h3 className="mt-3 text-2xl font-semibold text-[var(--surface-strong)]">{group.title}</h3>
                                     </div>
                                     <div className="rounded-full border border-[var(--border-soft)] bg-white/76 px-4 py-2 text-xs uppercase tracking-[0.24em] text-[var(--text-dim)]">
@@ -691,20 +705,16 @@ export default function PortfolioSections() {
                                     </div>
                                 </div>
 
-                                <div className="mt-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-5">
-                                    {workCategoryGroups
-                                        .find((categoryGroup) => categoryGroup.title === group.region)
-                                        ?.items.map((item, itemIndex) => (
-                                        <div
-                                            key={item}
-                                            className="rounded-[1.1rem] border border-[rgba(16,24,38,0.08)] bg-white/68 px-4 py-3"
-                                        >
-                                            <p className="text-xs uppercase tracking-[0.24em] text-[var(--text-dim)]">
-                                                0{itemIndex + 1}
-                                            </p>
-                                            <p className="mt-2 text-lg font-semibold text-[var(--surface-strong)]">{item}</p>
-                                        </div>
-                                    ))}
+                                <div className="mt-5 flex flex-wrap gap-3">
+                                    <div className="rounded-full border border-[rgba(16,24,38,0.08)] bg-white/68 px-4 py-2 text-xs uppercase tracking-[0.22em] text-[var(--text-dim)]">
+                                        Region: {group.region}
+                                    </div>
+                                    <div className="rounded-full border border-[rgba(16,24,38,0.08)] bg-white/68 px-4 py-2 text-xs uppercase tracking-[0.22em] text-[var(--text-dim)]">
+                                        Format: {group.section}
+                                    </div>
+                                    <div className="rounded-full border border-[rgba(16,24,38,0.08)] bg-white/68 px-4 py-2 text-xs uppercase tracking-[0.22em] text-[var(--text-dim)]">
+                                        Click any preview to swap the main reel
+                                    </div>
                                 </div>
 
                                 <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
@@ -749,6 +759,7 @@ export default function PortfolioSections() {
                                                     src={video.poster}
                                                     alt={video.title}
                                                     loading="lazy"
+                                                    decoding="async"
                                                 />
                                                 <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.01)_24%,rgba(0,0,0,0.12)_62%,rgba(0,0,0,0.28))]" />
                                                 <div className="pointer-events-none absolute inset-x-3 top-3 flex items-center justify-between text-[10px] uppercase tracking-[0.22em] text-white/84">
@@ -835,6 +846,8 @@ export default function PortfolioSections() {
                                     alt="Behind-the-scenes production still"
                                     className="h-28 w-full object-cover transition duration-300 group-hover:scale-[1.08] sm:h-32 lg:h-36"
                                     loading="lazy"
+                                    decoding="async"
+                                    fetchPriority="low"
                                 />
                             </figure>
                         ))}
@@ -849,8 +862,11 @@ export default function PortfolioSections() {
                         <p className="text-sm uppercase tracking-[0.34em] text-[var(--accent-gold)]">Case studies</p>
                     </div>
                     <h2 className="text-4xl text-[var(--surface-strong)] sm:text-5xl">
-                        Selected projects with genuine operational weight.
+                        Long-form project pages for the strongest flagship work.
                     </h2>
+                    <p className="max-w-3xl text-lg leading-8 text-[var(--text-soft)]">
+                        These are the few projects where additional detail helps explain production scope, complexity and role.
+                    </p>
                 </div>
 
                 <div className="mt-12 grid gap-6">
@@ -878,6 +894,7 @@ export default function PortfolioSections() {
                                             alt={work.title}
                                             className="absolute inset-0 h-full w-full object-cover"
                                             loading="lazy"
+                                            decoding="async"
                                         />
                                     ) : null}
                                     <div className="absolute inset-0 bg-[linear-gradient(165deg,rgba(11,19,33,0.84),rgba(24,36,58,0.56))]" />
@@ -975,7 +992,7 @@ export default function PortfolioSections() {
                                         </button>
                                         <button
                                             type="button"
-                                            onClick={() => setActiveCaseStudy({ title: work.title, url: work.caseStudyUrl })}
+                                            onClick={() => setActiveCaseStudy(work)}
                                             className="inline-flex items-center rounded-full border border-[var(--surface-strong)] bg-transparent px-5 py-3 text-xs font-semibold uppercase tracking-[0.22em] text-[var(--surface-strong)] transition hover:bg-[var(--surface-strong)] hover:text-white"
                                         >
                                             Open case study
@@ -1014,11 +1031,93 @@ export default function PortfolioSections() {
                             </button>
                         </div>
 
-                        <iframe
-                            src={activeCaseStudy.url}
-                            title={`${activeCaseStudy.title} case study`}
-                            className="h-full w-full flex-1 bg-white"
-                        />
+                        <div className="grid flex-1 gap-0 overflow-y-auto lg:grid-cols-[1.02fr_0.98fr]">
+                            <div className="border-b border-[rgba(16,24,38,0.08)] bg-[rgba(247,241,232,0.44)] p-5 sm:p-6 lg:border-b-0 lg:border-r">
+                                <div className="overflow-hidden rounded-[1.6rem] border border-[var(--border-soft)] bg-white shadow-[0_18px_40px_rgba(16,24,38,0.08)]">
+                                    <img
+                                        src={activeCaseStudy.image}
+                                        alt={`${activeCaseStudy.title} case study poster`}
+                                        className="aspect-[16/10] w-full object-cover"
+                                    />
+                                </div>
+
+                                <div className="mt-5 grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
+                                    <div className="rounded-[1.2rem] border border-[var(--border-soft)] bg-white/88 px-4 py-4">
+                                        <p className="text-[11px] uppercase tracking-[0.22em] text-[var(--text-dim)]">Format</p>
+                                        <p className="mt-2 text-sm font-semibold text-[var(--surface-strong)]">{activeCaseStudy.format}</p>
+                                    </div>
+                                    <div className="rounded-[1.2rem] border border-[var(--border-soft)] bg-white/88 px-4 py-4">
+                                        <p className="text-[11px] uppercase tracking-[0.22em] text-[var(--text-dim)]">Territory</p>
+                                        <p className="mt-2 text-sm font-semibold text-[var(--surface-strong)]">{activeCaseStudy.territory}</p>
+                                    </div>
+                                    <div className="rounded-[1.2rem] border border-[var(--border-soft)] bg-white/88 px-4 py-4">
+                                        <p className="text-[11px] uppercase tracking-[0.22em] text-[var(--text-dim)]">Year</p>
+                                        <p className="mt-2 text-sm font-semibold text-[var(--surface-strong)]">{activeCaseStudy.year}</p>
+                                    </div>
+                                </div>
+
+                                <div className="mt-5 overflow-hidden rounded-[1.4rem] border border-[var(--border-soft)] bg-white shadow-[0_12px_28px_rgba(16,24,38,0.06)]">
+                                    <img
+                                        src={activeCaseStudy.supportingImage}
+                                        alt={`${activeCaseStudy.title} film details poster`}
+                                        className="aspect-[16/10] w-full object-cover"
+                                    />
+                                </div>
+                            </div>
+
+                            <div className="p-5 sm:p-6">
+                                <div className="rounded-[1.45rem] border border-[var(--border-soft)] bg-[rgba(247,241,232,0.52)] p-5">
+                                    <p className="text-[11px] uppercase tracking-[0.24em] text-[var(--text-dim)]">New source documents</p>
+                                    <p className="mt-3 text-sm leading-7 text-[var(--text-soft)]">
+                                        This project now pulls from the newly added archive. Use the links below to open the latest case study and film details documents directly.
+                                    </p>
+                                    <div className="mt-5 flex flex-wrap gap-3">
+                                        <a
+                                            href={activeCaseStudy.caseStudyDocUrl}
+                                            target="_blank"
+                                            rel="noreferrer"
+                                            className="inline-flex items-center rounded-full border border-[var(--surface-strong)] bg-[var(--surface-strong)] px-5 py-3 text-xs font-semibold uppercase tracking-[0.22em] text-white transition hover:opacity-90"
+                                        >
+                                            Open case study doc
+                                        </a>
+                                        <a
+                                            href={activeCaseStudy.filmDetailsDocUrl}
+                                            target="_blank"
+                                            rel="noreferrer"
+                                            className="inline-flex items-center rounded-full border border-[var(--surface-strong)] bg-transparent px-5 py-3 text-xs font-semibold uppercase tracking-[0.22em] text-[var(--surface-strong)] transition hover:bg-[var(--surface-strong)] hover:text-white"
+                                        >
+                                            Open film details
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div className="mt-5 rounded-[1.45rem] border border-[var(--border-soft)] bg-white p-5 shadow-[0_10px_24px_rgba(16,24,38,0.04)]">
+                                    <p className="text-[11px] uppercase tracking-[0.24em] text-[var(--text-dim)]">Project context</p>
+                                    <p className="mt-3 text-sm leading-7 text-[var(--text-soft)]">{activeCaseStudy.context}</p>
+                                </div>
+
+                                <div className="mt-5 rounded-[1.45rem] border border-[var(--border-soft)] bg-white p-5 shadow-[0_10px_24px_rgba(16,24,38,0.04)]">
+                                    <p className="text-[11px] uppercase tracking-[0.24em] text-[var(--text-dim)]">Production challenge</p>
+                                    <p className="mt-3 text-sm leading-7 text-[var(--text-soft)]">{activeCaseStudy.challenge}</p>
+                                </div>
+
+                                <div className="mt-5 rounded-[1.45rem] border border-[var(--border-soft)] bg-white p-5 shadow-[0_10px_24px_rgba(16,24,38,0.04)]">
+                                    <p className="text-[11px] uppercase tracking-[0.24em] text-[var(--text-dim)]">Outcome</p>
+                                    <p className="mt-3 text-sm leading-7 text-[var(--surface-strong)]">{activeCaseStudy.outcome}</p>
+                                </div>
+
+                                {activeCaseStudy.details ? (
+                                    <div className="mt-5 rounded-[1.45rem] border border-[var(--border-soft)] bg-white p-5 shadow-[0_10px_24px_rgba(16,24,38,0.04)]">
+                                        <p className="text-[11px] uppercase tracking-[0.24em] text-[var(--text-dim)]">Key responsibilities</p>
+                                        <div className="mt-3 space-y-3 text-sm leading-7 text-[var(--surface-strong)]">
+                                            {activeCaseStudy.details.responsibilities.map((item) => (
+                                                <p key={item}>{item}</p>
+                                            ))}
+                                        </div>
+                                    </div>
+                                ) : null}
+                            </div>
+                        </div>
                     </div>
                 </div>
             ) : null}
@@ -1113,6 +1212,8 @@ export default function PortfolioSections() {
                                         alt="Company logo"
                                         className="max-h-9 w-full object-contain opacity-95 transition duration-300 group-hover:scale-[1.3]"
                                         loading="lazy"
+                                        decoding="async"
+                                        fetchPriority="low"
                                     />
                                 </div>
                             </div>
@@ -1131,19 +1232,20 @@ export default function PortfolioSections() {
                         <h2 className="text-4xl text-[var(--surface-strong)] sm:text-5xl">
                             Let’s discuss the next UK-India production.
                         </h2>
-                    <p className="max-w-2xl text-lg leading-8 text-[var(--text-soft)]">
+                        <p className="max-w-2xl text-lg leading-8 text-[var(--text-soft)]">
                             Get in touch to discuss a CV, a showreel, or a practical conversation about filming in India, incentives, permits and remote production support.
                         </p>
+
                     </div>
 
                     <div className="grid gap-4">
                         <div className="rounded-[1.8rem] border border-[var(--border-soft)] bg-white/72 p-6">
                             <p className="text-sm uppercase tracking-[0.24em] text-[var(--text-dim)]">Email</p>
-                            <p className="mt-3 text-xl font-semibold text-[var(--surface-strong)]">swarpfilms@gmail.com</p>
+                            <p className="mt-3 break-all text-lg font-semibold text-[var(--surface-strong)] sm:text-xl">swarpfilms@gmail.com</p>
                         </div>
                         <div className="rounded-[1.8rem] border border-[var(--border-soft)] bg-white/72 p-6">
                             <p className="text-sm uppercase tracking-[0.24em] text-[var(--text-dim)]">WhatsApp</p>
-                            <p className="mt-3 text-xl font-semibold text-[var(--surface-strong)]">+91 91047 43013</p>
+                            <p className="mt-3 break-words text-lg font-semibold text-[var(--surface-strong)] sm:text-xl">+91 91047 43013</p>
                         </div>
                         <div className="rounded-[1.8rem] border border-[var(--border-soft)] bg-white/72 p-6">
                             <p className="text-sm uppercase tracking-[0.24em] text-[var(--text-dim)]">IMDb</p>
@@ -1151,7 +1253,7 @@ export default function PortfolioSections() {
                                 href="https://www.imdb.com/es/name/nm5364507/"
                                 target="_blank"
                                 rel="noreferrer"
-                                className="mt-3 inline-flex text-xl font-semibold text-[var(--surface-strong)] transition hover:text-[var(--accent-gold)]"
+                                className="mt-3 inline-flex break-all text-lg font-semibold text-[var(--surface-strong)] transition hover:text-[var(--accent-gold)] sm:text-xl"
                             >
                                 imdb.com/es/name/nm5364507/
                             </a>
@@ -1162,7 +1264,7 @@ export default function PortfolioSections() {
                                 href="https://www.linkedin.com/in/umangagarwal20/"
                                 target="_blank"
                                 rel="noreferrer"
-                                className="mt-3 inline-flex text-xl font-semibold text-[var(--surface-strong)] transition hover:text-[var(--accent-gold)]"
+                                className="mt-3 inline-flex break-all text-lg font-semibold text-[var(--surface-strong)] transition hover:text-[var(--accent-gold)] sm:text-xl"
                             >
                                 linkedin.com/in/umangagarwal20/
                             </a>

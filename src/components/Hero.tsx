@@ -9,6 +9,12 @@ const credentials = [
     { value: 'India', label: 'Local production execution' },
 ]
 
+const reviewFlow = [
+    'Watch selected reels',
+    'Open key case studies',
+    'Contact for project discussions',
+]
+
 export default function Hero() {
     return (
         <section
@@ -42,6 +48,18 @@ export default function Hero() {
                             <p className="max-w-3xl text-lg leading-9 text-[var(--text-soft)]">
                                 {heroContent.summary}
                             </p>
+                        </div>
+
+                        <div className="rounded-[1.7rem] border border-[var(--border-soft)] bg-white/72 p-5 shadow-[0_12px_30px_rgba(16,24,38,0.06)]">
+                            <p className="text-[11px] uppercase tracking-[0.28em] text-[var(--text-dim)]">How to review this site</p>
+                            <div className="mt-4 grid gap-3 sm:grid-cols-3">
+                                {reviewFlow.map((item, index) => (
+                                    <div key={item} className="rounded-[1.1rem] border border-[var(--border-soft)] bg-white/72 px-4 py-3">
+                                        <p className="text-xs uppercase tracking-[0.22em] text-[var(--text-dim)]">0{index + 1}</p>
+                                        <p className="mt-2 text-sm font-semibold text-[var(--surface-strong)]">{item}</p>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
 
                         <div className="flex flex-wrap gap-4">

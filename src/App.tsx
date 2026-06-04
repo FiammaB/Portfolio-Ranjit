@@ -17,6 +17,49 @@ function App() {
                 <PortfolioSections />
             </main>
 
+            <footer className="relative border-t border-[rgba(16,24,38,0.08)] bg-[rgba(244,239,231,0.6)]">
+                <div className="mx-auto flex max-w-[88rem] flex-col gap-3 px-6 py-5 text-[var(--surface-strong)] sm:px-8 lg:flex-row lg:items-center lg:justify-between lg:px-12">
+                    <div>
+                        <p className="text-[10px] uppercase tracking-[0.24em] text-[var(--text-dim)]">Website Credit</p>
+                        <p className="mt-1 text-xs leading-6 text-[var(--text-dim)]">
+                            Website created by Fiamma Brizuela.
+                        </p>
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                        <a
+                            href="mailto:brizuelafiamma6@gmail.com?subject=Website%20Enquiry"
+                            className="inline-flex w-fit rounded-full border border-[var(--border-soft)] bg-white/72 px-4 py-2 text-[10px] font-medium uppercase tracking-[0.18em] text-[var(--text-dim)] transition hover:border-[var(--border-strong)] hover:text-[var(--surface-strong)]"
+                        >
+                            Email
+                        </a>
+                        <a
+                            href="https://wa.me/542616801745"
+                            target="_blank"
+                            rel="noreferrer"
+                            className="inline-flex w-fit rounded-full border border-[var(--border-soft)] bg-white/72 px-4 py-2 text-[10px] font-medium uppercase tracking-[0.18em] text-[var(--text-dim)] transition hover:border-[var(--border-strong)] hover:text-[var(--surface-strong)]"
+                        >
+                            WhatsApp
+                        </a>
+                        <a
+                            href="https://www.linkedin.com/in/fiamma-brizuela-16195224b"
+                            target="_blank"
+                            rel="noreferrer"
+                            className="inline-flex w-fit rounded-full border border-[var(--border-soft)] bg-white/72 px-4 py-2 text-[10px] font-medium uppercase tracking-[0.18em] text-[var(--text-dim)] transition hover:border-[var(--border-strong)] hover:text-[var(--surface-strong)]"
+                        >
+                            LinkedIn
+                        </a>
+                        <a
+                            href="https://fiammab.github.io/Portafolio/"
+                            target="_blank"
+                            rel="noreferrer"
+                            className="inline-flex w-fit rounded-full border border-[var(--border-soft)] bg-white/72 px-4 py-2 text-[10px] font-medium uppercase tracking-[0.18em] text-[var(--text-dim)] transition hover:border-[var(--border-strong)] hover:text-[var(--surface-strong)]"
+                        >
+                            Portfolio
+                        </a>
+                    </div>
+                </div>
+            </footer>
+
             <div className="fixed bottom-[10.2rem] right-5 z-[110] flex flex-col gap-3 sm:bottom-[11rem] sm:right-7">
                 <a
                     href="https://www.imdb.com/es/name/nm5364507/"
