@@ -3,13 +3,13 @@ import { Camera, ChevronLeft, ChevronRight, Compass, Orbit, Sparkles, X } from '
 import LazyAutoplayVideoFrame from './LazyAutoplayVideoFrame'
 import { testimonials, workCategoryGroups, workVideoGroups } from '../content/siteContent'
 
-const dunkiPoster = new URL('../data/Film posters/Feature Films/Dunki.jpg', import.meta.url).href
+const dunkiPoster = new URL('../data/Case Studies-20260604T182810Z-3-001/Case Studies/Films/Overseas/Dunki-2/Poster.png', import.meta.url).href
 const ganapathPoster = new URL('../data/Film posters/Feature Films/Ganapath.jpg', import.meta.url).href
 const gangsterGangaPoster = new URL('../data/Case Studies-20260604T182810Z-3-001/Case Studies/Films/India/Gangster Ganga-2/poster.jpeg', import.meta.url).href
 const ittaaKittaaPoster = new URL('../data/Case Studies-20260604T182810Z-3-001/Case Studies/Films/India/Ittaa Kittaa-1/poster.jpeg', import.meta.url).href
 const theRoshansPoster = new URL('../data/Case Studies-20260604T182810Z-3-001/Case Studies/Streaming Series/The Roshans-1/poster.jpeg', import.meta.url).href
 
-const dunkiDetailPoster = new URL('../data/Film posters/Feature Films/Dunki.jpg', import.meta.url).href
+const dunkiDetailPoster = new URL('../data/Film Details-20260604T182815Z-3-001/Film Details/Feature Films/Dunki - 4/Poster.png', import.meta.url).href
 const ganapathDetailPoster = new URL('../data/Film posters/Feature Films/Ganapath.jpg', import.meta.url).href
 const gangsterGangaDetailPoster = new URL('../data/Film Details-20260604T182815Z-3-001/Film Details/Feature Films/Gangster Ganga - 2/poster.jpeg', import.meta.url).href
 const ittaaKittaaDetailPoster = new URL('../data/Film Details-20260604T182815Z-3-001/Film Details/Feature Films/Ittaa Kittaa - 3/poster.jpeg', import.meta.url).href
