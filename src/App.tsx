@@ -1,8 +1,9 @@
-import { useState } from 'react'
+import { lazy, Suspense, useState } from 'react'
 import { Clapperboard, Linkedin, Mail, MessageCircle } from 'lucide-react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
-import PortfolioSections from './components/PortfolioSections'
+
+const PortfolioSections = lazy(() => import('./components/PortfolioSections'))
 
 function App() {
     const [menuOpen, setMenuOpen] = useState(false)
@@ -14,7 +15,15 @@ function App() {
             <Hero />
 
             <main className="relative mx-auto max-w-[88rem] px-6 pb-28 pt-6 sm:px-8 lg:px-12">
-                <PortfolioSections />
+                <Suspense
+                    fallback={
+                        <div className="rounded-[2.4rem] border border-[var(--border-soft)] bg-white/72 px-6 py-10 text-sm text-[var(--text-dim)] shadow-[0_18px_40px_rgba(16,24,38,0.04)]">
+                            Loading portfolio sections...
+                        </div>
+                    }
+                >
+                    <PortfolioSections />
+                </Suspense>
             </main>
 
             <footer className="relative border-t border-[rgba(16,24,38,0.08)] bg-[rgba(244,239,231,0.6)]">

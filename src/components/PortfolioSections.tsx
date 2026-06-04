@@ -3,13 +3,13 @@ import { Camera, ChevronLeft, ChevronRight, Compass, Orbit, Sparkles, X } from '
 import LazyAutoplayVideoFrame from './LazyAutoplayVideoFrame'
 import { testimonials, workCategoryGroups, workVideoGroups } from '../content/siteContent'
 
-const dunkiPoster = new URL('../data/Case Studies-20260604T182810Z-3-001/Case Studies/Films/Overseas/Dunki-2/Poster.png', import.meta.url).href
+const dunkiPoster = new URL('../data/Film posters/Feature Films/Dunki.jpg', import.meta.url).href
 const ganapathPoster = new URL('../data/Film posters/Feature Films/Ganapath.jpg', import.meta.url).href
 const gangsterGangaPoster = new URL('../data/Case Studies-20260604T182810Z-3-001/Case Studies/Films/India/Gangster Ganga-2/poster.jpeg', import.meta.url).href
 const ittaaKittaaPoster = new URL('../data/Case Studies-20260604T182810Z-3-001/Case Studies/Films/India/Ittaa Kittaa-1/poster.jpeg', import.meta.url).href
 const theRoshansPoster = new URL('../data/Case Studies-20260604T182810Z-3-001/Case Studies/Streaming Series/The Roshans-1/poster.jpeg', import.meta.url).href
 
-const dunkiDetailPoster = new URL('../data/Film Details-20260604T182815Z-3-001/Film Details/Feature Films/Dunki - 4/Poster.png', import.meta.url).href
+const dunkiDetailPoster = new URL('../data/Film posters/Feature Films/Dunki.jpg', import.meta.url).href
 const ganapathDetailPoster = new URL('../data/Film posters/Feature Films/Ganapath.jpg', import.meta.url).href
 const gangsterGangaDetailPoster = new URL('../data/Film Details-20260604T182815Z-3-001/Film Details/Feature Films/Gangster Ganga - 2/poster.jpeg', import.meta.url).href
 const ittaaKittaaDetailPoster = new URL('../data/Film Details-20260604T182815Z-3-001/Film Details/Feature Films/Ittaa Kittaa - 3/poster.jpeg', import.meta.url).href
@@ -758,6 +758,8 @@ export default function PortfolioSections() {
                                                     className="h-full w-full object-cover"
                                                     src={video.poster}
                                                     alt={video.title}
+                                                    width={320}
+                                                    height={200}
                                                     loading="lazy"
                                                     decoding="async"
                                                 />
@@ -819,6 +821,7 @@ export default function PortfolioSections() {
                         <button
                             type="button"
                             onClick={() => scrollCarousel(btsCarouselRef, 'left')}
+                            aria-label="Scroll behind-the-scenes carousel left"
                             className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[var(--border-soft)] bg-white/80 text-[var(--surface-strong)] shadow-[0_14px_30px_rgba(66,76,119,0.12)] transition hover:scale-105 hover:bg-white sm:h-11 sm:w-11"
                         >
                             <ChevronLeft size={18} />
@@ -826,6 +829,7 @@ export default function PortfolioSections() {
                         <button
                             type="button"
                             onClick={() => scrollCarousel(btsCarouselRef, 'right')}
+                            aria-label="Scroll behind-the-scenes carousel right"
                             className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[var(--border-soft)] bg-white/80 text-[var(--surface-strong)] shadow-[0_14px_30px_rgba(66,76,119,0.12)] transition hover:scale-105 hover:bg-white sm:h-11 sm:w-11"
                         >
                             <ChevronRight size={18} />
@@ -844,6 +848,8 @@ export default function PortfolioSections() {
                                 <img
                                     src={stillSrc}
                                     alt="Behind-the-scenes production still"
+                                    width={192}
+                                    height={128}
                                     className="h-28 w-full object-cover transition duration-300 group-hover:scale-[1.08] sm:h-32 lg:h-36"
                                     loading="lazy"
                                     decoding="async"
@@ -892,6 +898,8 @@ export default function PortfolioSections() {
                                         <img
                                             src={work.image}
                                             alt={work.title}
+                                            width={640}
+                                            height={400}
                                             className="absolute inset-0 h-full w-full object-cover"
                                             loading="lazy"
                                             decoding="async"
@@ -1037,6 +1045,8 @@ export default function PortfolioSections() {
                                     <img
                                         src={activeCaseStudy.image}
                                         alt={`${activeCaseStudy.title} case study poster`}
+                                        width={640}
+                                        height={400}
                                         className="aspect-[16/10] w-full object-cover"
                                     />
                                 </div>
@@ -1060,6 +1070,8 @@ export default function PortfolioSections() {
                                     <img
                                         src={activeCaseStudy.supportingImage}
                                         alt={`${activeCaseStudy.title} film details poster`}
+                                        width={640}
+                                        height={400}
                                         className="aspect-[16/10] w-full object-cover"
                                     />
                                 </div>
@@ -1170,6 +1182,7 @@ export default function PortfolioSections() {
                         <button
                             type="button"
                             onClick={() => scrollCarousel(customersCarouselRef, 'left')}
+                            aria-label="Scroll partner logos left"
                             className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[var(--border-soft)] bg-white/80 text-[var(--surface-strong)] shadow-[0_14px_30px_rgba(66,76,119,0.12)] transition hover:scale-105 hover:bg-white sm:h-11 sm:w-11"
                         >
                             <ChevronLeft size={18} />
@@ -1177,6 +1190,7 @@ export default function PortfolioSections() {
                         <button
                             type="button"
                             onClick={() => scrollCarousel(customersCarouselRef, 'right')}
+                            aria-label="Scroll partner logos right"
                             className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[var(--border-soft)] bg-white/80 text-[var(--surface-strong)] shadow-[0_14px_30px_rgba(66,76,119,0.12)] transition hover:scale-105 hover:bg-white sm:h-11 sm:w-11"
                         >
                             <ChevronRight size={18} />
@@ -1210,6 +1224,8 @@ export default function PortfolioSections() {
                                     <img
                                         src={logoSrc}
                                         alt="Company logo"
+                                        width={168}
+                                        height={36}
                                         className="max-h-9 w-full object-contain opacity-95 transition duration-300 group-hover:scale-[1.3]"
                                         loading="lazy"
                                         decoding="async"
