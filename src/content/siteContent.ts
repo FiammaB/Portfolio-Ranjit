@@ -74,7 +74,7 @@ const createVideo = (
 ): WorkVideo => ({
     id: `${region.toLowerCase().replace(/[^a-z]+/g, '-')}-${section.toLowerCase().replace(/[^a-z]+/g, '-')}-${index + 1}`,
     youtubeId: video.youtubeId,
-    embedUrl: `https://www.youtube.com/embed/${video.youtubeId}`,
+    embedUrl: `https://www.youtube-nocookie.com/embed/${video.youtubeId}`,
     watchUrl: `https://www.youtube.com/watch?v=${video.youtubeId}`,
     poster: `https://i.ytimg.com/vi/${video.youtubeId}/hqdefault.jpg`,
     title: video.title,

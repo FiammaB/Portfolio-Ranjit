@@ -106,7 +106,10 @@ export default function PerspectiveVideoOverlay() {
                                             className="h-full w-full object-cover"
                                             src={video.poster}
                                             alt={video.title}
+                                            width={320}
+                                            height={180}
                                             loading="lazy"
+                                            decoding="async"
                                         />
                                         <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
                                             <span className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/34 bg-black/42 text-[10px] uppercase tracking-[0.2em] text-white">

@@ -13,10 +13,10 @@
   --accent-cyan: #7f9fc6;
   --accent-violet: #7d6f63;
   --accent-orange: #b78b55;
-  --accent-gold: #b08a53;
-  --text-soft: rgba(16, 24, 38, 0.76);
-  --text-dim: rgba(48, 58, 78, 0.56);
-  --border-soft: rgba(16, 24, 38, 0.12);
+  --accent-gold: #8e6a36;
+  --text-soft: rgba(16, 24, 38, 0.84);
+  --text-dim: rgba(48, 58, 78, 0.72);
+  --border-soft: rgba(16, 24, 38, 0.16);
   --border-strong: rgba(16, 24, 38, 0.2);
 }
 
